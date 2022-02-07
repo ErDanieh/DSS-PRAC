@@ -14,8 +14,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 #RUN update-alternatives --set php /usr/bin/php8.1
 #RUN a2enmod rewrite
 
-RUN composer global require "laravel/installer=~1.1"
-
-COPY src /var/www/html/
+#COPY www /var/www/html/
 EXPOSE 80/tcp
 EXPOSE 443/tcp
+EXPOSE 8000

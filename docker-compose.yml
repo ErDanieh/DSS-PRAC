@@ -20,8 +20,9 @@ services:
     container_name: docker-php
     ports:
       - "80:80"
+      - "8000:8000"
     volumes:
-      - ./www:/var/www/html
+      - ./miproyecto:/var/www/html
     links:
       - mysql_db_container
 
