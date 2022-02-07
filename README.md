@@ -1,6 +1,9 @@
 # DSS-PRAC
 Práctica de DSS de Tercero de carrera 
 
+# Crear app laravel
+
+
 ## Deploy docker
 docker-compose up -d
 
