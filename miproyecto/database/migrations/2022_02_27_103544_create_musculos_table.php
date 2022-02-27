@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLogEntrenamientoTable extends Migration
+class CreateMusculosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateLogEntrenamientoTable extends Migration
      */
     public function up()
     {
-        Schema::create('EntrenamientoLog', function (Blueprint $table) {
+        Schema::create('musculos', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateLogEntrenamientoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('EntrenamientoLog');
+        Schema::dropIfExists('musculos');
     }
 }
