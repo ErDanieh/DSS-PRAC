@@ -17,7 +17,8 @@ class CreateGrupoMuscularEjerciciosTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('descripcion');
-            $table->foreign('musculo_id')->references('id')->on('musculos');
+            $table->unsignedBigInteger('musculo_id');
+            $table->foreign('musculo_id')->references('id')->on('musculos')->onDelete('cascade');
             $table->timestamps();
         });
     }
