@@ -16,7 +16,7 @@ class CreateGrupoMuscularsTable extends Migration
         Schema::create('grupo_musculars', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('descripcion');
+            $table->text('descripcion');
             $table->timestamps();
         });
     }
