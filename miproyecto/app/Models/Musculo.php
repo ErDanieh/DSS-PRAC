@@ -9,14 +9,12 @@ class Musculo extends Model
 {
     use HasFactory;
 
-
     public string $descripcion;
 
-    public string $url_img;
+    public string $urlImg;
 
-
-    public function gruposMuscularEjercicio()
+    public function grupoMuscular()
     {
-        return $this->belognsToMany('App\Models\GrupoMuscularEjercicio');
+        return $this->belongsTo('App\Models\GrupoMuscular');
     }
 }

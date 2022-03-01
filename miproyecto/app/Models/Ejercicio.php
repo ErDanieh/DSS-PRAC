@@ -9,17 +9,15 @@ class Ejercicio extends Model
 {
     use HasFactory;
 
-
     private string $name;
 
     private string $descripcion;
 
     private string $urlImg;
 
-
-    public function gruposMusculares()
+    public function grupoMusculares()
     {
-        return $this->hasMany('App\Models\GrupoMuscularEjercicio');
+        return $this->hasMany('App\Models\GrupoMuscular');
     }
 
 }
