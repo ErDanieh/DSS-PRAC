@@ -16,6 +16,8 @@ class CreateMusculosTable extends Migration
         Schema::create('musculos', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->unsignedBigInteger('id_grupo_muscular');
+            $table->foreign('id_grupo_muscular')->references('id')->on('grupo_musculars')->onDelete('cascade');
             $table->timestamps();
         });
     }

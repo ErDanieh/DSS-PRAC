@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEjerciciosTable extends Migration
+class CreateGrupoMuscularsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateEjerciciosTable extends Migration
      */
     public function up()
     {
-        Schema::create('ejercicios', function (Blueprint $table) {
+        Schema::create('grupo_musculars', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('descripcion');
-            $table->string('url_img');
-            $table->unsignedBigInteger('grupo_muscular_id');
-            $table->foreign('grupo_muscular_id')->references('id')->on('grupo_muscular_ejercicios')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateEjerciciosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ejercicios');
+        Schema::dropIfExists('grupo_musculars');
     }
 }
