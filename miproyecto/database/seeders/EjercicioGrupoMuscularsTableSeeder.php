@@ -22,5 +22,6 @@ class EjercicioGrupoMuscularsTableSeeder extends Seeder
              'id_grupo_muscular' => 1
              ]
         );
+        
     }
 }

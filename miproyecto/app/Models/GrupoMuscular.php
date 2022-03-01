@@ -14,7 +14,8 @@ class GrupoMuscular extends Model
 
     public function musculos()
     {
-        return $this->hasMany('App\Models\Musculo');
+        //return $this->hasMany('App\Models\Musculo');
+        return $this->hasMany(Musculo::class);
     }
 
 
