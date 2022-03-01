@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call(GrupoMuscularsTableSeeder::class);
-        $this->command->info('Seed grupo muscular!!');
+        $this->call(MusculosTableSeeder::class);
+        $this->call(EjerciciosTableSeeder::class);
+        $this->call(EjercicioGrupoMuscularsTableSeeder::class);
+
     }
 }
