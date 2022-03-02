@@ -18,4 +18,9 @@ class Musculo extends Model
         //return $this->belongsTo('App\Models\GrupoMuscular');
         return $this->belongsTo(GrupoMuscular::class);
     }
+
+    public function selectAllMusculos(){
+        $musculos = Musculo::all();
+        return $musculos;
+    }
 }

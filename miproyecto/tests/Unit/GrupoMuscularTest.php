@@ -4,7 +4,8 @@ namespace Tests\Unit;
 
 use App\Models\GrupoMuscular;
 use Illuminate\Database\Eloquent\Collection;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
+
 
 class GrupoMuscularTest extends TestCase
 {

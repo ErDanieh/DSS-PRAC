@@ -16,7 +16,7 @@ class GrupoMuscular extends Model
     {
         //return $this->hasMany('App\Models\Musculo');
         return $this->hasMany(Musculo::class);
+        
     }
-
 
 }
