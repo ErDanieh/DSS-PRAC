@@ -20,4 +20,11 @@ class GrupoMuscularTest extends TestCase
 
         $this->assertInstanceOf(Collection::class, $grupoMuscular->musculos);
     }
+
+    public function test_obtencion_datos()
+    {
+        $arrayEsperado = ["Pectorales", "Deltoides", "Espalda", "Glúteos", "Trapecios", "Abdominales", "Brazo", "Piernas"];
+        $grupoMuscular = GrupoMuscular::pluck('name')->toArray();
+        $this->assertEquals($arrayEsperado, $grupoMuscular);
+    }
 }
