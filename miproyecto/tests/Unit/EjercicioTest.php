@@ -22,26 +22,28 @@ class EjercicioTest extends TestCase
 
     public function test_Ejercicios_select()
     {
-        {
-            $arrayEsperado = [
-              "Press de pecho plano con mancuerna."
-            , "Press de pecho con mancuerna inclinado"
-            , "Apertura de mancuernas"
-            , "Cruces en polea alta"
-            , "Cruces en polea baja"
-            , "Extensión de cuadriceps "
-            , "Curl Femoral"
-            , "Elevación de gemelos en máquina"
-            , "Abductor en máquina"
-            , "Press Militar con mancuernas sentado"
-            , "Elevaciones laterales"];
-            $grupoMuscular = Ejercicio::pluck('name')->toArray();
-            $this->assertEquals($arrayEsperado, $grupoMuscular);
-        }
+        $this->eliminar_elementos_test();
+        
+        $arrayEsperado = [
+            "Press de pecho plano con mancuerna."
+        , "Press de pecho con mancuerna inclinado"
+        , "Apertura de mancuernas"
+        , "Cruces en polea alta"
+        , "Cruces en polea baja"
+        , "Extensión de cuadriceps "
+        , "Curl Femoral"
+        , "Elevación de gemelos en máquina"
+        , "Abductor en máquina"
+        , "Press Militar con mancuernas sentado"
+        , "Elevaciones laterales"];
+        $grupoMuscular = Ejercicio::pluck('name')->toArray();
+        $this->assertEquals($arrayEsperado, $grupoMuscular);
+        
     }
 
     public function test_insertar_dato_mediante_objeto()
     {
+        $this->eliminar_elementos_test();
 
         $ejercicioEsperado = '{"id":666,"name":"TESTING","descripcion":"Descripion TESTING","url_img":"URL Test","created_at":null,"updated_at":null}';
         $ejercicio = new Ejercicio();
@@ -57,4 +59,11 @@ class EjercicioTest extends TestCase
         $this->assertEquals($ejercicioEsperado, $ejercicioObtenido);
     }
 
+    function eliminar_elementos_test()
+    {
+        if (Ejercicio::find(666))
+        {
+            Ejercicio::find(666)->delete();
+        }
+    }
 }
