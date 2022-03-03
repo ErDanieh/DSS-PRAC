@@ -11,10 +11,14 @@ class GrupoMuscular extends Model
 
     protected $table = 'grupo_musculars';
 
-    protected $name;
+    protected $primaryKey = 'id';
+
+    protected string $name;
 
     protected string $descripcion;
 
+    public $timestamps = false;
+    
     public function musculos()
     {
         return $this->hasMany(Musculo::class);
