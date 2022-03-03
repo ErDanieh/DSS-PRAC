@@ -39,4 +39,22 @@ class EjercicioTest extends TestCase
             $this->assertEquals($arrayEsperado, $grupoMuscular);
         }
     }
+
+    public function test_insertar_dato_mediante_objeto()
+    {
+
+        $ejercicioEsperado = '{"id":666,"name":"TESTING","descripcion":"Descripion TESTING","url_img":"URL Test","created_at":null,"updated_at":null}';
+        $ejercicio = new Ejercicio();
+        $ejercicio->id = 666;
+        $ejercicio->name = "TESTING";
+        $ejercicio->descripcion = "Descripion TESTING";
+        $ejercicio->url_img = "URL Test";
+        $ejercicio->save();
+
+        $ejercicioObtenido = Ejercicio::where('name', '=', 'TESTING')->firstOrFail();  
+        $ejercicio = Ejercicio::find(666);
+        $ejercicio->delete();
+        $this->assertEquals($ejercicioEsperado, $ejercicioObtenido);
+    }
+
 }
