@@ -7,13 +7,29 @@ use Tests\TestCase;
 
 class MusculosTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-    public function test_example()
+
+    public function test_obtencion_datos()
     {
-        $this->assertTrue(true);
+        $arrayEsperado = ["Aductores", "Antebrazo", "Biceps", "Cuadriceps", "Deltoides anterior", "Deltoides medio", "Deltoides posterior", "Dorsal", "Femoral", "Gemelos", "Gluteos", "Lumbar", "Oblicuo", "Pectoral mayor", "Pectoral menor", "Recto abdominal", "Redondos", "Serrato", "Trapecio medio", "Trapecio superior", "Triceps"];
+        $nameMusculos = Musculo::orderBy('name', 'asc')->pluck('name')->toArray();
+        $this->assertEquals($arrayEsperado, $nameMusculos);
+    }
+
+    public function test_insertar_dato_mediante_objeto()
+    {
+
+        $musculoEsperado = '{"id":666,"name":"TESTING","id_grupo_muscular":1,"created_at":null,"updated_at":null}';
+        $musculo = new Musculo();
+        $musculo->id = 666;
+        $musculo->id_grupo_muscular = 1;
+        $musculo->name = "TESTING";
+        $musculo->save();
+
+        $musculoObtenido = Musculo::where('name', '=', 'TESTING')->firstOrFail();  
+        $this->assertEquals($musculoEsperado, $musculoObtenido);
+
+        $musculo = Musculo::find(666);
+        $musculo->delete();
+        
     }
 }

@@ -9,11 +9,17 @@ class Ejercicio extends Model
 {
     use HasFactory;
 
-    private string $name;
+    protected $table = 'ejercicios';
 
-    private string $descripcion;
+    protected $primaryKey = 'id';
 
-    private string $urlImg;
+    protected string $name;
+
+    protected string $descripcion;
+
+    protected string $url_img;
+
+    public $timestamps = false;
 
     public function grupoMusculares()
     {

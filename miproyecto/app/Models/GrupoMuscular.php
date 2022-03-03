@@ -9,14 +9,14 @@ class GrupoMuscular extends Model
 {
     use HasFactory;
 
-    private string $descripcion;
+    protected $table = 'grupo_musculars';
 
+    protected $name;
+
+    protected string $descripcion;
 
     public function musculos()
     {
-        //return $this->hasMany('App\Models\Musculo');
         return $this->hasMany(Musculo::class);
-        
     }
-
 }

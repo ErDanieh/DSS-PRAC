@@ -9,18 +9,19 @@ class Musculo extends Model
 {
     use HasFactory;
 
-    public string $descripcion;
+    protected $table = 'musculos';
+    
+    protected $primaryKey = 'id';
 
-    public string $urlImg;
+    protected $id_grupo_muscular;
+
+    protected string $name;
+
+    public $timestamps = false;
 
     public function grupoMuscular()
     {
-        //return $this->belongsTo('App\Models\GrupoMuscular');
         return $this->belongsTo(GrupoMuscular::class);
     }
 
-    public function selectAllMusculos(){
-        $musculos = Musculo::all();
-        return $musculos;
-    }
 }

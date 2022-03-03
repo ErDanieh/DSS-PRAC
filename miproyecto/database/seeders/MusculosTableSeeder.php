@@ -149,16 +149,8 @@ class MusculosTableSeeder extends Seeder
 
         DB::table('musculos')->insert(
             [
-                'id_grupo_muscular' => 7,
-                'id' => 17,
-                'name' => 'Antebrazo'
-            ]
-        );
-
-        DB::table('musculos')->insert(
-            [
                 'id_grupo_muscular' => 8,
-                'id' => 18,
+                'id' => 17,
                 'name' => 'Femoral'
             ]
         );
@@ -166,7 +158,7 @@ class MusculosTableSeeder extends Seeder
         DB::table('musculos')->insert(
             [
                 'id_grupo_muscular' => 8,
-                'id' => 19,
+                'id' => 18,
                 'name' => 'Cuadriceps'
             ]
         );
@@ -174,7 +166,7 @@ class MusculosTableSeeder extends Seeder
         DB::table('musculos')->insert(
             [
                 'id_grupo_muscular' => 8,
-                'id' => 20,
+                'id' => 19,
                 'name' => 'Gemelos'
             ]
         );
@@ -182,7 +174,7 @@ class MusculosTableSeeder extends Seeder
         DB::table('musculos')->insert(
             [
                 'id_grupo_muscular' => 8,
-                'id' => 21,
+                'id' => 20,
                 'name' => 'Aductores'
             ]
         );
@@ -191,7 +183,7 @@ class MusculosTableSeeder extends Seeder
         DB::table('musculos')->insert(
             [
                 'id_grupo_muscular' => 2,
-                'id' => 22,
+                'id' => 21,
                 'name' => 'Deltoides posterior'
             ]
         );
