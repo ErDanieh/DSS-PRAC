@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\GrupoMuscular;
+use App\Models\Musculo;
 use DB;
 
 class MusculosTableSeeder extends Seeder
@@ -16,23 +18,21 @@ class MusculosTableSeeder extends Seeder
     {
         DB::table('musculos')->delete();
 
+        $grupoMuscularPectoral = GrupoMuscular::where('name', '=', 'Pectorales')->firstOrFail();  
+        $grupoMuscularDeltoides = GrupoMuscular::where('name', '=', 'Deltoides')->firstOrFail();  
+        $grupoMuscularEspalda = GrupoMuscular::where('name', '=', 'Espalda')->firstOrFail();  
+        $grupoMuscularGluteos = GrupoMuscular::where('name', '=', 'Glúteos')->firstOrFail();  
+        $grupoMuscularTrapecios = GrupoMuscular::where('name', '=', 'Trapecios')->firstOrFail();  
+        $grupoMuscularAbdominales = GrupoMuscular::where('name', '=', 'Abdominales')->firstOrFail();  
+        $grupoMuscularBrazo = GrupoMuscular::where('name', '=', 'Brazo')->firstOrFail();  
+        $grupoMuscularPierna = GrupoMuscular::where('name', '=', 'Pierna')->firstOrFail();  
 
-        DB::table('musculos')->insert(
-            [
-                'id_grupo_muscular' => 1,
-                'id' => 1,
-                'name' => 'Pectoral mayor'
-            ]
+
+/* 
+        $grupoMuscularPectoral->musculos()->saveMany(
+            [ 'name' => 'Pectoral mayor' ],
+            [ 'name' => 'Pectoral menor' ]
         );
-
-        DB::table('musculos')->insert(
-            [
-                'id_grupo_muscular' => 1,
-                'id' => 2,
-                'name' => 'Pectoral menor'
-            ]
-        );
-
         DB::table('musculos')->insert(
             [
                 'id_grupo_muscular' => 2,
@@ -187,5 +187,6 @@ class MusculosTableSeeder extends Seeder
                 'name' => 'Deltoides posterior'
             ]
         );
+        */
     }
 }
