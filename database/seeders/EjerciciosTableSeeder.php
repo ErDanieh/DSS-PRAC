@@ -16,7 +16,6 @@ class EjerciciosTableSeeder extends Seeder
     {
         DB::table('ejercicios')->delete();
 
-
         DB::table('ejercicios')->insert(
             ['name' => 'Press de pecho plano con mancuerna.',
              'descripcion' => 'Nos tumbaremos en un banco colocado de manera plana y empujaremos las mancuernas hacia arriba a la altura de nuestro pecho.',

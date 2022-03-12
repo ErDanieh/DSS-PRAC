@@ -13,12 +13,12 @@ class EjercicioGrupoMuscular extends Migration
      */
     public function up()
     {
-        Schema::create('ejerciciogrupomuscular', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_ejercicio');
-            $table->unsignedBigInteger('id_grupo_muscular');
+        Schema::create('ejercicio_grupo_muscular', function (Blueprint $table) {
+            $table->unsignedBigInteger('ejercicio_id');
+            $table->unsignedBigInteger('grupo_muscular_id');
             
-            $table->foreign('id_ejercicio')->references('id')->on('ejercicios')->onDelete('cascade');
-            $table->foreign('id_grupo_muscular')->references('id')->on('grupo_musculars')->onDelete('cascade');
+            $table->foreign('ejercicio_id')->references('id')->on('ejercicios')->onDelete('cascade');
+            $table->foreign('grupo_muscular_id')->references('id')->on('grupo_musculars')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class EjercicioGrupoMuscular extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ejerciciogrupomuscular');
+        Schema::dropIfExists('ejercicio_grupo_muscular');
     }
 }

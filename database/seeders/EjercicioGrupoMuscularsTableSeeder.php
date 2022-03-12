@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Ejercicio;
+use App\Models\GrupoMuscular;
 use DB;
 
 class EjercicioGrupoMuscularsTableSeeder extends Seeder
@@ -14,13 +16,14 @@ class EjercicioGrupoMuscularsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('ejerciciogrupomuscular')->delete();
+        DB::table('ejercicio_grupo_muscular')->delete();
 
 
-        DB::table('ejerciciogrupomuscular')->insert(
-            ['id_ejercicio' => 1,
-             'id_grupo_muscular' => 1]
-        );
+        $ejercicio = Ejercicio::where('name', '=', 'Press de pecho plano con mancuerna.')->first();  
+        $grupoMuscularPectoral = GrupoMuscular::where('name', '=', 'Pectorales')->first();  
+
+        $ejercicio->grupoMusculares()->attach($grupoMuscularPectoral->id);
+        //$grupoMuscularPectoral->ejercicios()->attach($ejercicio->id);
         
     }
 }
