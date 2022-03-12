@@ -11,14 +11,6 @@ class Ejercicio extends Model
 
     protected $table = 'ejercicios';
 
-    protected $primaryKey = 'id';
-
-    protected string $name;
-
-    protected string $descripcion;
-
-    protected string $url_img;
-
     public $timestamps = false;
 
     public function grupoMusculares()

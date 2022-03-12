@@ -19,8 +19,7 @@ class EjercicioGrupoMuscularsTableSeeder extends Seeder
 
         DB::table('ejerciciogrupomuscular')->insert(
             ['id_ejercicio' => 1,
-             'id_grupo_muscular' => 1
-             ]
+             'id_grupo_muscular' => 1]
         );
         
     }
