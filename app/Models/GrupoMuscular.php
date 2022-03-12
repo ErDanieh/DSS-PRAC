@@ -17,4 +17,9 @@ class GrupoMuscular extends Model
     {
         return $this->hasMany(Musculo::class);
     }
+
+    public function ejercicios()
+    {
+        return $this->belongsToMany(Ejercicios::class);
+    }
 }

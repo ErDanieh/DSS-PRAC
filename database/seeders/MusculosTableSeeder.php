@@ -18,175 +18,60 @@ class MusculosTableSeeder extends Seeder
     {
         DB::table('musculos')->delete();
 
-        $grupoMuscularPectoral = GrupoMuscular::where('name', '=', 'Pectorales')->firstOrFail();  
-        $grupoMuscularDeltoides = GrupoMuscular::where('name', '=', 'Deltoides')->firstOrFail();  
-        $grupoMuscularEspalda = GrupoMuscular::where('name', '=', 'Espalda')->firstOrFail();  
-        $grupoMuscularGluteos = GrupoMuscular::where('name', '=', 'Glúteos')->firstOrFail();  
-        $grupoMuscularTrapecios = GrupoMuscular::where('name', '=', 'Trapecios')->firstOrFail();  
-        $grupoMuscularAbdominales = GrupoMuscular::where('name', '=', 'Abdominales')->firstOrFail();  
-        $grupoMuscularBrazo = GrupoMuscular::where('name', '=', 'Brazo')->firstOrFail();  
-        $grupoMuscularPierna = GrupoMuscular::where('name', '=', 'Pierna')->firstOrFail();  
+        $grupoMuscularPectoral = GrupoMuscular::where('name', '=', 'Pectorales')->first();  
+        $grupoMuscularDeltoides = GrupoMuscular::where('name', '=', 'Deltoides')->first();  
+        $grupoMuscularEspalda = GrupoMuscular::where('name', '=', 'Espalda')->first();  
+        $grupoMuscularGluteos = GrupoMuscular::where('name', '=', 'Glúteos')->first();  
+        $grupoMuscularTrapecios = GrupoMuscular::where('name', '=', 'Trapecios')->first();  
+        $grupoMuscularAbdominales = GrupoMuscular::where('name', '=', 'Abdominales')->first();  
+        $grupoMuscularBrazo = GrupoMuscular::where('name', '=', 'Brazo')->first();  
+        $grupoMuscularPierna = GrupoMuscular::where('name', '=', 'Piernas')->first();  
 
 
-/* 
         $grupoMuscularPectoral->musculos()->saveMany(
-            [ 'name' => 'Pectoral mayor' ],
-            [ 'name' => 'Pectoral menor' ]
-        );
-        DB::table('musculos')->insert(
-            [
-                'id_grupo_muscular' => 2,
-                'id' => 3,
-                'name' => 'Deltoides anterior'
-            ]
+            [new Musculo(['name' => 'Pectoral mayor' ]),
+            new Musculo([ 'name' => 'Pectoral menor' ]) ]
         );
 
-        DB::table('musculos')->insert(
-            [
-                'id_grupo_muscular' => 2,
-                'id' => 4,
-                'name' => 'Deltoides medio'
-            ]
+        $grupoMuscularDeltoides->musculos()->saveMany(
+            [new Musculo([ 'name' => 'Deltoides anterior' ]),
+            new Musculo(['name' => 'Deltoides medio' ]),
+            new Musculo( ['name' => 'Deltoides posterior' ])]
         );
 
-
-        DB::table('musculos')->insert(
-            [
-                'id_grupo_muscular' => 3,
-                'id' => 5,
-                'name' => 'Dorsal'
-            ]
+        $grupoMuscularDeltoides->musculos()->saveMany(
+            [new Musculo([ 'name' => 'Dorsal']),
+            new Musculo([ 'name' => 'Lumbar']),
+            new Musculo([ 'name' => 'Redondos']),
+            new Musculo([ 'name' => 'Serrato'])]
         );
 
-        DB::table('musculos')->insert(
-            [
-                'id_grupo_muscular' => 3,
-                'id' => 6,
-                'name' => 'Lumbar'
-            ]
+        $musculoGluteo = new Musculo(['name' => 'Gluteos']);
+        $musculoGluteo->grupoMuscular()->associate($grupoMuscularGluteos);
+        $musculoGluteo->save();
+        
+        $grupoMuscularDeltoides->musculos()->saveMany(
+            [new Musculo(['name' => 'Trapecio superior']),
+            new Musculo(['name' => 'Trapecio medio'])]
         );
 
-        DB::table('musculos')->insert(
-            [
-                'id_grupo_muscular' => 3,
-                'id' => 7,
-                'name' => 'Redondos'
-            ]
+        $grupoMuscularAbdominales->musculos()->saveMany(
+            [new Musculo(['name' => 'Recto abdominal' ]),
+            new Musculo([ 'name' => 'Oblicuo' ])]
         );
 
-        DB::table('musculos')->insert(
-            [
-                'id_grupo_muscular' => 3,
-                'id' => 8,
-                'name' => 'Serrato'
-            ]
+        $grupoMuscularBrazo->musculos()->saveMany(
+            [new Musculo([ 'name' => 'Biceps' ]),
+            new Musculo([ 'name' => 'Triceps' ]),
+            new Musculo([ 'name' => 'Antebrazo'])]
         );
 
-        DB::table('musculos')->insert(
-            [
-                'id_grupo_muscular' => 4,
-                'id' => 9,
-                'name' => 'Gluteos'
-            ]
+        $grupoMuscularPierna->musculos()->saveMany(
+            [new Musculo(['name' => 'Femoral' ]),
+            new Musculo([ 'name' => 'Cuadriceps' ]),
+            new Musculo([ 'name' => 'Gemelos' ]),
+            new Musculo([ 'name' => 'Aductores'])]
         );
-
-
-        DB::table('musculos')->insert(
-            [
-                'id_grupo_muscular' => 5,
-                'id' => 10,
-                'name' => 'Trapecio superior'
-            ]
-        );
-
-        DB::table('musculos')->insert(
-            [
-                'id_grupo_muscular' => 5,
-                'id' => 11,
-                'name' => 'Trapecio medio'
-            ]
-        );
-
-        DB::table('musculos')->insert(
-            [
-                'id_grupo_muscular' => 6,
-                'id' => 12,
-                'name' => 'Recto abdominal'
-            ]
-        );
-
-        DB::table('musculos')->insert(
-            [
-                'id_grupo_muscular' => 6,
-                'id' => 13,
-                'name' => 'Oblicuo'
-            ]
-        );
-
-        DB::table('musculos')->insert(
-            [
-                'id_grupo_muscular' => 7,
-                'id' => 14,
-                'name' => 'Biceps'
-            ]
-        );
-
-        DB::table('musculos')->insert(
-            [
-                'id_grupo_muscular' => 7,
-                'id' => 15,
-                'name' => 'Triceps'
-            ]
-        );
-
-        DB::table('musculos')->insert(
-            [
-                'id_grupo_muscular' => 7,
-                'id' => 16,
-                'name' => 'Antebrazo'
-            ]
-        );
-
-        DB::table('musculos')->insert(
-            [
-                'id_grupo_muscular' => 8,
-                'id' => 17,
-                'name' => 'Femoral'
-            ]
-        );
-
-        DB::table('musculos')->insert(
-            [
-                'id_grupo_muscular' => 8,
-                'id' => 18,
-                'name' => 'Cuadriceps'
-            ]
-        );
-
-        DB::table('musculos')->insert(
-            [
-                'id_grupo_muscular' => 8,
-                'id' => 19,
-                'name' => 'Gemelos'
-            ]
-        );
-
-        DB::table('musculos')->insert(
-            [
-                'id_grupo_muscular' => 8,
-                'id' => 20,
-                'name' => 'Aductores'
-            ]
-        );
-
-
-        DB::table('musculos')->insert(
-            [
-                'id_grupo_muscular' => 2,
-                'id' => 21,
-                'name' => 'Deltoides posterior'
-            ]
-        );
-        */
+                
     }
 }

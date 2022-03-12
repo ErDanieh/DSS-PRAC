@@ -15,7 +15,7 @@ class Ejercicio extends Model
 
     public function grupoMusculares()
     {
-        return $this->hasMany('App\Models\GrupoMuscular');
+        return $this->belongsToMany('App\Models\GrupoMuscular');
     }
 
 }
