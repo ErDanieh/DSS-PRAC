@@ -11,12 +11,6 @@ class GrupoMuscular extends Model
 
     protected $table = 'grupo_musculars';
 
-    protected $primaryKey = 'id';
-
-    protected string $name;
-
-    protected string $descripcion;
-
     public $timestamps = false;
     
     public function musculos()
