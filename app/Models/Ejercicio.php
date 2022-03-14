@@ -18,4 +18,9 @@ class Ejercicio extends Model
         return $this->belongsToMany('App\Models\GrupoMuscular');
     }
 
+    public function entrenamientos()
+    {
+        return $this->belongsToMany('App\Models\Entrenamiento');
+    }
+
 }
