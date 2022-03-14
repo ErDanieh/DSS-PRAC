@@ -21,10 +21,10 @@ class MusculosTest extends TestCase
     {
         $this->eliminar_elementos_test();
 
-        $musculoEsperado = '{"id":666,"name":"TESTING","id_grupo_muscular":1,"created_at":null,"updated_at":null}';
+        $musculoEsperado = '{"id":666,"name":"TESTING","grupo_muscular_id":1,"created_at":null,"updated_at":null}';
         $musculo = new Musculo();
         $musculo->id = 666;
-        $musculo->id_grupo_muscular = 1;
+        $musculo->grupo_muscular_id = 1;
         $musculo->name = "TESTING";
         $musculo->save();
 
