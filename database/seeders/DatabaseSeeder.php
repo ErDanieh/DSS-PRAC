@@ -20,6 +20,9 @@ class DatabaseSeeder extends Seeder
         $this->call(EjerciciosTableSeeder::class);
         $this->call(EjercicioGrupoMuscularsTableSeeder::class);
         $this->call(UserTableSeeder::class);
+        $this->call(EntrenamientoTableSeeder::class);
+        $this->call(UsersEntrenamientoTableSeeder::class);
+        $this->call(EntrenamientosEjerciciosTableSeeder::class);
 
     }
 }
