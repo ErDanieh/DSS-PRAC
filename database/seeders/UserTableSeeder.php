@@ -17,28 +17,28 @@ class UserTableSeeder extends Seeder
         $user = new User([
             'name' => 'Ander',
             'email' => 'ander@uafit.com',
-            'password' => '12345'
+            'password' => '12345',
+            'is_trainer' =>'0',
+            'is_admin' =>'0'
         ]);
 
-        try
-        {
+        try {
             $user->save();
-        }
-        catch(\Exception $e){
+        } catch (\Exception $e) {
             echo $e->getMessage();
         }
 
         $user = new User([
             'name' => 'Juan',
             'email' => 'juan@uafit.com',
-            'password' => 'caballo'
+            'password' => 'caballo',
+            'is_trainer' =>'0',
+            'is_admin' =>'0'
         ]);
 
-        try
-        {
+        try {
             $user->save();
-        }
-        catch(\Exception $e){
+        } catch (\Exception $e) {
             echo $e->getMessage();
         }
 
@@ -46,28 +46,28 @@ class UserTableSeeder extends Seeder
         $user = new User([
             'name' => 'daniel',
             'email' => 'daniel@uafit.com',
-            'password' => '23456'
+            'password' => '23456',  
+            'is_trainer' =>'0',
+            'is_admin' =>'0'
         ]);
 
-        try
-        {
+        try {
             $user->save();
-        }
-        catch(\Exception $e){
+        } catch (\Exception $e) {
             echo $e->getMessage();
         }
 
         $user = new User([
             'name' => 'Laura',
             'email' => 'laura@uafit.com',
-            'password' => '34567'
+            'password' => '34567',
+            'is_trainer' =>'0',
+            'is_admin' =>'0'
         ]);
 
-        try
-        {
+        try {
             $user->save();
-        }
-        catch(\Exception $e){
+        } catch (\Exception $e) {
             echo $e->getMessage();
         }
     }
