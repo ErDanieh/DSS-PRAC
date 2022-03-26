@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,12 @@ Route::get('/', function () {
 Route::get('/home/{name?}', function ($name=null) {
     return view('home', ['name' => $name]);
 });
+
+
+/**
+ * Control de usuarios
+ */
+Route::get('/users', [UserController::class, 'getUsers']); //Lista todos los usuarios
+Route::post('/users/search', [UserController::class,'searchUsers']);//Buscador de usuarios por nombre o email
+Route::get('/profile/{id}', [UserController::class, 'getProfile']);
+

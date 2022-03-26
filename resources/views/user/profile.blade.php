@@ -1,0 +1,1 @@
+<h1>Este perfil es de {{$user->name}}</h1>
