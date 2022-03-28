@@ -54,3 +54,11 @@ Route::get('/ejercicios', [EjerciciosController::class, 'getEjercicios']); //Lis
  * Control de gruposMusculares
  */
 Route::get('/gruposMusculares', [GrupoMuscularController::class, 'getGruposMusculares']); //Lista todos los usuarios
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
