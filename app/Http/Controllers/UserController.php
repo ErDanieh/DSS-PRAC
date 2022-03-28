@@ -29,6 +29,7 @@ class UserController extends Controller
      * Devuelve la vista del perfil del usuario
      */
     function getProfile($id){
-        return view('user.profile')->with('user', User::with(['name'])->findOrFail($id));
+        return view('user.profile')->with('user', User::findOrFail($id));
     }
+    
 }
