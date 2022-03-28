@@ -1,11 +1,9 @@
 <html>
 
 <head>
-    <title>Mi Web</title>
-</head>
-
+    <title>Bienvenido a UAFIT </title>
 <body>
-    <h1>¡Hola <?php echo $name; ?>!</h1>
+    <h1>Bienvenido a UAFIT</h1>
 </body>
 
 </html>

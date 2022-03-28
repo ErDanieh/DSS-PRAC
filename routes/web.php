@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\MusculosController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EjerciciosController;
 use App\Http\Controllers\UserController;
-
+use App\Models\Ejercicio;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +18,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/home/{name?}', function ($name=null) {
@@ -30,4 +32,14 @@ Route::get('/home/{name?}', function ($name=null) {
 Route::get('/users', [UserController::class, 'getUsers']); //Lista todos los usuarios
 Route::post('/users/search', [UserController::class,'searchUsers']);//Buscador de usuarios por nombre o email
 Route::get('/profile/{id}', [UserController::class, 'getProfile']);
+
+/**
+ * Control de Musculos
+ */
+Route::get('/musculos', [MusculosController::class, 'getMusculos']); //Lista todos los usuarios
+
+/**
+ * Control de Ejercicios
+ */
+Route::get('/ejercicios', [EjerciciosController::class, 'getEjercicios']); //Lista todos los usuarios
 
