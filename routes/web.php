@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EjerciciosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GrupoMuscularController;
+use App\Http\Controllers\HomeController;
+
 use App\Models\Ejercicio;
 
 /*
@@ -18,13 +20,16 @@ use App\Models\Ejercicio;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [HomeController::class, 'getHome']);//Devuelve la vista del home
 
+
+
+
+/** 
 Route::get('/home/{name?}', function ($name=null) {
     return view('home', ['name' => $name]);
 });
+*/
 
 
 /**
