@@ -36,13 +36,15 @@ Route::get('/home/{name?}', function ($name=null) {
  * Control de usuarios
  */
 Route::get('/users', [UserController::class, 'getUsers']); //Lista todos los usuarios
-Route::post('/users/search', [UserController::class,'searchUsers']);//Buscador de usuarios por nombre o email
+Route::post('/users', [UserController::class,'searchUsers']);//Buscador de usuarios por nombre o email
 Route::get('/profile/{id}', [UserController::class, 'getProfile']);
 
 /**
  * Control de Musculos
  */
 Route::get('/musculos', [MusculosController::class, 'getMusculos']); //Lista todos los usuarios
+Route::post('/musculos', [MusculosController::class, 'newMusculo']);
+
 
 /**
  * Control de Ejercicios
