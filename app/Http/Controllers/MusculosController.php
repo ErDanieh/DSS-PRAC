@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GrupoMuscular;
 use App\Models\Musculo;
 use Illuminate\Http\Request;
+use SebastianBergmann\Environment\Console;
 
 class MusculosController extends Controller
 {
@@ -21,13 +22,14 @@ class MusculosController extends Controller
      */
     function newMusculo(Request $req)
     {   
-        if( $req->has('name') && $req->has('nombreGrupo')) {
-        $grupoMuscular = GrupoMuscular::where('name', '=', $req->input('nombreGrupo'))->first();
+        
+        $grupoMuscular = GrupoMuscular::where('name', '=', $req->input('grupo'))->first();
         $musculo = new Musculo();
         $musculo->name = $req->input('name');
         $musculo->grupoMuscular()->associate($grupoMuscular);
         $musculo->save();
-        }
-        return view('musculos.musculos');
+        
+        return redirect()->back();
+
     }
 }

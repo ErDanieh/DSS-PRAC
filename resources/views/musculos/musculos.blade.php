@@ -12,11 +12,14 @@
 
 
 <div class="m-3 justify-content-center text-dark">
-    <form action="{{ url('/musculos') }}" method="POST/GET" class="form-group">
+    <form action="{{ url('/musculos') }}" method="POST">
         @csrf
         <div class="mb-3">
-            <input type="text" name="nombre" id="name">
-            <input type="text" name="nombre" id="nombreGrupo">
+            <label for="name">Musculo</label>
+            <input required type="text" name="name" id="name">
+            <label for="nombreGrupo">Nombre Grupo Muscular</label>
+            <input required type="text" name="grupo" id="grupo">
+            <script>console.log('Console: esto funciona' );</script>
         </div>
         <div class="text-right">
             <button type="submit">Enviar</button>
