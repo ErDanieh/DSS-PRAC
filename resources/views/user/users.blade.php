@@ -18,12 +18,12 @@
 
 
 <!-- Buscador por nombre o correo, redirige a nueva página-->
-<form action="{{ url('/users/search') }}" method="POST" class="form-group" onclick="showProfile({{$user->id}})">
+<form action="{{ url('/users') }}" method="POST" class="form-group">
     @csrf
-    <label for="search"> Search by name or email. </label>
+    <label for="search"> Buscar por nombre o email. </label>
     <div class="mb-3">
         <input class="form-control" name="search" type="text" id="search" autofocus></input>
-        <button hidden type="submit" class="btn btn-primary">Search</button>
+        <button hidden type="submit" class="btn btn-primary">Buscar</button>
     </div>
 </form>
 
