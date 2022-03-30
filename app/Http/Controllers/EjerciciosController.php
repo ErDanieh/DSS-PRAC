@@ -12,6 +12,6 @@ class EjerciciosController extends Controller
      *  */
     function getEjercicios()
     {
-        return view('ejercicios.ejercicios')->with('ejercicios', Ejercicio::simplePaginate(10));
+        return view('ejercicios.ejercicios')->with('ejercicios', Ejercicio::simplePaginate(100));
     }
 }
