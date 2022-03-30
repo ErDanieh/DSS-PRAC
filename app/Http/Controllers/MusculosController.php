@@ -30,12 +30,22 @@ class MusculosController extends Controller
             $musculo->grupoMuscular()->associate($grupoMuscular);
             $musculo->save();
 
-            return redirect()->back()->with('exito','Musculo insertado con exito');
+            return redirect()->back()->with('exito', 'Musculo insertado con exito');
+        } else {
+            return redirect()->back()->with('error', 'Error no existe el musculo');
         }
-        else{
-            return redirect()->back()->with('error','Error no existe el musculo');
-        }
+    }
 
-        
+    /**
+     * Elimina el musculo
+     */
+    function deleteMusculo(Request $req)
+    {
+        $musculo = Musculo::where('name', '=', $req->input('delname'))->first();
+        if ($musculo !=  null) {
+            $musculo->delete();
+            return redirect()->back()->with('exito', 'Musculo eliminado con exito');
+        }
+        return redirect()->back()->with('error', 'Error no existe el musculo');
     }
 }

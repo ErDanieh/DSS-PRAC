@@ -21,8 +21,25 @@
             <input required type="text" name="name" id="name">
             <label for="nombreGrupo">Nombre Grupo Muscular</label>
             <input required type="text" name="grupo" id="grupo">
-            <script>console.log('Console: esto funciona' );</script>
+            <script>
+                console.log('Console: esto funciona');
+            </script>
         </div>
+        <div class="text-right">
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+</div>
+
+<div class="m-3 justify-content-center text-dark">
+    <form action="{{ url('/musculos') }}" method="POST">
+        @csrf
+        <div class="mb-3">
+            <label for="delname">Musculo</label>
+            <input required type="text" name="delname" id="delname">
+        </div>
+        @csrf
+        {{ method_field('DELETE') }}
         <div class="text-right">
             <button type="submit">Enviar</button>
         </div>

@@ -25,14 +25,6 @@ Route::get('/', [HomeController::class, 'getHome']);//Devuelve la vista del home
 
 
 
-
-/** 
-Route::get('/home/{name?}', function ($name=null) {
-    return view('home', ['name' => $name]);
-});
-*/
-
-
 /**
  * Control de usuarios
  */
@@ -40,30 +32,31 @@ Route::get('/users', [UserController::class, 'getUsers']); //Lista todos los usu
 Route::post('/users', [UserController::class,'searchUsers']);//Buscador de usuarios por nombre o email
 Route::get('/profile/{id}', [UserController::class, 'getProfile']);
 
+
 /**
  * Control de Musculos
  */
 Route::get('/musculos', [MusculosController::class, 'getMusculos']); //Lista todos los usuarios
 Route::post('/musculos', [MusculosController::class, 'newMusculo']);
-
+Route::delete('/musculos',[MusculosController::class,'deleteMusculo']);
 
 /**
  * Control de Ejercicios
  */
-Route::get('/ejercicios', [EjerciciosController::class, 'getEjercicios']); //Lista todos los usuarios
+Route::get('/ejercicios', [EjerciciosController::class, 'getEjercicios']); //Lista todos los ejercicios
 
 
 /**
  * Control de gruposMusculares
  */
-Route::get('/gruposMusculares', [GrupoMuscularController::class, 'getGruposMusculares']); //Lista todos los usuarios
+Route::get('/gruposMusculares', [GrupoMuscularController::class, 'getGruposMusculares']); //Lista todos los grupos musculares
 Route::post('/gruposMusculares', [GrupoMuscularController::class, 'newGruposMusculares']);
 
 
 /**
  * Control de Entrenamientos
  */
-Route::get('/entrenamientos', [EntrenamientosController::class, 'getEntrenamientos']);
+Route::get('/entrenamientos', [EntrenamientosController::class, 'getEntrenamientos']);//Lista todos los entrenamientos
 Route::get('/entrenamientoDetalle/{id}', [EntrenamientosController::class, 'getEntrenamientoDetalle']);
 
 
