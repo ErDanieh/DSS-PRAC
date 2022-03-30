@@ -14,5 +14,12 @@ class EntrenamientosController extends Controller
     {
         return view('entrenamientos.entrenamientos')->with('entrenamientos', Entrenamiento::simplePaginate(100));
     }
+
+    /**
+     * Devuelve la vista del entrenamiento detallado
+     */
+    function getEntrenamientoDetalle($id){
+        return view('entrenamientos.entrenamientoDetalle')->with('entrenamiento', Entrenamiento::findOrFail($id));
+    }
 }
 
