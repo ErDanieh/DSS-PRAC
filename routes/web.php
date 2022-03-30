@@ -3,6 +3,7 @@
 use App\Http\Controllers\MusculosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EjerciciosController;
+use App\Http\Controllers\EntrenamientosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GrupoMuscularController;
 use App\Http\Controllers\HomeController;
@@ -58,6 +59,11 @@ Route::get('/ejercicios', [EjerciciosController::class, 'getEjercicios']); //Lis
 Route::get('/gruposMusculares', [GrupoMuscularController::class, 'getGruposMusculares']); //Lista todos los usuarios
 Route::post('/gruposMusculares', [GrupoMuscularController::class, 'newGruposMusculares']);
 
+
+/**
+ * Control de Entrenamientos
+ */
+Route::get('/entrenamientos', [EntrenamientosController::class, 'getEntrenamientos']);
 
 
 
