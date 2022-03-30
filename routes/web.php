@@ -7,6 +7,7 @@ use App\Http\Controllers\EntrenamientosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GrupoMuscularController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdministracionController;
 
 use App\Models\Ejercicio;
 
@@ -66,6 +67,6 @@ Route::get('/entrenamientoDetalle/{id}', [EntrenamientosController::class, 'getE
  */
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'getHome'])->name('home');
 
-
+Route::get('/admin', [AdministracionController::class, 'getAdministracion']);//Lista todos los entrenamientos
 
 Auth::routes();
