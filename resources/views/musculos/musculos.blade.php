@@ -1,6 +1,8 @@
 <h1>Esta es la lista de musculos</h1>
 
 
+
+
 <!--Para cada usuario se mostrará el nombre y el correo-->
 @foreach($musculos as $musculo)
 <div style="cursor: pointer;" class="card bg-dark mb-1 text-white">
@@ -10,7 +12,7 @@
 </div>
 @endforeach
 
-
+@include('common.alert')
 <div class="m-3 justify-content-center text-dark">
     <form action="{{ url('/musculos') }}" method="POST">
         @csrf
