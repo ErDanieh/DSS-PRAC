@@ -44,6 +44,7 @@ Route::delete('/musculos',[MusculosController::class,'deleteMusculo']);
  * Control de Ejercicios
  */
 Route::get('/ejercicios', [EjerciciosController::class, 'getEjercicios']); //Lista todos los ejercicios
+Route::post('/ejercicios', [EjerciciosController::class, 'newEjercicios']);//Añade ejercicios
 
 
 /**
