@@ -62,6 +62,8 @@ Route::get('/gruposMusculares', [GrupoMuscularController::class, 'getGruposMuscu
 /**
  * Controlador del home
  */
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'getHome'])->name('home');
 
 
+
+Auth::routes();
