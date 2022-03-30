@@ -64,6 +64,8 @@ Route::get('/entrenamientoDetalle/{id}', [EntrenamientosController::class, 'getE
 /**
  * Controlador del home
  */
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'getHome'])->name('home');
 
 
+
+Auth::routes();
