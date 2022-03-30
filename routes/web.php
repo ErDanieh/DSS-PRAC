@@ -56,6 +56,8 @@ Route::get('/ejercicios', [EjerciciosController::class, 'getEjercicios']); //Lis
  * Control de gruposMusculares
  */
 Route::get('/gruposMusculares', [GrupoMuscularController::class, 'getGruposMusculares']); //Lista todos los usuarios
+Route::post('/gruposMusculares', [GrupoMuscularController::class, 'newGruposMusculares']);
+
 
 
 

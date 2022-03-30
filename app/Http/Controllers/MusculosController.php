@@ -18,7 +18,7 @@ class MusculosController extends Controller
     }
 
     /**
-     * Processes to form to add a new university.
+     * Proceso para añadir un nuevo musculo.
      */
     function newMusculo(Request $req)
     {
