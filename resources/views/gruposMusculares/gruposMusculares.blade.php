@@ -4,9 +4,13 @@
 <!--Para cada usuario se mostrará el nombre y el correo-->
 @foreach($gruposMusculares as $grupo)
 <div style="cursor: pointer;" class="card bg-dark mb-1 text-white">
-    <h5 class="card-header">
-        <span class="text-primary">{{$grupo->name }}</span> 
-    </h5>
+    <td class="text-primary">{{$grupo->name }}
+        <form action="{{url('/gruposMusculares', $grupo->id)}}" class="mr-4" method="POST">
+            @csrf
+            {{ method_field('DELETE') }}
+            <button class="btn btn-danger m-3" style="width: 100%;" type="submit">Delete</button>
+        </form>
+    </td>
 </div>
 @endforeach
 
@@ -26,6 +30,7 @@
     </form>
 </div>
 
+<!--
 <div class="m-3 justify-content-center text-dark">
     <form action="{{ url('/gruposMusculares') }}" method="POST">
         @csrf
@@ -40,3 +45,4 @@
         </div>
     </form>
 </div>
+-->

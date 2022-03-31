@@ -35,10 +35,10 @@ class GrupoMuscularController extends Controller
         }
     }
 
-    function deleteGrupoMuscular(Request $req)
+
+    function deleteGrupoMuscular($id)
     {
-        $nombre = $req->input('delname');
-        $grupoMuscularEsperado = GrupoMuscular::where('name', '=', $nombre)->first();
+        $grupoMuscularEsperado = GrupoMuscular::findOrFail($id);
 
         if ($grupoMuscularEsperado != null) {
             $grupoMuscularEsperado->delete();

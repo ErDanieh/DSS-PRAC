@@ -39,6 +39,18 @@ class EjerciciosController extends Controller
         }
     }
 
+    function deleteEjercicio($id)
+    {
+
+        $ejercicioEsperado = Ejercicio::findOrFail($id);
+
+        if ($ejercicioEsperado != null) {
+            $ejercicioEsperado->delete();
+            return redirect()->back()->with('exito', 'Ejercicio eliminado con exito');
+        }
+        return redirect()->back()->with('error', 'Error no existe el ejercicio');
+    }
+    /** 
     function deleteEjercicio(Request $req)
     {
         $nombreEjercicio = $req->input('delname');
@@ -51,4 +63,5 @@ class EjerciciosController extends Controller
         }
         return redirect()->back()->with('error', 'Error no existe el ejercicio');
     }
+     */
 }
