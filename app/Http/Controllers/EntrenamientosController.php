@@ -21,5 +21,29 @@ class EntrenamientosController extends Controller
     function getEntrenamientoDetalle($id){
         return view('entrenamientos.entrenamientoDetalle')->with('entrenamiento', Entrenamiento::findOrFail($id));
     }
-}
+    
+        /**
+     * Añade ejercicios
+     */
+    function newEntrenamiento(Request $req)
+    {
+        $nombreEntrenamiento = $req->input('name');
+        $descripcionEntrenamiento = $req->input('descripcion');
+        $urlImagenEntrenamiento = $req->input('urlImagen');
 
+        $EntrenamientoNoEsperado = Entrenamiento::where('name', '=', $nombreEntrenamiento)->first();
+
+        if ($EntrenamientoNoEsperado == null) {
+            $EntrenamientoNuevo = new Entrenamiento();
+            $EntrenamientoNuevo->name = $nombreEntrenamiento;
+            $EntrenamientoNuevo->descripcion = $descripcionEntrenamiento;
+            $EntrenamientoNuevo->url_img = $urlImagenEntrenamiento;
+            $EntrenamientoNuevo->save();
+            $EntrenamientoRedirect = Entrenamiento::where('name', '=', $nombreEntrenamiento)->first();
+
+            return view('entrenamientos.entrenamientoDetalle')->with('entrenamiento', Entrenamiento::findOrFail($EntrenamientoRedirect->id));
+        } else {
+            return redirect()->back()->with('error', 'Error ya existe el Entrenamiento');
+        }
+    }
+}
