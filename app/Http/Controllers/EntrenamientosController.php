@@ -38,9 +38,21 @@ class EntrenamientosController extends Controller
             $EntrenamientoNuevo->url_img = $urlImagenEntrenamiento;
             $EntrenamientoNuevo->save();
 
-            return redirect("/entrenamientos/" . strval($EntrenamientoNuevo->id))->with('exito', 'Exitoo lo he añadido');
+            return redirect("/entrenamientos/" . strval($EntrenamientoNuevo->id))->with('exito', 'al añadir el entrenamiento');
         } else {
             return redirect()->back()->with('error', 'Error ya existe el Entrenamiento');
         }
+    }
+
+    function deleteEntrenamiento(Request $req)
+    {
+        $nombreEntrenamiento = $req->input('delname');
+        $EntrenamientoEsperado = Entrenamiento::where('name', '=', $nombreEntrenamiento)->first();
+
+        if ($EntrenamientoEsperado != null) {
+            $EntrenamientoEsperado->delete();
+            return redirect()->back()->with('exito', 'Entrenamiento eliminado');
+        }
+        return redirect()->back()->with('error', 'Error no existe el Entrenamiento');
     }
 }

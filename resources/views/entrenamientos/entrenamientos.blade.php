@@ -38,6 +38,21 @@
 
 
 
+<div class="m-3 justify-content-center text-dark">
+    <form action="{{ url('/entrenamientos')}}" method="POST">
+        @csrf
+        <div class="mb-3">
+            <label for="delname">Nombre entrenamiento</label>
+            <input required type="text" name="delname" id="delname">
+        </div>
+        @csrf
+        {{ method_field('DELETE') }}
+        <div class="text-right">
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+</div>
+
+
 <script src="js/entrenamientos.js"></script>
 @endsection
-

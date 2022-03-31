@@ -63,6 +63,7 @@ Route::delete('/gruposMusculares',[GrupoMuscularController::class,'deleteGrupoMu
 Route::get('/entrenamientos', [EntrenamientosController::class, 'getEntrenamientos']);//Lista todos los entrenamientos
 Route::post('/entrenamientos', [EntrenamientosController::class, 'newEntrenamiento']);
 Route::get('/entrenamientos/{id}', [EntrenamientosController::class, 'getEntrenamientoDetalle']);
+Route::delete('/entrenamientos', [EntrenamientosController::class, 'deleteEntrenamiento']);
 
 
 /**
