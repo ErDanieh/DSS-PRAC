@@ -18,7 +18,7 @@
 
 @include('common.alert')
 <div class="m-3 justify-content-center text-dark">
-    <form action="{{ url('/entrenamientos') }}" method="POST">
+    <form action="{{ url('/entrenamientos')}}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="name">Nombre entrenamiento</label>
