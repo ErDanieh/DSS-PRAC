@@ -1,6 +1,22 @@
 @extends('layouts.admin')
 
 @section('content')
+
+@section('tabla-contenido')
+@foreach($musculos as $musculo)
+<tr style="cursor: pointer;" class="card bg-dark mb-1 text-white">
+    <td class="text-primary">{{$musculo->name}}
+        <form action="{{url('/musculos', $musculo->id)}}" class="mr-4" method="POST">
+            @csrf
+            {{ method_field('DELETE') }}
+            <button class="btn btn-danger m-3" style="width: 100%;" type="submit">Delete</button>
+        </form>
+    </td>
+
+</tr>
+@endforeach
+@endsection
+
 <!--Para cada usuario se mostrará el nombre y el correo-->
 <h1>Esta es la lista de musculos</h1>
 @include('common.alert')
@@ -22,6 +38,7 @@
     </form>
 </div>
 
+<!--
 <div class="m-3 justify-content-center text-dark">
     <form action="{{ url('/musculos') }}" method="POST">
         @csrf
@@ -37,11 +54,4 @@
     </form>
 </div>
 @endsection
-
-@section('tabla-contenido')
-@foreach($musculos as $musculo)
-<tr style="cursor: pointer;" class="card bg-dark mb-1 text-white">
-    <td class="text-primary">{{$musculo->name}}</td>
-</tr>
-@endforeach
-@endsection
+-->

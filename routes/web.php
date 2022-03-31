@@ -40,7 +40,7 @@ Route::delete('/usuarios/{id}', [UserController::class, 'deleteUser']);
  */
 Route::get('/musculos', [MusculosController::class, 'getMusculos']); //Lista todos los usuarios
 Route::post('/musculos', [MusculosController::class, 'newMusculo']);
-Route::delete('/musculos',[MusculosController::class,'deleteMusculo']);
+Route::delete('/musculos/{id}',[MusculosController::class,'deleteMusculo']);
 
 /**
  * Control de Ejercicios

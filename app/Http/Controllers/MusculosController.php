@@ -39,6 +39,17 @@ class MusculosController extends Controller
     /**
      * Elimina el musculo
      */
+    function deleteMusculo($id)
+    {
+        $musculo = Musculo::findOrFail($id);
+        if ($musculo !=  null) {
+            $musculo->delete();
+            return redirect()->back()->with('exito', 'Musculo eliminado con exito');
+        }
+        return redirect()->back()->with('error', 'Error no existe el musculo');
+    }
+
+    /** 
     function deleteMusculo(Request $req)
     {
         $musculo = Musculo::where('name', '=', $req->input('delname'))->first();
@@ -48,4 +59,5 @@ class MusculosController extends Controller
         }
         return redirect()->back()->with('error', 'Error no existe el musculo');
     }
+     */
 }
