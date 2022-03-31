@@ -5,18 +5,34 @@
 @section('tabla-contenido')
 <!--Para cada usuario se mostrará el nombre y el correo-->
 @foreach($users as $user)
-<tr style="cursor: pointer;" class="card bg-dark mb-1 text-white" onclick="showProfile({{$user->id}})">
-    <td class="text-primary">{{$user->name}}</td>
-    <td class="text-primary">{{$user->email}}</td>
+<tr style="cursor: pointer;" class="card bg-dark mb-1 text-white">
+    <td class="text-primary" onclick="showProfile({{$user->id}})">{{$user->name}}</td>
+    <td class="text-primary" onclick="showProfile({{$user->id}})">{{$user->email}}</td>
     @if($user->is_admin == '1')
     <span class="text-warning"> ADMINISTRADOR</span>
     @endif
     @if($user->is_trainer == '1')
     <span class="text-primary"> ENTRENADOR</span>
     @endif
+
+    <td>
+        <form action="{{url('/usuarios', $user->id)}}" class="mr-4" method="POST">
+            @csrf
+            {{ method_field('DELETE') }}
+            <button class="btn btn-danger m-3" style="width: 100%;" type="submit">Delete</button>
+        </form>
+    </td>
+
 </tr>
 @endforeach
 @endsection
+
+<!--Metodo para mostrar los perfiles una vez clickado el usuario -->
+<script>
+    function showProfile(id) {
+        window.location.href = `{{url('/profile/')}}/${id}`;
+    }
+</script>
 
 
 @section('content')
@@ -36,11 +52,3 @@
     {{ $users->links() }}
 </div>
 @endsection
-
-
-<!--Metodo para mostrar los perfiles una vez clickado el usuario -->
-<script>
-    function showProfile(id) {
-        window.location.href = `{{url('/profile/')}}/${id}`;
-    }
-</script>

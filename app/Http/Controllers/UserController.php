@@ -11,25 +11,34 @@ class UserController extends Controller
 {
     /**
      * Lista todos los usuarios
-     *  */ 
-    function getUsers(){
+     *  */
+    function getUsers()
+    {
         return view('user.users')->with('users', User::simplePaginate(10));
-     }
+    }
 
-     /**Busca usuarios por nombre o email
-      * 
-    */
-    function searchUsers(Request $req){
+    /**Busca usuarios por nombre o email
+     * 
+     */
+    function searchUsers(Request $req)
+    {
         return view('user.users')->with('users', User::where('name', 'LIKE', "%{$req->input('search')}%")
-                                                   ->orWhere('email', 'LIKE', "%{$req->input('search')}%")
-                                                   ->simplePaginate(10));
+            ->orWhere('email', 'LIKE', "%{$req->input('search')}%")
+            ->simplePaginate(10));
     }
 
     /**
      * Devuelve la vista del perfil del usuario
      */
-    function getProfile($id){
+    function getProfile($id)
+    {
         return view('user.profile')->with('user', User::findOrFail($id));
     }
-    
+
+    function deleteUser($id)
+    {
+        $usuario = User::findOrFail($id);
+        $usuario->delete();
+        return redirect()->back();
+    }
 }
