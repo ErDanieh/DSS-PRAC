@@ -18,7 +18,8 @@ class EntrenamientosController extends Controller
     /**
      * Devuelve la vista del entrenamiento detallado
      */
-    function getEntrenamientoDetalle($id){
+    function getEntrenamientoDetalle($id)
+    {
         return view('entrenamientos.entrenamientoDetalle')->with('entrenamiento', Entrenamiento::findOrFail($id));
     }
 
@@ -36,12 +37,10 @@ class EntrenamientosController extends Controller
             $EntrenamientoNuevo->descripcion = $descripcionEntrenamiento;
             $EntrenamientoNuevo->url_img = $urlImagenEntrenamiento;
             $EntrenamientoNuevo->save();
-            
 
-            return redirect()->back()->with('exito', 'Entrenamiento Introducido');
+            return redirect("/entrenamientos/" . strval($EntrenamientoNuevo->id))->with('exito', 'Exitoo lo he añadido');
         } else {
             return redirect()->back()->with('error', 'Error ya existe el Entrenamiento');
         }
     }
 }
-
