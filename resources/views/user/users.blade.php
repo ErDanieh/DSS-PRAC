@@ -1,22 +1,26 @@
-<h1>Esta es la lista de usuarios</h1>
+@extends('layouts.admin')
 
 
+
+@section('tabla-contenido')
 <!--Para cada usuario se mostrará el nombre y el correo-->
 @foreach($users as $user)
-<div style="cursor: pointer;" class="card bg-dark mb-1 text-white" onclick="showProfile({{$user->id}})">
-    <h5 class="card-header">
-        <span class="text-primary">{{ $user->name }}</span> (<span class="text-info">{{ $user->email }}</span>) 
-        @if($user->is_admin == '1')
-            <span class="text-warning"> ADMINISTRADOR</span>
-        @endif
-        @if($user->is_trainer == '1')
-            <span class="text-primary"> ENTRENADOR</span>
-        @endif
-    </h5>
-</div>
+<tr style="cursor: pointer;" class="card bg-dark mb-1 text-white">
+    <td class="text-primary">{{$user->name}}</td>
+    <td class="text-primary">{{$user->email}}</td>
+    @if($user->is_admin == '1')
+    <span class="text-warning"> ADMINISTRADOR</span>
+    @endif
+    @if($user->is_trainer == '1')
+    <span class="text-primary"> ENTRENADOR</span>
+    @endif
+</tr>
 @endforeach
+@endsection
 
 
+@section('content')
+<h1>Esta es la lista de usuarios</h1>
 <!-- Buscador por nombre o correo, redirige a nueva página-->
 <form action="{{ url('/users') }}" method="POST" class="form-group">
     @csrf
@@ -31,6 +35,7 @@
 <div class="text-center d-flex justify-content-center m-5">
     {{ $users->links() }}
 </div>
+@endsection
 
 
 <!--Metodo para mostrar los perfiles una vez clickado el usuario -->
