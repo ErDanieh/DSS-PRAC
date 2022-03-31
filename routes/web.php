@@ -7,6 +7,7 @@ use App\Http\Controllers\EntrenamientosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GrupoMuscularController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdministracionController;
 
 use App\Models\Ejercicio;
 
@@ -45,7 +46,7 @@ Route::delete('/musculos',[MusculosController::class,'deleteMusculo']);
  */
 Route::get('/ejercicios', [EjerciciosController::class, 'getEjercicios']); //Lista todos los ejercicios
 Route::post('/ejercicios', [EjerciciosController::class, 'newEjercicios']);//Añade ejercicios
-Route::delete('/ejercicios',[EjerciciosController::class,'deleteEjercicio']);//Elimina ejercicios
+
 
 /**
  * Control de gruposMusculares
@@ -59,8 +60,7 @@ Route::delete('/gruposMusculares',[GrupoMuscularController::class,'deleteGrupoMu
  * Control de Entrenamientos
  */
 Route::get('/entrenamientos', [EntrenamientosController::class, 'getEntrenamientos']);//Lista todos los entrenamientos
-Route::get('/entrenamientoDetalle/{id}', [EntrenamientosController::class, 'getEntrenamientoDetalle']);
-Route::post('/entrenamientoDetalle/{id}',[EntrenamientosController::class, 'newEntrenamiento']);
+Route::get('/entrenamientos/{id}', [EntrenamientosController::class, 'getEntrenamientoDetalle']);
 
 
 
@@ -69,6 +69,6 @@ Route::post('/entrenamientoDetalle/{id}',[EntrenamientosController::class, 'newE
  */
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'getHome'])->name('home');
 
-
+Route::get('/admin', [AdministracionController::class, 'getAdministracion']);//Lista todos los entrenamientos
 
 Auth::routes();

@@ -1,5 +1,6 @@
+@section('footer')
+
 <!-- Footer -->
-<i class="fab fa-mdb"></i>
 <footer class="bg-warning text-center text-white">
     <!-- Grid container -->
     <div class="container p-4">
@@ -35,3 +36,4 @@
 
 </footer>
 <!-- Footer -->
+@endsection
