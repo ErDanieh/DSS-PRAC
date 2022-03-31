@@ -45,6 +45,7 @@ Route::delete('/musculos',[MusculosController::class,'deleteMusculo']);
  * Control de Ejercicios
  */
 Route::get('/ejercicios', [EjerciciosController::class, 'getEjercicios']); //Lista todos los ejercicios
+Route::post('/ejercicios', [EjerciciosController::class, 'newEjercicios']);//Añade ejercicios
 
 
 /**
@@ -52,6 +53,7 @@ Route::get('/ejercicios', [EjerciciosController::class, 'getEjercicios']); //Lis
  */
 Route::get('/gruposMusculares', [GrupoMuscularController::class, 'getGruposMusculares']); //Lista todos los grupos musculares
 Route::post('/gruposMusculares', [GrupoMuscularController::class, 'newGruposMusculares']);
+Route::delete('/gruposMusculares',[GrupoMuscularController::class,'deleteGrupoMuscular']);
 
 
 /**

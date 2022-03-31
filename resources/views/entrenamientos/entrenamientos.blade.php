@@ -2,6 +2,7 @@
 
 @section('content')
 <h1>Esta es la lista de Entrenamientos</h1>
+
 @endsection
 
 
