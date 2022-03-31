@@ -21,7 +21,7 @@ class GrupoMuscularController extends Controller
     function newGruposMusculares(Request $req)
     {
         $nombre = $req->input('name');
-        $grupoMuscularNoEsperado = GrupoMuscular::where('name', '=',$nombre )->first();
+        $grupoMuscularNoEsperado = GrupoMuscular::where('name', '=', $nombre)->first();
 
         if ($grupoMuscularNoEsperado == null) {
             $grupoMuscularNuevo = new GrupoMuscular();
@@ -33,5 +33,17 @@ class GrupoMuscularController extends Controller
         } else {
             return redirect()->back()->with('error', 'Error ese grupo muscular ya ha sido añadido');
         }
+    }
+
+    function deleteGrupoMuscular(Request $req)
+    {
+        $nombre = $req->input('delname');
+        $grupoMuscularEsperado = GrupoMuscular::where('name', '=', $nombre)->first();
+
+        if ($grupoMuscularEsperado != null) {
+            $grupoMuscularEsperado->delete();
+            return redirect()->back()->with('exito', 'Grupo Muscular eliminado con exito');
+        }
+        return redirect()->back()->with('error', 'Error ese grupo muscular no existe');
     }
 }
