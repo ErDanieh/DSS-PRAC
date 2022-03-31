@@ -32,4 +32,20 @@
         </div>
     </form>
 </div>
+
+<div class="m-3 justify-content-center text-dark">
+    <form action="{{ url('/ejercicios') }}" method="POST">
+        @csrf
+        <div class="mb-3">
+            <label for="delname">Ejercicio a borrar</label>
+            <input required type="text" name="delname" id="delname">
+        </div>
+        @csrf
+        {{ method_field('DELETE') }}
+        <div class="text-right">
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+</div>
+
 @endsection
