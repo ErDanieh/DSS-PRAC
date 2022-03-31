@@ -4,11 +4,22 @@
 @include('partials.head')
 
 <body>
-   <!-- Nav --> 
-   @include('partials.sidebar')
 
-   <!-- Contenido --> 
+   <div class="container-fluid">
+      <div class="row flex-nowrap">
+         <!-- Nav -->
+         @include('partials.sidebar')
 
-   <!-- Footer --> 
+         <div class="content" style="max-width: 80%; margin-left: auto; margin-top: 5vh;">
+            <!-- Contenido -->
+            @yield('content')
+         </div>
+      </div>
+
+
+   </div>
+
+
+   <!-- Footer -->
    @include('partials.footer')
 </body>
