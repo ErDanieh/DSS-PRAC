@@ -29,9 +29,9 @@ Route::get('/', [HomeController::class, 'getHome']);//Devuelve la vista del home
 /**
  * Control de usuarios
  */
-Route::get('/users', [UserController::class, 'getUsers']); //Lista todos los usuarios
-Route::post('/users', [UserController::class,'searchUsers']);//Buscador de usuarios por nombre o email
-Route::get('/profile/{id}', [UserController::class, 'getProfile']);
+Route::get('/usuarios', [UserController::class, 'getUsers']); //Lista todos los usuarios
+Route::post('/usuarios', [UserController::class,'searchUsers']);//Buscador de usuarios por nombre o email
+Route::get('/usuarios/{id}', [UserController::class, 'getProfile']);
 
 
 /**
