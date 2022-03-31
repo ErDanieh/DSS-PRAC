@@ -5,7 +5,7 @@
 @section('tabla-contenido')
 <!--Para cada usuario se mostrará el nombre y el correo-->
 @foreach($users as $user)
-<tr style="cursor: pointer;" class="card bg-dark mb-1 text-white">
+<tr style="cursor: pointer;" class="card bg-dark mb-1 text-white" onclick="showProfile({{$user->id}})">
     <td class="text-primary">{{$user->name}}</td>
     <td class="text-primary">{{$user->email}}</td>
     @if($user->is_admin == '1')
@@ -22,7 +22,7 @@
 @section('content')
 <h1>Esta es la lista de usuarios</h1>
 <!-- Buscador por nombre o correo, redirige a nueva página-->
-<form action="{{ url('/users') }}" method="POST" class="form-group">
+<form action="{{ url('/usuarios') }}" method="POST" class="form-group">
     @csrf
     <label for="search"> Buscar por nombre o email. </label>
     <div class="mb-3">
