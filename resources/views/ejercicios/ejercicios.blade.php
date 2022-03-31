@@ -1,11 +1,13 @@
-<h1>Esta es la lista de Ejercicios</h1>
+@extends('layouts.admin')
 
 
+
+
+@section('tabla-contenido')
 <!--Para cada usuario se mostrará el nombre y el correo-->
 @foreach($ejercicios as $ejercicio)
-<div style="cursor: pointer;" class="card bg-dark mb-1 text-white">
-    <h5 class="card-header">
-        <span class="text-primary">{{$ejercicio->name }}</span> 
-    </h5>
-</div>
+<tr style="cursor: pointer;" class="card bg-dark mb-1 text-white">
+    <td class="text-primary">{{$ejercicio->name }}</td> 
+</tr>
 @endforeach
+@endsection

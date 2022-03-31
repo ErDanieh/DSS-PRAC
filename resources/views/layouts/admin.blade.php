@@ -8,7 +8,6 @@
    @include('partials.sidebar')
 
    <!-- Contenido --> 
-   @yield('content')
 
    <!-- Footer --> 
    @include('partials.footer')

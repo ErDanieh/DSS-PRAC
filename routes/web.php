@@ -58,7 +58,7 @@ Route::post('/gruposMusculares', [GrupoMuscularController::class, 'newGruposMusc
  * Control de Entrenamientos
  */
 Route::get('/entrenamientos', [EntrenamientosController::class, 'getEntrenamientos']);//Lista todos los entrenamientos
-Route::get('/entrenamientoDetalle/{id}', [EntrenamientosController::class, 'getEntrenamientoDetalle']);
+Route::get('/entrenamientos/{id}', [EntrenamientosController::class, 'getEntrenamientoDetalle']);
 
 
 
