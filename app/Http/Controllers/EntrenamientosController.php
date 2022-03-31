@@ -21,5 +21,7 @@ class EntrenamientosController extends Controller
     function getEntrenamientoDetalle($id){
         return view('entrenamientos.entrenamientoDetalle')->with('entrenamiento', Entrenamiento::findOrFail($id));
     }
+
+    
 }
 
