@@ -38,7 +38,13 @@ class UserController extends Controller
     function deleteUser($id)
     {
         $usuario = User::findOrFail($id);
-        $usuario->delete();
+        if ($usuario != null) {
+            $usuario->delete();
+            return redirect()->back()->with('exito', 'Usuario eliminado con exito');
+        }
+        return redirect()->back()->with('error', 'Error no existe el usuario');
+
+
         return redirect()->back();
     }
 }

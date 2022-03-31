@@ -25,6 +25,7 @@
 
 </tr>
 @endforeach
+@include('common.alert')
 @endsection
 
 <!--Metodo para mostrar los perfiles una vez clickado el usuario -->

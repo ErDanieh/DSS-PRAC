@@ -44,6 +44,7 @@ class EntrenamientosController extends Controller
         }
     }
 
+    /** 
     function deleteEntrenamiento(Request $req)
     {
         $nombreEntrenamiento = $req->input('delname');
@@ -55,4 +56,17 @@ class EntrenamientosController extends Controller
         }
         return redirect()->back()->with('error', 'Error no existe el Entrenamiento');
     }
+     */
+
+    function deleteEntrenamiento($id)
+    {
+        $EntrenamientoEsperado = Entrenamiento::where('id', '=', $id)->first();
+
+        if ($EntrenamientoEsperado != null) {
+            $EntrenamientoEsperado->delete();
+            return redirect()->back()->with('exito', 'Entrenamiento eliminado');
+        }
+        return redirect()->back()->with('error', 'Error no existe el Entrenamiento');
+    }
+
 }

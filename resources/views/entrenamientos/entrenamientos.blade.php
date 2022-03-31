@@ -9,9 +9,18 @@
 @section('tabla-contenido')
 <!--Para cada entrenamiento se mostrará su nombre si se clicka se mostrará en detalle-->
 @foreach($entrenamientos as $entrenamiento)
-<tr style="cursor: pointer;" class="card bg-dark mb-1 text-white" onclick="redirigirDetalleEntrenamiento({{$entrenamiento->id}})">
-    <td class="text-primary">{{$entrenamiento->name }}</td>
+<tr style="cursor: pointer;" class="card bg-dark mb-1 text-white">
+    <td class="text-primary" onclick="redirigirDetalleEntrenamiento({{$entrenamiento->id}})">{{$entrenamiento->name }}</td>
+    <td>
+        <form action="{{url('/entrenamientos', $entrenamiento->id)}}" class="mr-4" method="POST">
+            @csrf
+            {{ method_field('DELETE') }}
+            <button class="btn btn-danger m-3" style="width: 100%;" type="submit">Delete</button>
+        </form>
+    </td>
 </tr>
+
+
 @endforeach
 
 
@@ -37,7 +46,7 @@
 </div>
 
 
-
+<!--
 <div class="m-3 justify-content-center text-dark">
     <form action="{{ url('/entrenamientos')}}" method="POST">
         @csrf
@@ -52,7 +61,7 @@
         </div>
     </form>
 </div>
-
+-->
 
 <script src="js/entrenamientos.js"></script>
 @endsection
