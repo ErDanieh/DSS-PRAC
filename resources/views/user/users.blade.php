@@ -1,3 +1,7 @@
+<!--
+    @if is admin extiende a layouts.admon
+    @sino extiende a layout.general
+-->
 @extends('layouts.admin')
 
 
