@@ -1,9 +1,13 @@
+@extends('layouts.admin')
+
+
+@section('content')
+
 <h1>Este perfil es de {{$entrenamiento->name}}</h1>
 
 @include('common.alert')
-
 <div class="m-3 justify-content-center text-dark">
-    <form action="{{ url('/entrenamientos',$entrenamiento->id)}}" method="POST">
+    <form action="{{ url('/admin/entrenamientos',$entrenamiento->id)}}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="name">Nombre entrenamiento</label>
@@ -20,3 +24,5 @@
         </div>
     </form>
 </div>
+
+@endsection

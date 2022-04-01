@@ -38,7 +38,7 @@ class EntrenamientosController extends Controller
             $EntrenamientoNuevo->url_img = $urlImagenEntrenamiento;
             $EntrenamientoNuevo->save();
 
-            return redirect("/entrenamientos/" . strval($EntrenamientoNuevo->id))->with('exito', 'al añadir el entrenamiento');
+            return redirect("/admin/entrenamientos/" . strval($EntrenamientoNuevo->id))->with('exito', 'al añadir el entrenamiento');
         } else {
             return redirect()->back()->with('error', 'Error ya existe el Entrenamiento');
         }

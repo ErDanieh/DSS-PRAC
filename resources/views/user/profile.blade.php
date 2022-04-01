@@ -1,3 +1,9 @@
+@extends('layouts.admin')
+
+
+@section('content')
+
+
 <h1>Este perfil es de {{$user->name}}</h1>
 <h3>Correo electronico: {{$user->email}}</h3>
 @if($user->is_admin == '1')
@@ -10,8 +16,9 @@
 
 
 
+@include('common.alert')
 <div class="m-3 justify-content-center text-dark">
-    <form action="{{ url('/usuarios',$user->id)}}" method="POST">
+    <form action="{{ url('/admin/usuarios',$user->id)}}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="name">Nombre de usuario nuevo:</label>
@@ -28,3 +35,6 @@
         </div>
     </form>
 </div>
+
+
+@endsection

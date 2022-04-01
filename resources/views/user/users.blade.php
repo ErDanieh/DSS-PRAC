@@ -4,7 +4,7 @@
 @section('content')
 
 <!--Metodo para mostrar los perfiles una vez clickado el usuario -->
-<script src="js/users.js"> </script>
+<script src="../js/users.js"> </script>
 
 <div>
 
@@ -30,7 +30,7 @@
                     @endif
 
                     <td>
-                        <form action="{{url('/usuarios', $user->id)}}" class="mr-4" method="POST">
+                        <form action="{{url('/admin/usuarios', $user->id)}}" class="mr-4" method="POST">
                             @csrf
                             {{ method_field('DELETE') }}
                             <button class="btn btn-danger m-3" style="width: 100%;" type="submit">Delete</button>
@@ -45,7 +45,7 @@
 
 
     @include('common.alert')
-    <form action="{{ url('/usuarios') }}" method="POST" class="form-group">
+    <form action="{{ url('/admin/usuarios') }}" method="POST" class="form-group">
         @csrf
         <label for="search"> Buscar por nombre o email. </label>
         <div class="mb-3">

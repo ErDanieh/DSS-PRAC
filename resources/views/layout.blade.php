@@ -3,7 +3,6 @@
 
 <head>
     @include('partials.head')
-    @include('partials.sidenav')
 </head>
 
 

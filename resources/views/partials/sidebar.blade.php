@@ -11,38 +11,33 @@
             </li>
 
             <li class="nav-item">
-                <a href="/gruposMusculares" class="nav-link align-middle px-0">
+                <a href="/admin/gruposMusculares" class="nav-link align-middle px-0">
                     <i class="bi bi-graph-up"></i> <span class="ms-1 d-none d-sm-inline">Grupos musculares</span>
                 </a>
             </li>
 
 
             <li class="nav-item">
-                <a href="/entrenamientos" class="nav-link align-middle px-0">
+                <a href="/admin/entrenamientos" class="nav-link align-middle px-0">
                     <i class="fas fa-dumbbell"></i> <span class="ms-1 d-none d-sm-inline">Entrenamientos</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a href="/ejercicios" class="nav-link align-middle px-0">
+                <a href="/admin/ejercicios" class="nav-link align-middle px-0">
                     <i class="fa-solid fa-person-running"></i> <span class="ms-1 d-none d-sm-inline">Ejercicios</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a href="/musculos" class="nav-link align-middle px-0">
+                <a href="/admin/musculos" class="nav-link align-middle px-0">
                     <i class="fa-solid fa-person-running"></i> <span class="ms-1 d-none d-sm-inline">Musuculos</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a href="/usuarios" class="nav-link align-middle px-0">
+                <a href="/admin/usuarios" class="nav-link align-middle px-0">
                     <i class="bi bi-people-fill"></i> <span class="ms-1 d-none d-sm-inline">Usuarios</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/entrenadores" class="nav-link align-middle px-0">
-                    <i class="bi bi-person-badge-fill"></i> <span class="ms-1 d-none d-sm-inline">Entrenadores</span>
                 </a>
             </li>
 

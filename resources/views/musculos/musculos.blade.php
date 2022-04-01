@@ -17,7 +17,7 @@
                 @foreach($musculos as $musculo)
                 <tr style="cursor: pointer;" class="card bg-dark mb-1 text-white">
                     <td class="text-primary">{{$musculo->name}}
-                        <form action="{{url('/musculos', $musculo->id)}}" class="mr-4" method="POST">
+                        <form action="{{url('/admin/musculos', $musculo->id)}}" class="mr-4" method="POST">
                             @csrf
                             {{ method_field('DELETE') }}
                             <button class="btn btn-danger m-3" style="width: 100%;" type="submit">Delete</button>
@@ -32,7 +32,7 @@
 
     @include('common.alert')
     <div class="m-3 justify-content-center text-dark">
-        <form action="{{ url('/musculos') }}" method="POST">
+        <form action="{{ url('/admin/musculos') }}" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="name">Musculo</label>
