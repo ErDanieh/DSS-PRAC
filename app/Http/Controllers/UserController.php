@@ -47,4 +47,26 @@ class UserController extends Controller
 
         return redirect()->back();
     }
+
+    function editProfile(Request $req, $id)
+    {
+
+        $UsuarioEditar = User::findOrFail($id);
+        if ($UsuarioEditar != null) {
+
+
+            if ($req->input('name') != null) {
+                $UsuarioEditar->name = $req->input('name');
+            }
+            if ($req->input('email') != null) {
+                $UsuarioEditar->email = $req->input('email');
+            }
+            if ($req->input('password') != null) {
+                $UsuarioEditar->password = $req->input('password');
+            }
+            $UsuarioEditar->save();
+            return redirect()->back()->with('exito', 'Perfil editado');
+        }
+        return redirect()->back()->with('error', 'Error el perfil no existe');
+    }
 }

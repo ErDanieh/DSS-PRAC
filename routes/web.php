@@ -33,6 +33,8 @@ Route::get('/usuarios', [UserController::class, 'getUsers']); //Lista todos los 
 Route::post('/usuarios', [UserController::class,'searchUsers']);//Buscador de usuarios por nombre o email
 Route::get('/usuarios/{id}', [UserController::class, 'getProfile']);
 Route::delete('/usuarios/{id}', [UserController::class, 'deleteUser']);
+Route::post('/usuarios/{id}', [UserController::class, 'editProfile']);
+
 
 
 /**
