@@ -33,7 +33,7 @@ Route::get('/admin/usuarios/', [UserController::class, 'getUsers'])->middleware(
 Route::post('/admin/usuarios/', [UserController::class,'searchUsers'])->middleware(['auth']);//Buscador de usuarios por nombre o email
 Route::get('/admin/usuarios/{id}', [UserController::class, 'getProfile'])->middleware(['auth']);
 Route::delete('/admin/usuarios/{id}', [UserController::class, 'deleteUser'])->middleware(['auth']);
-Route::post('/admin/usuarios/{id}', [UserController::class, 'editProfile'])->middleware(['auth']);
+Route::put('/admin/usuarios/{id}', [UserController::class, 'editProfile'])->middleware(['auth']);
 
 
 /**
@@ -71,7 +71,7 @@ Route::get('/admin/entrenamientos', [EntrenamientosController::class, 'getEntren
 Route::post('/admin/entrenamientos', [EntrenamientosController::class, 'newEntrenamiento'])->middleware(['auth']);
 Route::get('/admin/entrenamientos/{id}', [EntrenamientosController::class, 'getEntrenamientoDetalle'])->middleware(['auth']);
 Route::delete('/admin/entrenamientos/{id}', [EntrenamientosController::class, 'deleteEntrenamiento'])->middleware(['auth']);
-Route::post('/admin/entrenamientos/{id}', [EntrenamientosController::class, 'editEntrenamiento'])->middleware(['auth']);
+Route::put('/admin/entrenamientos/{id}', [EntrenamientosController::class, 'editEntrenamiento'])->middleware(['auth']);
 
 
 /**

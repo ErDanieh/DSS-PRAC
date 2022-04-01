@@ -20,6 +20,7 @@
 <div class="m-3 justify-content-center text-dark">
     <form action="{{ url('/admin/usuarios',$user->id)}}" method="POST">
         @csrf
+        {{ method_field('PUT') }}
         <div class="mb-3">
             <label for="name">Nombre de usuario nuevo:</label>
             <input type="text" name="name" id="name">
