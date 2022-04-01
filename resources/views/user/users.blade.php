@@ -23,10 +23,10 @@
                     <td class="text-primary" onclick="showProfile({{$user->id}})">{{$user->name}}</td>
                     <td class="text-primary" onclick="showProfile({{$user->id}})">{{$user->email}}</td>
                     @if($user->is_admin == '1')
-                        <span class="text-warning"> ADMINISTRADOR</span>
+                        <td class="text-warning"> ADMINISTRADOR</td>
                     @endif
                     @if($user->is_trainer == '1')
-                        <span class="text-primary"> ENTRENADOR</span>
+                        <td class="text-primary"> ENTRENADOR</td>
                     @endif
 
                     <td>
