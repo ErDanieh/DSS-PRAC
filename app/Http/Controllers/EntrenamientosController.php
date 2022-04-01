@@ -69,4 +69,24 @@ class EntrenamientosController extends Controller
         return redirect()->back()->with('error', 'Error no existe el Entrenamiento');
     }
 
+    function editEntrenamiento(Request $req, $id)
+    {
+        $nombreEntrenamiento = $req->input('name');
+        $descripcionEntrenamiento = $req->input('descripcion');
+        $urlImagenEntrenamiento = $req->input('urlImagen');
+
+        $EntrenamientoEditar = Entrenamiento::findOrFail($id);
+
+        if ($EntrenamientoEditar != null) {
+            $EntrenamientoEditar->name = $nombreEntrenamiento;
+            $EntrenamientoEditar->descripcion = $descripcionEntrenamiento;
+            $EntrenamientoEditar->url_img = $urlImagenEntrenamiento;
+            $EntrenamientoEditar->save();
+
+            return redirect()->back()->with('exito', 'Entrenamiento editado');
+        } else {
+            return redirect()->back()->with('error', 'Error ya existe el Entrenamiento');
+        }
+    }
+
 }

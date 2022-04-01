@@ -65,7 +65,7 @@ Route::get('/entrenamientos', [EntrenamientosController::class, 'getEntrenamient
 Route::post('/entrenamientos', [EntrenamientosController::class, 'newEntrenamiento']);
 Route::get('/entrenamientos/{id}', [EntrenamientosController::class, 'getEntrenamientoDetalle']);
 Route::delete('/entrenamientos/{id}', [EntrenamientosController::class, 'deleteEntrenamiento']);
-
+Route::post('/entrenamientos/{id}', [EntrenamientosController::class, 'editEntrenamiento']);
 
 /**
  * Controlador del home
