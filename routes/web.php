@@ -50,6 +50,7 @@ Route::delete('/musculos/{id}',[MusculosController::class,'deleteMusculo']);
 Route::get('/ejercicios', [EjerciciosController::class, 'getEjercicios']); //Lista todos los ejercicios
 Route::post('/ejercicios', [EjerciciosController::class, 'newEjercicios']);//Añade ejercicios
 Route::delete('/ejercicios/{id}',[EjerciciosController::class,'deleteEjercicio']);//Elimina ejercicios
+Route::get('/ejercicios/{id}', [EjerciciosController::class, 'getEjercicioDetalle']);//Añade ejercicios
 
 
 /**

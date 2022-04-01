@@ -16,7 +16,8 @@
             <tbody>
                 @foreach($ejercicios as $ejercicio)
                 <tr style="cursor: pointer;" class="card bg-dark mb-1 text-white">
-                    <td class="text-primary">{{$ejercicio->name }}
+                    <td class="text-primary" onclick="redirigirDetalleEjercicio({{$ejercicio->id}})">{{$ejercicio->name }}</td>
+                    <td>
                         <form action="{{url('/ejercicios', $ejercicio->id)}}" class="mr-4" method="POST">
                             @csrf
                             {{ method_field('DELETE') }}
@@ -53,19 +54,9 @@
 </div>
 @endsection
 
-<!--
-<div class="m-3 justify-content-center text-dark">
-    <form action="{{ url('/ejercicios') }}" method="POST">
-        @csrf
-        <div class="mb-3">
-            <label for="delname">Ejercicio a borrar</label>
-            <input required type="text" name="delname" id="delname">
-        </div>
-        @csrf
-        {{ method_field('DELETE') }}
-        <div class="text-right">
-            <button type="submit">Enviar</button>
-        </div>
-    </form>
-</div>
--->
+
+<script>
+    function redirigirDetalleEjercicio(id) {
+        window.location.href = `${window.location.href}/${id}`;
+    }
+</script>
