@@ -62,7 +62,7 @@ class UserController extends Controller
                 $UsuarioEditar->email = $req->input('email');
             }
             if ($req->input('password') != null) {
-                $UsuarioEditar->password = $req->input('password');
+                $UsuarioEditar->password = bcrypt($req->input('password'));
             }
             $UsuarioEditar->save();
             return redirect()->back()->with('exito', 'Perfil editado');
