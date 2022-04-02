@@ -4,26 +4,35 @@
 
 <div>
 
-    <h1>Esta es la lista de Musculos</h1>
+    <h1>Músculos</h1>
 
-    <div class="col py-3">
+    <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Grupo Muscular</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Eliminar</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($musculos as $musculo)
-                <tr style="cursor: pointer;" class="card bg-dark mb-1 text-white">
-                    <td class="text-primary">{{$musculo->name}}
+                <tr>
+                    <td> {{$musculo->name}} </td>
+                    <td>
+                        {{$musculo->grupoMuscular->name}}
+                    </td>
+                    <td>
+                        <button class="btn btn-success" type="submit">Editar</button>
+                    </td>
+                    <td>
                         <form action="{{url('/admin/musculos', $musculo->id)}}" class="mr-4" method="POST">
                             @csrf
                             {{ method_field('DELETE') }}
-                            <button class="btn btn-danger m-3" style="width: 100%;" type="submit">Delete</button>
+                            <button class="btn btn-danger" type="submit">Eliminar</button>
                         </form>
                     </td>
-
                 </tr>
                 @endforeach
             </tbody>
