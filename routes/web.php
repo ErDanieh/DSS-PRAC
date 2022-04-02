@@ -52,6 +52,7 @@ Route::get('/admin/ejercicios', [EjerciciosController::class, 'getEjercicios'])-
 Route::post('/admin/ejercicios', [EjerciciosController::class, 'newEjercicios'])->middleware(['auth']);//Añade ejercicios
 Route::delete('/admin/ejercicios/{id}',[EjerciciosController::class,'deleteEjercicio'])->middleware(['auth']);//Elimina ejercicios
 Route::get('/admin/ejercicios/{id}', [EjerciciosController::class, 'getEjercicioDetalle'])->middleware(['auth']);//Añade ejercicios
+Route::put('/admin/ejercicios/{id}', [EjerciciosController::class, 'editEjercicio'])->middleware(['auth']);
 
 
 /**

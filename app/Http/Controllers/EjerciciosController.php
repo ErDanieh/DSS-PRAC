@@ -56,4 +56,31 @@ class EjerciciosController extends Controller
     {
         return view('ejercicios.ejercicioDetalle')->with('ejercicio', Ejercicio::findOrFail($id));
     }
+
+    function editEjercicio(Request $req, $id)
+    {
+        $EjercicioEditar = Ejercicio::findOrFail($id);
+        if ($EjercicioEditar != null) {
+
+            if ($req->input('name') != null) {
+                $EjercicioEditar->name = $req->input('name');
+            }
+
+            if ($req->input('descripcion') != null) {
+                $EjercicioEditar->descripcion = $req->input('descripcion');
+            }
+
+            if ($req->input('urlImagen') != null) {
+                $EjercicioEditar->url_img = $req->input('urlImagen');
+            }
+
+            $EjercicioEditar->save();
+
+            return redirect()->back()->with('exito', 'Ejercicio editado');
+        }
+        else 
+        {
+            return redirect()->back()->with('error', 'Error ya existe el Ejercicio');
+        }
+    }
 }
