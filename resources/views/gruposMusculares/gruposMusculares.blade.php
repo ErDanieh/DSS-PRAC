@@ -5,6 +5,7 @@
 
     <h1>Esta es la lista de Grupos Musculares</h1>
 
+    <script src="../js/users.js"> </script>
 
 
     <div class="col py-3">
@@ -17,7 +18,7 @@
             <tbody>
                 @foreach($gruposMusculares as $grupo)
                 <tr style="cursor: pointer;" class="card bg-dark mb-1 text-white">
-                    <td class="text-primary">{{$grupo->name }}
+                    <td class="text-primary" onclick="showProfile({{$grupo->id}})">{{$grupo->name }}
                         <form action="{{url('/admin/gruposMusculares', $grupo->id)}}" class="mr-4" method="POST">
                             @csrf
                             {{ method_field('DELETE') }}
