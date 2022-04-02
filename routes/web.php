@@ -64,6 +64,9 @@ Route::delete('/admin/gruposMusculares/{id}',[GrupoMuscularController::class,'de
 Route::get('/admin/gruposMusculares/{id}', function() { #Evitar excepcion al acceder a esta pagina
     return abort(404);
 });
+Route::get('/admin/gruposMusculares/{id}', [GrupoMuscularController::class, 'getGruposMuscularesDetalle'])->middleware(['auth']);
+Route::put('/admin/gruposMusculares/{id}', [GrupoMuscularController::class, 'editGruposMusculares'])->middleware(['auth']);
+
 
 /**
  * Control de Entrenamientos

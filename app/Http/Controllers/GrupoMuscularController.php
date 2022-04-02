@@ -46,4 +46,33 @@ class GrupoMuscularController extends Controller
         }
         return redirect()->back()->with('error', 'Error ese grupo muscular no existe');
     }
+
+    function getGruposMuscularesDetalle($id)
+    {
+        return view('gruposMusculares.grupoMuscularDetalle')->with('grupo', GrupoMuscular::findOrFail($id));
+    }
+
+    function editGruposMusculares(Request $req, $id)
+    {
+        $grupoEditar = GrupoMuscular::findOrFail($id);
+        if ($grupoEditar != null) {
+
+            if ($req->input('name') != null) {
+                $grupoEditar->name = $req->input('name');
+            }
+
+            if ($req->input('descripcion') != null) {
+                $grupoEditar->descripcion = $req->input('descripcion');
+            }
+
+
+            $grupoEditar->save();
+
+            return redirect()->back()->with('exito', 'Grupo muscular editado');
+        }
+        else 
+        {
+            return redirect()->back()->with('error', 'Error no existe el Grupo muscular');
+        }
+    }
 }
