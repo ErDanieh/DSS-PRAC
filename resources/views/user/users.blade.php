@@ -1,13 +1,11 @@
-<!--
-    @if is admin extiende a layouts.admon
-    @sino extiende a layout.general
--->
+
 @extends('layouts.admin')
 
 
 @section('content')
 
 <!--Metodo para mostrar los perfiles una vez clickado el usuario -->
+<!--if is admin extiende a layouts.admon sino extiende a layout.general-->
 <script src="../js/users.js"> </script>
 
 <div>
