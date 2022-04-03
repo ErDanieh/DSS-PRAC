@@ -1,3 +1,7 @@
+@extends('layouts.admin')
+
+@section('content')
+
 <h1>{{$ejercicio->name}}</h1>
 <h3>{{$ejercicio->descripcion}}</h3>
 @include('common.alert')
@@ -20,3 +24,5 @@
         </div>
     </form>
 </div>
+
+@endsection
