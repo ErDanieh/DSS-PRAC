@@ -10,7 +10,7 @@
          <!-- Nav -->
          @include('partials.sidebar')
 
-         <div class="content" style="max-width: 80%; margin-left: auto; margin-top: 5vh;">
+         <div class="content" style="width: 1100px; margin: auto; margin-left:20%; margin-top: 5vh;">
             <!-- Contenido -->
             @yield('content')
          </div>

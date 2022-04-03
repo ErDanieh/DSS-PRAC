@@ -6,6 +6,27 @@
 
     <h1>Músculos</h1>
 
+    <div class="" style="margin: 50px auto;">
+        <h2>Añadir musculo</h2>
+        <form action="{{ url('/admin/musculos') }}" method="POST">
+            @csrf
+            <div class="form-group">
+                <label for="name">Musculo</label>
+                <input class="form-control" placeholder="Nombre del músculo..." required type="text" name="name" id="name">
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+                <label for="nombreGrupo">Nombre Grupo Muscular</label>
+                <select name="grupo" class="form-select" >
+                    {{ App\Http\Controllers\MusculosController::seleccionableGruposMusculares();}}
+                </select>
+            </div>
+            <button class="btn btn-primary" type="submit" style="margin-top: 20px;">Añadir Musculo</button>
+        </form>
+    </div>
+
+    @include('common.alert')
+    
+    <h2>Listado de musuculos</h2>
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -39,24 +60,8 @@
         </table>
     </div>
 
-    @include('common.alert')
-    <div class="m-3 justify-content-center text-dark">
-        <form action="{{ url('/admin/musculos') }}" method="POST">
-            @csrf
-            <div class="mb-3">
-                <label for="name">Musculo</label>
-                <input required type="text" name="name" id="name">
-                <label for="nombreGrupo">Nombre Grupo Muscular</label>
-                <input required type="text" name="grupo" id="grupo">
-                <script>
-                    console.log('Console: esto funciona');
-                </script>
-            </div>
-            <div class="text-right">
-                <button type="submit">Enviar</button>
-            </div>
-        </form>
-    </div>
+
+
 
 </div>
 @endsection
