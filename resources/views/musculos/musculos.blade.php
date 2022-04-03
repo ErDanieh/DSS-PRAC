@@ -16,7 +16,7 @@
             </div>
             <div class="form-group" style="margin-top: 10px;">
                 <label for="nombreGrupo">Nombre Grupo Muscular</label>
-                <select name="grupo" class="form-select" >
+                <select name="grupo" class="form-select">
                     {{ App\Http\Controllers\MusculosController::seleccionableGruposMusculares();}}
                 </select>
             </div>
@@ -25,7 +25,7 @@
     </div>
 
     @include('common.alert')
-    
+
     <h2>Listado de musuculos</h2>
     <div class="table-responsive">
         <table class="table">
@@ -58,6 +58,11 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="text-center d-flex justify-content-center m-5">
+            {{ $musculos->links() }}
+
+        </div>
+
     </div>
 
 

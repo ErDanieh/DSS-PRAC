@@ -14,7 +14,9 @@ class MusculosController extends Controller
      *  */
     function getMusculos()
     {
-        return view('musculos.musculos')->with('musculos', Musculo::simplePaginate(100));
+        // $musculos = Musculo::paginate(10);
+        return view('musculos.musculos')->with('musculos', Musculo::simplepaginate(10));
+        //return view('musculos.musculos', compact('musculos'));
     }
 
     /**
@@ -68,8 +70,7 @@ class MusculosController extends Controller
                 $grupoMuscular = GrupoMuscular::where('name', '=', $req->input('grupo'))->first();
                 if ($grupoMuscular != null) {
                     $musculoEditar->grupoMuscular()->associate($grupoMuscular);
-                }
-                else {
+                } else {
                     return redirect()->back()->with('error', 'Error no existe el grupo muscular');
                 }
             }
@@ -88,8 +89,7 @@ class MusculosController extends Controller
     {
         $gruposMusculares = GrupoMuscular::all();
 
-        foreach($gruposMusculares as $grupoMuscular)
-        {
+        foreach ($gruposMusculares as $grupoMuscular) {
             echo "<option>" . $grupoMuscular->name . "</option>";
         }
     }
