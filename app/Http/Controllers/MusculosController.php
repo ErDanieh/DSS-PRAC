@@ -80,4 +80,17 @@ class MusculosController extends Controller
             return redirect()->back()->with('error', 'Error no existe el Musculo');
         }
     }
+
+    /**
+     * Popula el seleccionable de grupos musculares
+     */
+    static function seleccionableGruposMusculares()
+    {
+        $gruposMusculares = GrupoMuscular::all();
+
+        foreach($gruposMusculares as $grupoMuscular)
+        {
+            echo "<option>" . $grupoMuscular->name . "</option>";
+        }
+    }
 }
