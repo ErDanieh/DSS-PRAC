@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-
+<script src="../js/users.js"> </script>
 <div>
 
     <h1>Músculos</h1>
@@ -24,7 +24,7 @@
                         {{$musculo->grupoMuscular->name}}
                     </td>
                     <td>
-                        <button class="btn btn-success" type="submit">Editar</button>
+                        <button class="btn btn-success" type="submit" onclick="showProfile({{$musculo->id}})">Editar</button>
                     </td>
                     <td>
                         <form action="{{url('/admin/musculos', $musculo->id)}}" class="mr-4" method="POST">
