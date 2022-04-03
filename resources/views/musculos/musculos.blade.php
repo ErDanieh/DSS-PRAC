@@ -43,12 +43,12 @@
 
 
     <select class="form-select" aria-label="Default select example">
-        <option selected>Grupo Muscular</option>
-        <option value="1">Abdominales</option>
-        <option value="2">Espalda</option>
-        <option value="3">Brazo</option>
-        <option value="3">Brazo</option>
+        @php echo App\Http\Controllers\MusculosController::gruposMuscularesSeleccionable();  @endphp
     </select>
+
+    <?php
+
+    ?>
 
 
     <div class="m-3 justify-content-center text-dark">

@@ -49,6 +49,19 @@ class MusculosController extends Controller
         return redirect()->back()->with('error', 'Error no existe el musculo');
     }
 
+
+    static function gruposMuscularesSeleccionable()
+    {
+
+        $gruposMusculares = GrupoMuscular::all();
+
+        foreach($gruposMusculares as $grupoMuscular)
+        {
+            echo "<option>" . $grupoMuscular->name . "</option>";
+        }
+
+    }
+
     /** 
     function deleteMusculo(Request $req)
     {
