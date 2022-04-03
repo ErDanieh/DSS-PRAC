@@ -39,7 +39,7 @@ class MusculosController extends Controller
     /**
      * Elimina el musculo
      */
-    function deleteMusculo($id)
+    static function deleteMusculo($id)
     {
         $musculo = Musculo::findOrFail($id);
         if ($musculo !=  null) {

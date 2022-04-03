@@ -2,7 +2,8 @@
 
 <h3>{{$grupo->descripcion}}</h3>
 
-
+<script src="../js/users.js"> </script>
+@include('common.alert')
 <div class="m-3 justify-content-center text-dark">
     <form action="{{ url('/admin/gruposMusculares',$grupo->id)}}" method="POST">
         @csrf
@@ -23,7 +24,12 @@
 @foreach($grupo->musculos as $musculo)
 <div>
     <tr style="cursor: pointer;" class="card bg-dark mb-1 text-white">
-        <td class="text-primary" onclick="showProfile({{$grupo->id}})">{{$musculo->name }}</td>
+        <td class="text-primary">{{$musculo->name}}</td>
+        <form action="{{ url('/admin/gruposMusculares',$musculo->id)}}" method="POST">
+            @csrf
+            {{ method_field('DELETE') }}
+            <button class="btn btn-danger" type="submit">Eliminar</button>
+        </form>
     </tr>
 </div>
 @endforeach

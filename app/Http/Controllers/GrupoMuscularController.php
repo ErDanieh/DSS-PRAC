@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\GrupoMuscular;
+use App\Models\Musculo;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\MusculosController;
 class GrupoMuscularController extends Controller
 {
     /**
@@ -74,5 +75,11 @@ class GrupoMuscularController extends Controller
         {
             return redirect()->back()->with('error', 'Error no existe el Grupo muscular');
         }
+    }
+
+    function editMusculosContiene($idMusculo)
+    {
+        return MusculosController::deleteMusculo($idMusculo);
+        
     }
 }

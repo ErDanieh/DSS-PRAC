@@ -69,7 +69,9 @@ Route::post('/admin/gruposMusculares', [GrupoMuscularController::class, 'newGrup
 Route::delete('/admin/gruposMusculares/{id}', [GrupoMuscularController::class, 'deleteGrupoMuscular'])->middleware(['auth']);
 Route::get('/admin/gruposMusculares/{id}', [GrupoMuscularController::class, 'getGruposMuscularesDetalle'])->middleware(['auth']);
 Route::put('/admin/gruposMusculares/{id}', [GrupoMuscularController::class, 'editGruposMusculares'])->middleware(['auth']);
-/**Route::get('/admin/gruposMusculares/{id}', function() { #Evitar excepcion al acceder a esta pagina
+Route::delete('/admin/gruposMusculares/{id}', [GrupoMuscularController::class, 'editMusculosContiene'])->middleware(['auth']);
+/** 
+Route::put('/admin/gruposMusculares/{id}', [GrupoMuscularController::class, 'editGruposMusculares'])->middleware(['auth']);
     return abort(404);
 });
  */
