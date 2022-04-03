@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+<script src="../js/users.js"> </script>
 
 <div>
 
@@ -16,7 +17,8 @@
             <tbody>
                 @foreach($musculos as $musculo)
                 <tr style="cursor: pointer;" class="card bg-dark mb-1 text-white">
-                    <td class="text-primary">{{$musculo->name}}
+
+                    <td class="text-primary" onclick="showProfile({{$musculo->id}})">{{$musculo->name}}
                         <form action="{{url('/admin/musculos', $musculo->id)}}" class="mr-4" method="POST">
                             @csrf
                             {{ method_field('DELETE') }}
