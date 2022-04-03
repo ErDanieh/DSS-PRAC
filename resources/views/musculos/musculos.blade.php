@@ -1,34 +1,32 @@
 @extends('layouts.admin')
 
 @section('content')
-
+<script src="../js/users.js"> </script>
 <div>
 
     <h1>Músculos</h1>
 
-    @include('common.alert')
-
     <div class="table-responsive">
         <table class="table">
             <thead>
-                <tr style="font-size: 1.2rem;">
+                <tr>
                     <th scope="col">Nombre</th>
                     <th scope="col">Grupo Muscular</th>
-                    <th scope="col" style="width: min-content;">Editar</th>
-                    <th scope="col" style="width: min-content;">Eliminar</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Eliminar</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($musculos as $musculo)
                 <tr>
-                    <td style="font-size: 1.2rem; font-weight: 400; margin-right: 5rem;"> {{$musculo->name}} </td>
-                    <td style="font-size: 1.2rem; font-weight: 100; margin-right: 5rem;">
+                    <td> {{$musculo->name}} </td>
+                    <td>
                         {{$musculo->grupoMuscular->name}}
                     </td>
-                    <td style="width: 50px;">
-                        <button class="btn btn-success" type="submit" style="font-size: 1rem;">Editar</button>
+                    <td>
+                        <button class="btn btn-success" type="submit" onclick="showProfile({{$musculo->id}})">Editar</button>
                     </td>
-                    <td style="width: 50px; margin-right: 50px;">
+                    <td>
                         <form action="{{url('/admin/musculos', $musculo->id)}}" class="mr-4" method="POST">
                             @csrf
                             {{ method_field('DELETE') }}
@@ -41,16 +39,7 @@
         </table>
     </div>
 
-
-    <select class="form-select" aria-label="Default select example">
-        @php echo App\Http\Controllers\MusculosController::gruposMuscularesSeleccionable();  @endphp
-    </select>
-
-    <?php
-
-    ?>
-
-
+    @include('common.alert')
     <div class="m-3 justify-content-center text-dark">
         <form action="{{ url('/admin/musculos') }}" method="POST">
             @csrf
@@ -68,9 +57,6 @@
             </div>
         </form>
     </div>
-
-
-
 
 </div>
 @endsection

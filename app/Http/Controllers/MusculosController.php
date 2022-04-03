@@ -49,28 +49,35 @@ class MusculosController extends Controller
         return redirect()->back()->with('error', 'Error no existe el musculo');
     }
 
-
-    static function gruposMuscularesSeleccionable()
+    function getMusculoDetalle($id)
     {
-
-        $gruposMusculares = GrupoMuscular::all();
-
-        foreach($gruposMusculares as $grupoMuscular)
-        {
-            echo "<option>" . $grupoMuscular->name . "</option>";
-        }
-
+        return view('musculos.musculoDetalle')->with('musculo', Musculo::findOrFail($id));
     }
 
-    /** 
-    function deleteMusculo(Request $req)
+    function editMusculo(Request $req, $id)
     {
-        $musculo = Musculo::where('name', '=', $req->input('delname'))->first();
-        if ($musculo !=  null) {
-            $musculo->delete();
-            return redirect()->back()->with('exito', 'Musculo eliminado con exito');
+        $musculoEditar = Musculo::findOrFail($id);
+
+        if ($musculoEditar != null) {
+
+            if ($req->input('name') != null) {
+                $musculoEditar->name = $req->input('name');
+            }
+
+            if ($req->input('grupo') != null) {
+                $grupoMuscular = GrupoMuscular::where('name', '=', $req->input('grupo'))->first();
+                if ($grupoMuscular != null) {
+                    $musculoEditar->grupoMuscular()->associate($grupoMuscular);
+                }
+                else {
+                    return redirect()->back()->with('error', 'Error no existe el grupo muscular');
+                }
+            }
+            $musculoEditar->save();
+
+            return redirect()->back()->with('exito', 'Musculo editado');
+        } else {
+            return redirect()->back()->with('error', 'Error no existe el Musculo');
         }
-        return redirect()->back()->with('error', 'Error no existe el musculo');
     }
-     */
 }
