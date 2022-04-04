@@ -25,7 +25,7 @@
 <div>
     <tr style="cursor: pointer;" class="card bg-dark mb-1 text-white">
         <td class="text-primary">{{$musculo->name}}</td>
-        <form action="{{ url('/admin/gruposMusculares',$musculo->id)}}" method="POST">
+        <form action="{{ url('/admin/gruposMusculares/delete',$musculo->id)}}" method="POST">
             @csrf
             {{ method_field('DELETE') }}
             <button class="btn btn-danger" type="submit">Eliminar</button>
