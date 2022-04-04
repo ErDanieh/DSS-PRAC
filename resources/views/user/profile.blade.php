@@ -3,39 +3,36 @@
 
 @section('content')
 
+<div>
+    <h1>Editar usuario.</h1>
+    <h3>Nombre: {{$user->name}}</h3>
+    <h3>Email: {{$user->email}}</h3>
+    <h3>Rol administrador: {{$user->is_admin}}</h3>
+    <h3>Rol entrenador: {{$user->is_trainer}}</h3>
 
-<h1>Este perfil es de {{$user->name}}</h1>
-<h3>Correo electronico: {{$user->email}}</h3>
-@if($user->is_admin == '1')
-<span class="text-warning">Este usuario es un ADMINISTRADOR</span>
-@endif
-@if($user->is_trainer == '1')
-<span class="text-primary">Este usuario es un ENTRENADOR</span>
-@endif
+    @include('common.alert')
 
+    <div class="" style="margin-top: 20px;">
+        <form action="{{ url('/admin/usuarios',$user->id)}}" method="POST">
+            @csrf
+            {{ method_field('PUT') }}
+            <div class="form-group">
+                <label for="name">Nuevo nombre de usuario</label>
+                <input class="form-control" type="text" name="name" id="name">
+            </div>
+        
+            <div class="form-group">
+                <label for="email">Nuevo email</label>
+                <input class="form-control" type="email" name="email" id="email"></textarea>
+            </div>
 
+            <div class="form-group">
+                <label for="password">Nueva contraseña</label>
+                <input class="form-control" type="password" name="password" id="password"></textarea>
+            </div>
 
-
-@include('common.alert')
-<div class="m-3 justify-content-center text-dark">
-    <form action="{{ url('/admin/usuarios',$user->id)}}" method="POST">
-        @csrf
-        {{ method_field('PUT') }}
-        <div class="mb-3">
-            <label for="name">Nombre de usuario nuevo:</label>
-            <input type="text" name="name" id="name">
-
-            <label for="email">Correo electrónico nuevo:</label>
-            <textarea type="text" name="email" id="email"></textarea>
-
-            <label for="password">Contraseña nueva:</label>
-            <textarea type="password" name="password" id="password"></textarea>
-        </div>
-        <div class="text-right">
-            <button type="submit">Enviar</button>
-        </div>
-    </form>
+            <button class="btn btn-primary" type="submit" style="margin-top: 20px;">Editar usuario</button>
+        </form>
+    </div>
 </div>
-
-
 @endsection
