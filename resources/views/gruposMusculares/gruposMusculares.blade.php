@@ -4,7 +4,10 @@
     <script src="../js/users.js"> </script>
     <div class="" style="margin: 50px auto;">
         <h2>Añadir grupo muscular</h2>
-        <form action="{{ url('/admin/gruposMusculares') }}" method="POST"> @csrf <div class="form-group"> <label for="name">Grupo Muscular</label> <input class="form-control" placeholder="Nombre del grupo muscular..." required type="text" name="name" id="name"> </div>
+        <form action="{{ url('/admin/gruposMusculares') }}" method="POST"> @csrf <div class="form-group">
+                <label for="name">Grupo Muscular</label>
+                <input class="form-control" placeholder="Nombre del grupo muscular..." required type="text" name="name" id="name">
+            </div>
             <div class="form-group">
                 <label for="descripcion">
                     Descripción de grupo muscular
@@ -40,7 +43,7 @@
                     <td>
                         <form action="{{url('/admin/gruposMusculares', $grupo->id)}}" method="POST">
                             @csrf {{ method_field('DELETE') }}
-                            <button class="btn btn-danger" style="width: 100%;" type="submit">Eliminar</button>
+                            <button class="btn btn-danger" type="submit">Eliminar</button>
                         </form>
                     </td>
                 </tr> @endforeach
