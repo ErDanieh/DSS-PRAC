@@ -72,6 +72,8 @@ Route::delete('/admin/gruposMusculares/{id}', [GrupoMuscularController::class, '
 Route::get('/admin/gruposMusculares/{id}', [GrupoMuscularController::class, 'getGruposMuscularesDetalle'])->middleware(['auth']);
 Route::put('/admin/gruposMusculares/{id}', [GrupoMuscularController::class, 'editGruposMusculares'])->middleware(['auth']);
 Route::delete('/admin/gruposMusculares/delete/{id}', [GrupoMuscularController::class, 'editMusculosContiene'])->middleware(['auth']);
+Route::post('/admin/gruposMusculares/search', [GrupoMuscularController::class, 'searchGrupoMuscular'])->middleware(['auth'])->name('gruposMusculares.search');;//Buscar ejercicios nombre
+
 /** 
 Route::put('/admin/gruposMusculares/{id}', [GrupoMuscularController::class, 'editGruposMusculares'])->middleware(['auth']);
     return abort(404);

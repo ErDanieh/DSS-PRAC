@@ -1,7 +1,14 @@
 @extends('layouts.admin') @section('content') <script src="../js/users.js"> </script>
 <div>
     <h1>Grupos Musculares</h1>
-    <script src="../js/users.js"> </script>
+    <script src="../js/utils.js"> </script>
+    {{-- Buscador --}}
+    <label for="search"> Buscar por nombre. </label>
+    <div class="">
+        <input class="form-control" name="search" type="text" id="search" autofocus></input>
+        <button type="submit" class="btn btn-primary" onclick="redirectSearch()">Buscar</button>
+    </div>
+    
     <div class="" style="margin: 50px auto;">
         <h2>Añadir grupo muscular</h2>
         <form action="{{ url('/admin/gruposMusculares') }}" method="POST"> @csrf <div class="form-group">
