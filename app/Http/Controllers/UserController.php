@@ -58,9 +58,15 @@ class UserController extends Controller
             if ($req->input('name') != null) {
                 $UsuarioEditar->name = $req->input('name');
             }
-            if ($req->input('email') != null) {
-                $UsuarioEditar->email = $req->input('email');
+            if (User::where('email', '=', $req->input('email')) == null) {
+                if ($req->input('email') != null) {
+                    $UsuarioEditar->email = $req->input('email');
+                }
             }
+            else{
+                return redirect()->back()->with('error', 'Ese email ya ha sido registrado');
+            }
+
             if ($req->input('password') != null) {
                 $UsuarioEditar->password = bcrypt($req->input('password'));
             }
