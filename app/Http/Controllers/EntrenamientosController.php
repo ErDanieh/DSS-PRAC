@@ -13,7 +13,11 @@ class EntrenamientosController extends Controller
      *  */
     function getEntrenamientos()
     {
-        return view('entrenamientos.entrenamientos')->with('entrenamientos', Entrenamiento::simplePaginate(100));
+        $busquedaRequest = request()->search;
+        // $musculos = Musculo::paginate(10);
+        return view('entrenamientos.entrenamientos')->with('entrenamientos', Entrenamiento::where('name', 'LIKE', "%{$busquedaRequest}%")
+        ->simplePaginate(10));
+        //return view('musculos.musculos', compact('musculos'));
     }
 
     /**
@@ -120,5 +124,11 @@ class EntrenamientosController extends Controller
 
             echo "<option value='" . $ejercicio->id . "'>" . $ejercicio->name . "</option>";
         }
+    }
+
+    function searchEntreamiento(Request $req)
+    {
+        return view('entrenamientos.entrenamientos')->with('entrenamientos', Entrenamiento::where('name', 'LIKE', "%{$req->input('search')}%")
+            ->simplePaginate(10));
     }
 }
