@@ -93,9 +93,32 @@ class EntrenamientosController extends Controller
             $entrenamiento = Entrenamiento::findOrFail($idEntrenamiento);
             $ejercicio = Ejercicio::findOrFail($idEjercicio);
             $ejercicio->entrenamientos()->detach($entrenamiento);
-            return redirect()->back()->with('exito', 'Ejercicio eliminado del entrenamiento.' . $entrenamiento->name);
+            return redirect()->back()->with('exito', 'Ejercicio eliminado del entrenamiento.');
         } catch (\Throwable $th) {
-            return redirect()->back()->with('error', 'No se ha podido eliminar el ejercicio del entrenamiento-' . $idEjercicio . '-');
+            return redirect()->back()->with('error', 'No se ha podido eliminar el ejercicio del entrenamiento-');
+        }
+    }
+
+    function addEjercicioEntrenamiento(Request $req, $idEntrenamiento)
+    {
+        try {
+            $entrenamiento = Entrenamiento::findOrFail($idEntrenamiento);
+            $ejercicio = Ejercicio::findOrFail($req->grupo);
+            $entrenamiento->ejercicios()->attach($ejercicio);
+            $entrenamiento->save();
+            return redirect()->back()->with('exito', 'Ejercicio anadido al entrenamiento.');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', 'No se ha podido anadir el ejercicio');
+        }
+    }
+
+    static function seleccionableEjercicios()
+    {
+        $ejercicios = Ejercicio::all();
+
+        foreach ($ejercicios as $ejercicio) {
+
+            echo "<option value='" . $ejercicio->id . "'>" . $ejercicio->name . "</option>";
         }
     }
 }
