@@ -14,8 +14,10 @@ class MusculosController extends Controller
      *  */
     function getMusculos()
     {
+        $busquedaRequest = request()->search;
         // $musculos = Musculo::paginate(10);
-        return view('musculos.musculos')->with('musculos', Musculo::simplepaginate(10));
+        return view('musculos.musculos')->with('musculos', Musculo::where('name', 'LIKE', "%{$busquedaRequest}%")
+        ->simplePaginate(10));
         //return view('musculos.musculos', compact('musculos'));
     }
 

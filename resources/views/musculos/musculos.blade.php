@@ -2,18 +2,17 @@
 
 @section('content')
 <script src="../js/users.js"> </script>
+<script src="../js/utils.js"> </script>
 <div>
 
     <h1>Músculos</h1>
     {{-- Buscador --}}
-    <form action="{{ url('/admin/musculos/search') }}" method="POST" class="form-group">
-        @csrf
-        <label for="search"> Buscar por nombre. </label>
-        <div class="">
-            <input class="form-control" name="search" type="text" id="search" autofocus></input>
-            <button hidden type="submit" class="btn btn-primary">Buscar</button>
-        </div>
-    </form>
+    <label for="search"> Buscar por nombre. </label>
+    <div class="">
+        <input class="form-control" name="search" type="text" id="search" autofocus></input>
+        <button type="submit" class="btn btn-primary" onclick="redirectSearch()">Buscar</button>
+    </div>
+
     <div class="" style="margin: 50px auto;">
         <h2>Añadir musculo</h2>
         <form action="{{ url('/admin/musculos') }}" method="POST">
