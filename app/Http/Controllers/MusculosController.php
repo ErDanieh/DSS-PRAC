@@ -14,8 +14,10 @@ class MusculosController extends Controller
      *  */
     function getMusculos()
     {
+        $busquedaRequest = request()->search;
         // $musculos = Musculo::paginate(10);
-        return view('musculos.musculos')->with('musculos', Musculo::simplepaginate(10));
+        return view('musculos.musculos')->with('musculos', Musculo::where('name', 'LIKE', "%{$busquedaRequest}%")
+        ->simplePaginate(10));
         //return view('musculos.musculos', compact('musculos'));
     }
 
@@ -92,5 +94,11 @@ class MusculosController extends Controller
         foreach ($gruposMusculares as $grupoMuscular) {
             echo "<option>" . $grupoMuscular->name . "</option>";
         }
+    }
+
+    function searchMusculo(Request $req)
+    {
+        return view('musculos.musculos')->with('musculos', Musculo::where('name', 'LIKE', "%{$req->input('search')}%")
+            ->simplePaginate(10));
     }
 }

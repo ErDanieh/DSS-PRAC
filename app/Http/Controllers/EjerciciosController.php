@@ -12,7 +12,8 @@ class EjerciciosController extends Controller
      *  */
     function getEjercicios()
     {
-        return view('ejercicios.ejercicios')->with('ejercicios', Ejercicio::simplePaginate(100));
+        $busquedaRequest = request()->search;
+        return view('ejercicios.ejercicios')->with('ejercicios', Ejercicio::where('name', 'LIKE', "%{$busquedaRequest}%")->simplePaginate(10));
     }
 
     /**
@@ -82,5 +83,11 @@ class EjerciciosController extends Controller
         {
             return redirect()->back()->with('error', 'Error ya existe el Ejercicio');
         }
+    }
+
+    function searchEjercicios(Request $req)
+    {
+        return view('ejercicios.ejercicios')->with('ejercicios', Ejercicio::where('name', 'LIKE', "%{$req->input('search')}%")
+            ->simplePaginate(10));
     }
 }
