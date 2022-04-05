@@ -7,6 +7,7 @@
     <h1>Ejercicios</h1>
 
     <div class="" style="margin: 50px auto;">
+        <h2>Añadir ejercicio</h2>
         <form action="{{ url('/admin/ejercicios') }}" method="POST">
             @csrf
             <div class="form-group">
