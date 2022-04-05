@@ -85,7 +85,7 @@ Route::post('/admin/entrenamientos', [EntrenamientosController::class, 'newEntre
 Route::get('/admin/entrenamientos/{id}', [EntrenamientosController::class, 'getEntrenamientoDetalle'])->middleware(['auth']);
 Route::delete('/admin/entrenamientos/{id}', [EntrenamientosController::class, 'deleteEntrenamiento'])->middleware(['auth']);
 Route::put('/admin/entrenamientos/{id}', [EntrenamientosController::class, 'editEntrenamiento'])->middleware(['auth']);
-
+Route::post('/admin/entrenamientos/{id}/ejercicio/{idEjercicio}/disociate', [EntrenamientosController::class, 'eliminarEjercicioDeEntrenamiento'] )->middleware(['auth'])->name('disociate.ejercicio');
 
 /**
  * Controlador del home

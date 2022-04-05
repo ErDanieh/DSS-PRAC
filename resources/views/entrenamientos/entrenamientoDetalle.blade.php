@@ -34,6 +34,32 @@
         </form>
     </div>
 
-    <!--TODO: Listar ejercicios el entrenamiento. -->
+    <h2>Ejercicios del entrenamiento</h2>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($entrenamiento->ejercicios as $ejercicio)
+                <tr>
+                    <td>{{$ejercicio->name }}</td>
+                    <td>{{$ejercicio->descripcion }}</td>
+                    <td>
+                        <form action="{{route('disociate.ejercicio', ['id' =>  $entrenamiento->id , 'idEjercicio' =>  $ejercicio->id ])}}" method="POST">
+                            @csrf
+                            {{ method_field('POST') }}
+                            <button class="btn btn-danger" type="submit">Quitar</button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
 @endsection
