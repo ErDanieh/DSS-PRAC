@@ -7,8 +7,14 @@
     <h1>Editar usuario.</h1>
     <h3>Nombre: {{$user->name}}</h3>
     <h3>Email: {{$user->email}}</h3>
-    <h3>Rol administrador: {{$user->is_admin}}</h3>
-    <h3>Rol entrenador: {{$user->is_trainer}}</h3>
+    
+    @if($user->is_admin)
+    <h3>Administrador</h3>
+    @endif
+
+    @if($user->is_trainer)
+    <h3>Entrenador</h3>
+    @endif
 
     @include('common.alert')
 
