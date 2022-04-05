@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdministracionController;
 
 use App\Models\Ejercicio;
+use App\Models\Musculo;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,7 @@ Route::put('/admin/usuarios/{id}', [UserController::class, 'editProfile'])->midd
  * Control de Musculos
  */
 Route::get('/admin/musculos', [MusculosController::class, 'getMusculos'])->middleware(['auth']); //Lista todos los usuarios
+Route::post('/admin/musculos/search', [MusculosController::class, 'searchMusculo'])->middleware(['auth']); //Buscador de usuarios por nombre o email
 Route::get('/admin/musculos/{id}', [MusculosController::class, 'getMusculoDetalle'])->middleware(['auth']);
 Route::post('/admin/musculos', [MusculosController::class, 'newMusculo'])->middleware(['auth']);
 Route::delete('/admin/musculos/{id}', [MusculosController::class, 'deleteMusculo'])->middleware(['auth']);

@@ -93,4 +93,10 @@ class MusculosController extends Controller
             echo "<option>" . $grupoMuscular->name . "</option>";
         }
     }
+
+    function searchMusculo(Request $req)
+    {
+        return view('musculos.musculos')->with('musculos', Musculo::where('name', 'LIKE', "%{$req->input('search')}%")
+            ->simplePaginate(10));
+    }
 }
