@@ -1,15 +1,18 @@
-
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-@include('partials.head')
+
+<head>
+   @include('partials.head')
+   <title>UAFit</title>
+</head>
 
 <body>
-   <!-- Nav --> 
+   <!-- Nav -->
    @include('partials.nav')
-   <!-- Contenido --> 
+   <!-- Contenido -->
    @yield('content')
 
-   <!-- Footer --> 
+   <!-- Footer -->
    @include('partials.footer')
 </body>

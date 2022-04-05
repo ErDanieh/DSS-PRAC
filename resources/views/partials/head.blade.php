@@ -4,7 +4,7 @@
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<title>{{ config('app.name', 'UAFit') }}</title>
+@yield('title')
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,3 +24,6 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.0/css/all.css" crossorigin="anonymous">
+
+<link rel="icon" href="{{ url('favicon.png') }}">
+<link rel="stylesheet" type="text/css" href="{{ url('css/style.css') }}">

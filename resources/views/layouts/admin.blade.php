@@ -1,8 +1,12 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-@include('partials.head')
+<head>
+   @include('partials.head')
+   <title>UAFit - Administración</title>
+</head>
 
+@section('title', 'Page Title')
 <body>
 
    <div class="container-fluid">
