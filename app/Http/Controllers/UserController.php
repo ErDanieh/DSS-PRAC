@@ -52,24 +52,42 @@ class UserController extends Controller
     {
 
         $UsuarioEditar = User::findOrFail($id);
-        if ($UsuarioEditar != null) {
+        if (
+            $req->input('name') == null && $req->input('email') == null && $req->input('password') == null &&
+            (!isset($_POST['beTrainer']) && $UsuarioEditar->is_trainer == 0 || isset($_POST['beTrainer']) && $UsuarioEditar->is_trainer == 1)
+            &&(!isset($_POST['beAdmin']) && $UsuarioEditar->is_admin == 0 || isset($_POST['beAdmin']) && $UsuarioEditar->is_admin == 1))
+            {
+            return redirect()->back()->with('error', 'No se han introducido nuevos valores');
+        }
 
+        if ($UsuarioEditar != null) {
 
             if ($req->input('name') != null) {
                 $UsuarioEditar->name = $req->input('name');
             }
-            if (User::where('email', '=', $req->input('email')) == null) {
-                if ($req->input('email') != null) {
+
+            if ($req->input('email') != null) {
+                if (User::where('email', '=', $req->input('email'))->count() == 0) {
                     $UsuarioEditar->email = $req->input('email');
+                } else {
+                    return redirect()->back()->with('error', 'Ese email ya ha sido registrado');
                 }
-            }
-            else{
-                return redirect()->back()->with('error', 'Ese email ya ha sido registrado');
             }
 
             if ($req->input('password') != null) {
                 $UsuarioEditar->password = bcrypt($req->input('password'));
             }
+
+            if (!isset($_POST['beTrainer']))
+                $UsuarioEditar->is_trainer = 0;
+            else
+                $UsuarioEditar->is_trainer = 1;
+
+            if (!isset($_POST['beAdmin']))
+                $UsuarioEditar->is_admin = 0;
+            else
+                $UsuarioEditar->is_admin = 1;
+
             $UsuarioEditar->save();
             return redirect()->back()->with('exito', 'Perfil editado');
         }
