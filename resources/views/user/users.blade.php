@@ -11,12 +11,6 @@
 
     <h1>Usuarios</h1>
 
-
-    <div class="" style="margin: 50px auto;">
-        <h2>Añadir grupo muscular</h2>
-        {{-- TODO: Añadir usuario --}}
-    </div>
-
     @include('common.alert')
 
     <h2>Listado de usuarios</h2>
