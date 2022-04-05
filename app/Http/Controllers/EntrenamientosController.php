@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Entrenamiento;
+use App\Models\Ejercicio;
 use Illuminate\Http\Request;
 
 class EntrenamientosController extends Controller
@@ -76,10 +77,25 @@ class EntrenamientosController extends Controller
             $EntrenamientoEditar->save();
 
             return redirect()->back()->with('exito', 'Entrenamiento editado');
-        }
-        else 
-        {
+        } else {
             return redirect()->back()->with('error', 'Error ya existe el Entrenamiento');
+        }
+    }
+
+
+    /**
+     * E.imina un ejercicio de un entrenamiento
+     */
+    function eliminarEjercicioDeEntrenamiento($idEntrenamiento, $idEjercicio)
+    {
+
+        try {
+            $entrenamiento = Entrenamiento::findOrFail($idEntrenamiento);
+            $ejercicio = Ejercicio::findOrFail($idEjercicio);
+            $ejercicio->entrenamientos()->detach($entrenamiento);
+            return redirect()->back()->with('exito', 'Ejercicio eliminado del entrenamiento.' . $entrenamiento->name);
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', 'No se ha podido eliminar el ejercicio del entrenamiento-' . $idEjercicio . '-');
         }
     }
 }
