@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-
+{{ App\Http\Controllers\AdministracionController::comprobarBD();}}
 @section('content')
 <div class="container">
 

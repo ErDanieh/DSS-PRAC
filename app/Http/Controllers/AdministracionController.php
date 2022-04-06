@@ -10,9 +10,23 @@ use App\Models\Entrenamiento;
 use App\Models\Ejercicio;
 use App\Models\Musculo;
 use App\Models\GrupoMuscular;
+use Illuminate\Support\Facades\DB;
+
 
 class AdministracionController extends Controller
 {
+
+    static function comprobarBD()
+    {
+
+        try {
+            DB::connection()->getPdo();
+        } catch (\Exception $e) {
+
+            die(view("errordb"));
+        }
+    }
+
     function getAdministracion()
     {
         return view("admin.admin");
@@ -20,32 +34,55 @@ class AdministracionController extends Controller
 
     static function numUsers()
     {
-        return User::all()->count();
+        try {
+            return User::all()->count();
+        } catch (\Throwable $th) {
+            die(view("errordb"));
+
+        }
     }
 
     static function numEntrenadores()
     {
-        return User::where('is_trainer', '=', 1)->count();
+        try {
+            return User::where('is_trainer', '=', 1)->count();
+        } catch (\Throwable $th) {
+        }
     }
 
     static function numEntrenamientos()
     {
-        return Entrenamiento::all()->count();
+        try {
+            return Entrenamiento::all()->count();
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     static function numEjercicios()
     {
-        return Ejercicio::all()->count();
+        try {
+            return Ejercicio::all()->count();
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     static function numMusculos()
     {
-        return Musculo::all()->count();
+        try {
+            return Musculo::all()->count();
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     static function grupoMuscular()
     {
-        return GrupoMuscular::all()->count();
+        try {
+            return GrupoMuscular::all()->count();
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
-
 }

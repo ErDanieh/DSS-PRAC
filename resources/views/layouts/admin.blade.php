@@ -8,7 +8,7 @@
 
 @section('title', 'Page Title')
 <body>
-
+{{ App\Http\Controllers\AdministracionController::comprobarBD();}}
    <div class="container-fluid">
       <div class="row flex-nowrap">
          <!-- Nav -->
