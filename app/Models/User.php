@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Session;
 
 class User extends Authenticatable
 {
@@ -50,4 +51,20 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Models\Entrenamiento');
     }
+
+    /** 
+    static public function isLoggedIn() {
+        if (Session::has('userid')){
+            if (User::find(Session::get('userid')))
+                return true;
+            else {
+                // Session is stuck, needs reflushing, this will happen only mid-debugging, due to closing / serving the app.
+                Session::flush();
+                Session::regenerate();
+            }
+        }
+
+        return false;
+    }
+    */
 }

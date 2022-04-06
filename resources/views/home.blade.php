@@ -7,7 +7,7 @@
   </ol>
   <div class="carousel-inner" style="height: 95vh;">
     <div class="carousel-item active" style="height: inherit; object-fit: cover; background-image:  URL('images/cover-image.jpg'); background-position: center;" >
-      <a href="/login" class="btn btn-warning">ADMINISTRADOR</a>
+      <a href="/admin" class="btn btn-warning">ADMINISTRADOR</a>
 
     </div>
   </div>
