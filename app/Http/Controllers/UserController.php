@@ -14,7 +14,11 @@ class UserController extends Controller
      *  */
     function getUsers()
     {
-        return view('user.users')->with('users', User::simplePaginate(10));
+        $busquedaRequest = request()->search;
+        // $musculos = Musculo::paginate(10);
+        return view('user.users')->with('users', User::where('name', 'LIKE', "%{$busquedaRequest}%")
+        ->simplePaginate(10));
+        //return view('musculos.musculos', compact('musculos'));
     }
 
     /**Busca usuarios por nombre o email

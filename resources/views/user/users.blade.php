@@ -15,15 +15,10 @@
 
     <h2>Listado de usuarios</h2>
 
+    <script src="../js/utils.js"> </script>
     {{-- Buscador --}}
-    <form action="{{ url('/admin/usuarios') }}" method="POST" class="form-group">
-        @csrf
-        <label for="search"> Buscar por nombre o email. </label>
-        <div class="">
-            <input class="form-control" name="search" type="text" id="search" autofocus></input>
-            <button hidden type="submit" class="btn btn-primary">Buscar</button>
-        </div>
-    </form>
+    <input type="text" class="form-control" name="search" id="search" autofocus onchange="redirectSearch()" placeholder="Busqueda por nombre."></input>
+
 
     {{-- Listado de usuarios --}}
     <div class="table-responsive">

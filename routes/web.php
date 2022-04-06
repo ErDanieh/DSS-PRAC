@@ -31,7 +31,6 @@ Route::get('/', [HomeController::class, 'getHome']); //Devuelve la vista del hom
  * Control de usuarios
  */
 Route::get('/admin/usuarios/', [UserController::class, 'getUsers'])->middleware(['auth']); //Lista todos los usuarios
-Route::post('/admin/usuarios/', [UserController::class, 'searchUsers'])->middleware(['auth']); //Buscador de usuarios por nombre o email
 Route::get('/admin/usuarios/{id}', [UserController::class, 'getProfile'])->middleware(['auth']);
 Route::delete('/admin/usuarios/{id}', [UserController::class, 'deleteUser'])->middleware(['auth']);
 Route::put('/admin/usuarios/{id}', [UserController::class, 'editProfile'])->middleware(['auth']);
@@ -41,7 +40,7 @@ Route::put('/admin/usuarios/{id}', [UserController::class, 'editProfile'])->midd
  * Control de Musculos
  */
 Route::get('/admin/musculos', [MusculosController::class, 'getMusculos'])->middleware(['auth']); //Lista todos los usuarios
-Route::post('/admin/musculos/search', [MusculosController::class, 'searchMusculo'])->middleware(['auth'])->name('musculo.search'); //Buscador de usuarios por nombre o email
+//Route::post('/admin/musculos/search', [MusculosController::class, 'searchMusculo'])->middleware(['auth'])->name('musculo.search'); //Buscador de usuarios por nombre o email
 Route::get('/admin/musculos/{id}', [MusculosController::class, 'getMusculoDetalle'])->middleware(['auth']);
 Route::post('/admin/musculos', [MusculosController::class, 'newMusculo'])->middleware(['auth']);
 Route::delete('/admin/musculos/{id}', [MusculosController::class, 'deleteMusculo'])->middleware(['auth']);
@@ -61,7 +60,7 @@ Route::post('/admin/ejercicios', [EjerciciosController::class, 'newEjercicios'])
 Route::delete('/admin/ejercicios/{id}', [EjerciciosController::class, 'deleteEjercicio'])->middleware(['auth']); //Elimina ejercicios
 Route::get('/admin/ejercicios/{id}', [EjerciciosController::class, 'getEjercicioDetalle'])->middleware(['auth']); //Añade ejercicios
 Route::put('/admin/ejercicios/{id}', [EjerciciosController::class, 'editEjercicio'])->middleware(['auth']);
-Route::post('/admin/ejercicios/search', [EjerciciosController::class, 'searchEjercicios'])->middleware(['auth'])->name('ejercicio.search');;//Buscar ejercicios nombre
+//Route::post('/admin/ejercicios/search', [EjerciciosController::class, 'searchEjercicios'])->middleware(['auth'])->name('ejercicio.search');;//Buscar ejercicios nombre
 
 /**
  * Control de gruposMusculares
@@ -72,7 +71,7 @@ Route::delete('/admin/gruposMusculares/{id}', [GrupoMuscularController::class, '
 Route::get('/admin/gruposMusculares/{id}', [GrupoMuscularController::class, 'getGruposMuscularesDetalle'])->middleware(['auth']);
 Route::put('/admin/gruposMusculares/{id}', [GrupoMuscularController::class, 'editGruposMusculares'])->middleware(['auth']);
 Route::delete('/admin/gruposMusculares/delete/{id}', [GrupoMuscularController::class, 'editMusculosContiene'])->middleware(['auth']);
-Route::post('/admin/gruposMusculares/search', [GrupoMuscularController::class, 'searchGrupoMuscular'])->middleware(['auth'])->name('gruposMusculares.search');;//Buscar ejercicios nombre
+//Route::post('/admin/gruposMusculares/search', [GrupoMuscularController::class, 'searchGrupoMuscular'])->middleware(['auth'])->name('gruposMusculares.search');;//Buscar ejercicios nombre
 
 /** 
 Route::put('/admin/gruposMusculares/{id}', [GrupoMuscularController::class, 'editGruposMusculares'])->middleware(['auth']);
@@ -91,7 +90,7 @@ Route::delete('/admin/entrenamientos/{id}', [EntrenamientosController::class, 'd
 Route::put('/admin/entrenamientos/{id}', [EntrenamientosController::class, 'editEntrenamiento'])->middleware(['auth']);
 Route::post('/admin/entrenamientos/{id}/ejercicio/{idEjercicio}/disociate', [EntrenamientosController::class, 'eliminarEjercicioDeEntrenamiento'] )->middleware(['auth'])->name('entrenamiento.disociateEjercicio');
 Route::post('/admin/entrenamientos/{id}/ejercicio/add', [EntrenamientosController::class, 'addEjercicioEntrenamiento'] )->middleware(['auth'])->name('entrenamiento.addEjercicio');
-Route::post('/admin/entrenamientos/search', [EntrenamientosController::class, 'searchEntreamiento'])->middleware(['auth'])->name('entrenamientos.search');;//Buscar ejercicios nombre
+//Route::post('/admin/entrenamientos/search', [EntrenamientosController::class, 'searchEntreamiento'])->middleware(['auth'])->name('entrenamientos.search');;//Buscar ejercicios nombre
 
 /**
  * Controlador del home

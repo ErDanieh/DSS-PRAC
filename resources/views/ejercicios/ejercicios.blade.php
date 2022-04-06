@@ -8,11 +8,8 @@
     <h1>Ejercicios</h1>
 
     {{-- Buscador --}}
-    <label for="search"> Buscar por nombre. </label>
-    <div class="">
-        <input class="form-control" name="search" type="text" id="search" autofocus></input>
-        <button type="submit" class="btn btn-primary" onclick="redirectSearch()">Buscar</button>
-    </div>
+    <input type="text" class="form-control" name="search" id="search" autofocus onchange="redirectSearch()" placeholder="Busqueda por nombre."></input>
+
 
     <div class="" style="margin: 50px auto;">
         <h2>Añadir ejercicio</h2>
