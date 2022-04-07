@@ -95,8 +95,8 @@ Route::post('/admin/entrenamientos/{id}/ejercicio/add', [EntrenamientosControlle
 /**
  * Controlador del home
  */
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'getHome'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'getHome'])->middleware(['dbcheck'])->name('home');
 
-Route::get('/admin', [AdministracionController::class, 'getAdministracion'])->middleware(['auth']); //Lista todos los entrenamientos
+Route::get('/admin', [AdministracionController::class, 'getAdministracion'])->middleware(['dbcheck'])->middleware(['auth']); //Lista todos los entrenamientos
 
 Auth::routes();
