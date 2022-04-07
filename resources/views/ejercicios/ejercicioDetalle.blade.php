@@ -2,7 +2,11 @@
 
 @section('content')
 
-<h1>Editar ejercicio</h1>
+
+<div class=" d-flex justify-content-between ">
+    <h1>Editar ejercicio</h1>
+    <a href={{ URL::previous() }} class="btn btn-primary" style="height: min-content; font-size: 1.2rem;"> Atras </a>
+</div>
 <h3>Nombre: {{$ejercicio->name}}</h3>
 <h3>Descripción: {{$ejercicio->descripcion}}</h3>
 @include('common.alert')
@@ -22,7 +26,7 @@
         <div class="form-group">
 
             <label for="urlImagen">Imagen del ejercicio</label>
-            <input class="form-control"type="text" name="urlImagen" id="urlImagen"></textarea>
+            <input class="form-control" type="text" name="urlImagen" id="urlImagen"></textarea>
         </div>
         <button class="btn btn-primary" type="submit" style="margin-top: 20px;">Editar ejercicio</button>
     </form>

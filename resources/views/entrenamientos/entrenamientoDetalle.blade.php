@@ -5,7 +5,10 @@
 <script src="../js/users.js"> </script>
 
 <div>
-    <h1>Editar entrenamiento</h1>
+    <div class=" d-flex justify-content-between ">
+        <h1>Editar entrenamiento</h1>
+        <a href={{ URL::previous() }} class="btn btn-primary" style="height: min-content; font-size: 1.2rem;"> Atras </a>
+    </div>
     <h2>Entrenamiento: {{$entrenamiento->name}}</h2>
     <h2>Descripción: {{$entrenamiento->descripcion}}</h2>
 

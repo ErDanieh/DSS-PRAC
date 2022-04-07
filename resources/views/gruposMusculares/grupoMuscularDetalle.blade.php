@@ -5,7 +5,10 @@
 <div>
 
 
-    <h1>Editar grupo muscular.</h1>
+    <div class=" d-flex justify-content-between ">
+        <h1>Editar grupo muscular.</h1>
+        <a href={{ URL::previous() }} class="btn btn-primary" style="height: min-content; font-size: 1.2rem;"> Atras </a>
+    </div>
     <h3>Nombre: {{$grupo->name}}</h3>
     <h3>Descripcion: {{$grupo->descripcion}}</h3>
     @include('common.alert')
@@ -23,7 +26,7 @@
                 <input class="form-control" placeholder="Nueva descripción del grupo muscular..." required type="text" name="descripcion" id="descripcion">
             </div>
             <div class="text-right">
-            <button class="btn btn-primary" type="submit" style="margin-top: 20px;">Editar grupo muscular</button>
+                <button class="btn btn-primary" type="submit" style="margin-top: 20px;">Editar grupo muscular</button>
             </div>
         </form>
     </div>
