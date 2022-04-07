@@ -28,7 +28,7 @@
             </li>
             <li class="nav-item">
                 <a href="/admin/musculos" class="nav-link align-middle px-0" style="color: white;">
-                    <i class="fa-solid fa-person-running" style="color: white;"></i> <span class="ms-1 d-none d-sm-inline" style="color: white;">Musuculos</span>
+                    <i class="fa-solid fa-person-running" style="color: white;"></i> <span class="ms-1 d-none d-sm-inline" style="color: white;">Músculos</span>
                 </a>
             </li>
 

@@ -4,10 +4,13 @@
 @section('content')
 
 <div>
-    <h1>Editar usuario.</h1>
+    <div class=" d-flex justify-content-between ">
+        <h1>Editar usuario.</h1>
+        <a href={{ URL::previous() }} class="btn btn-primary" style="height: min-content; font-size: 1.2rem;"> Atras </a>
+    </div>
     <h3>Nombre: {{$user->name}}</h3>
     <h3>Email: {{$user->email}}</h3>
-    
+
     @if($user->is_admin)
     <h3>Administrador</h3>
     @endif

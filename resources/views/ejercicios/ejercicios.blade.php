@@ -27,7 +27,7 @@
                 <label for="urlImagen">Imagen del ejercicio</label>
                 <input class="form-control" placeholder="URL de la imagen" required type="text" name="urlImagen" id="urlImagen">
             </div>
-            <button class="btn btn-primary" type="submit" style="margin-top: 20px;">Añadir Musculo</button>
+            <button class="btn btn-primary" type="submit" style="margin-top: 20px; font-size: 1.2rem;">Añadir Musculo</button>
         </form>
     </div>
 

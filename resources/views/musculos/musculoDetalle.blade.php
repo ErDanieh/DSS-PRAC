@@ -5,7 +5,10 @@
 @section('content')
 <script src="../js/users.js"> </script>
 <div>
-    <h1>Editar musculo.</h1>
+    <div class=" d-flex justify-content-between ">
+        <h1>Editar musculo.</h1>
+        <a href={{ URL::previous() }} class="btn btn-primary" style="height: min-content; font-size: 1.2rem;"> Atras </a>
+    </div>
     <h3>Nombre: {{$musculo->name}}</h3>
     <h3>Grupo muscular: {{$musculo->grupoMuscular->name}}</h3>
 

@@ -18,7 +18,7 @@
                 </label>
                 <input class="form-control" placeholder="Descripción del grupo muscular..." required type="text" name="descripcion" id="descripcion">
             </div>
-            <button class="btn btn-primary" type="submit" style="margin-top: 20px;">
+            <button class="btn btn-primary" type="submit" style="margin-top: 20px; font-size: 1.2rem;">
                 Añadir grupo muscular
             </button>
         </form>

@@ -11,7 +11,7 @@
 
 
     <div class="" style="margin: 50px auto;">
-        <h2>Añadir musculo</h2>
+        <h2>Añadir músculo</h2>
         <form action="{{ url('/admin/musculos') }}" method="POST">
             @csrf
             <div class="form-group">
@@ -24,7 +24,7 @@
                     {{ App\Http\Controllers\MusculosController::seleccionableGruposMusculares();}}
                 </select>
             </div>
-            <button class="btn btn-primary" type="submit" style="margin-top: 20px;">Añadir Musculo</button>
+            <button class="btn btn-primary" type="submit" style="margin-top: 20px; font-size: 1.2rem;">Añadir Músculo</button>
         </form>
     </div>
 

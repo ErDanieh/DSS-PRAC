@@ -7,6 +7,5 @@ function redirectToId(id) {
 }
 
 function redirectSearch() {
-    //console.log("AaaaaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
     window.location.href = `${window.location.origin + window.location.pathname}?search=${document.getElementById('search').value}`;
 }
