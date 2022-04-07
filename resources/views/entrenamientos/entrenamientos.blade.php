@@ -6,7 +6,7 @@
 
 <div>
     <h1>Entrenamientos</h1>
-    
+
     {{-- Buscador --}}
     <input type="text" class="form-control" name="search" id="search" autofocus onchange="redirectSearch()" placeholder="Busqueda por nombre."></input>
 
@@ -32,7 +32,7 @@
                 <input class="form-control" placeholder="URL de la imagen..." required type="text" name="urlImagen" id="urlImagen">
             </div>
             <button class="btn btn-primary" type="submit" style="margin-top: 20px; font-size: 1.2rem;">
-                Añadir entrenamiento 
+                Añadir entrenamiento
             </button>
         </form>
 
@@ -72,6 +72,10 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="text-center d-flex justify-content-center m-5">
+            {{ $entrenamientos->links() }}
+
+        </div>
     </div>
 
 </div>

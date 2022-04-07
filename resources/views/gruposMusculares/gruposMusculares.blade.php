@@ -52,5 +52,10 @@
                     </td>
                 </tr> @endforeach
             </tbody>
+        </table>
+        <div class="text-center d-flex justify-content-center m-5">
+            {{ $gruposMusculares->links() }}
+
+        </div>
     </div>
 </div> @endsection
