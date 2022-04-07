@@ -13,10 +13,13 @@
           <li><a href="#" class="nav-link px-2 link-dark">Explorar</a></li>
           <li><a href="#" class="nav-link px-2 link-dark">Planes</a></li>
           <li><a href="#" class="nav-link px-2 link-dark">Entrenadores</a></li>
+          @if (!Auth::guest())
+          <li><a href="/admin" class="nav-link px-2 link-dark">Administrar</a></li>
+          @endif
         </ul>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+          <input type="search" class="form-control disabled" placeholder="Search..." aria-label="Search">
         </form>
 
 
@@ -30,13 +33,13 @@
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
-          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">Perfil</a></li>
-            <li><a class="dropdown-item" href="#">Ajustes</a></li>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="cursor: pointer;">
+            <li><a class="dropdown-item disabled" href="#">Perfil</a></li>
+            <li><a class="dropdown-item disabled" href="#">Ajustes</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Sign out</a></li>
+            <li><a class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Cerrar sesión</a></li>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
               {{ csrf_field() }}
             </form>

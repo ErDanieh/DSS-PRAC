@@ -1,7 +1,6 @@
-@section('footer')
 
 <!-- Footer -->
-<footer class="bg-warning text-center text-white">
+<footer class="text-center text-white mt-auto" style="margin-top: max; background: linear-gradient(45deg, #2937f0, #9f1ae2) !important;">
     <!-- Grid container -->
     <div class="container p-4">
 
@@ -36,4 +35,3 @@
 
 </footer>
 <!-- Footer -->
-@endsection
