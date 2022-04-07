@@ -13,11 +13,13 @@ class EntrenamientosController extends Controller
      *  */
     function getEntrenamientos()
     {
-        $busquedaRequest = request()->search;
-        // $musculos = Musculo::paginate(10);
-        return view('entrenamientos.entrenamientos')->with('entrenamientos', Entrenamiento::where('name', 'LIKE', "%{$busquedaRequest}%")
-        ->simplePaginate(10));
-        //return view('musculos.musculos', compact('musculos'));
+        try {
+            $busquedaRequest = request()->search;
+            return view('entrenamientos.entrenamientos')->with('entrenamientos', Entrenamiento::where('name', 'LIKE', "%{$busquedaRequest}%")
+                ->simplePaginate(10));
+        } catch (\Throwable $th) {
+            return abort(503, 'Internal server error');
+        }
     }
 
     /**
@@ -25,64 +27,81 @@ class EntrenamientosController extends Controller
      */
     function getEntrenamientoDetalle($id)
     {
-        return view('entrenamientos.entrenamientoDetalle')->with('entrenamiento', Entrenamiento::findOrFail($id));
+        try {
+            return view('entrenamientos.entrenamientoDetalle')->with('entrenamiento', Entrenamiento::findOrFail($id));
+        } catch (\Throwable $th) {
+            return abort(503, 'Internal server error');
+        }
     }
 
     function newEntrenamiento(Request $req)
     {
-        $nombreEntrenamiento = $req->input('name');
-        $descripcionEntrenamiento = $req->input('descripcion');
-        $urlImagenEntrenamiento = $req->input('urlImagen');
+        try {
+            $nombreEntrenamiento = $req->input('name');
+            $descripcionEntrenamiento = $req->input('descripcion');
+            $urlImagenEntrenamiento = $req->input('urlImagen');
 
-        $EntrenamientoNoEsperado = Entrenamiento::where('name', '=', $nombreEntrenamiento)->first();
+            $EntrenamientoNoEsperado = Entrenamiento::where('name', '=', $nombreEntrenamiento)->first();
 
-        if ($EntrenamientoNoEsperado == null) {
-            $EntrenamientoNuevo = new Entrenamiento();
-            $EntrenamientoNuevo->name = $nombreEntrenamiento;
-            $EntrenamientoNuevo->descripcion = $descripcionEntrenamiento;
-            $EntrenamientoNuevo->url_img = $urlImagenEntrenamiento;
-            $EntrenamientoNuevo->save();
+            if ($EntrenamientoNoEsperado == null) {
+                $EntrenamientoNuevo = new Entrenamiento();
+                $EntrenamientoNuevo->name = $nombreEntrenamiento;
+                $EntrenamientoNuevo->descripcion = $descripcionEntrenamiento;
+                $EntrenamientoNuevo->url_img = $urlImagenEntrenamiento;
+                $EntrenamientoNuevo->save();
 
-            return redirect("/admin/entrenamientos/" . strval($EntrenamientoNuevo->id))->with('exito', 'al añadir el entrenamiento');
-        } else {
-            return redirect()->back()->with('error', 'Error ya existe el Entrenamiento');
+                return redirect("/admin/entrenamientos/" . strval($EntrenamientoNuevo->id))->with('exito', 'al añadir el entrenamiento');
+            } else {
+                return redirect()->back()->with('error', 'Error ya existe el Entrenamiento');
+            }
+        } catch (\Throwable $th) {
+            return abort(503, 'Internal server error');
         }
     }
 
 
     function deleteEntrenamiento($id)
     {
-        $EntrenamientoEsperado = Entrenamiento::where('id', '=', $id)->first();
+        try {
+            $EntrenamientoEsperado = Entrenamiento::where('id', '=', $id)->first();
 
-        if ($EntrenamientoEsperado != null) {
-            $EntrenamientoEsperado->delete();
-            return redirect()->back()->with('exito', 'Entrenamiento eliminado');
+            if ($EntrenamientoEsperado != null) {
+                $EntrenamientoEsperado->delete();
+                return redirect()->back()->with('exito', 'Entrenamiento eliminado');
+            }
+            return redirect()->back()->with('error', 'Error no existe el Entrenamiento');
+        } catch (\Throwable $th) {
+            return abort(503, 'Internal server error');
         }
-        return redirect()->back()->with('error', 'Error no existe el Entrenamiento');
     }
 
     function editEntrenamiento(Request $req, $id)
     {
-        $EntrenamientoEditar = Entrenamiento::findOrFail($id);
-        if ($EntrenamientoEditar != null) {
 
-            if ($req->input('name') != null) {
-                $EntrenamientoEditar->name = $req->input('name');
+        try {
+            $EntrenamientoEditar = Entrenamiento::findOrFail($id);
+            if ($EntrenamientoEditar != null) {
+
+                if ($req->input('name') != null) {
+                    $EntrenamientoEditar->name = $req->input('name');
+                }
+
+                if ($req->input('descripcion') != null) {
+                    $EntrenamientoEditar->descripcion = $req->input('descripcion');
+                }
+
+                if ($req->input('urlImagen') != null) {
+                    $EntrenamientoEditar->url_img = $req->input('urlImagen');
+                }
+
+                $EntrenamientoEditar->save();
+
+                return redirect()->back()->with('exito', 'Entrenamiento editado');
+            } else {
+                return redirect()->back()->with('error', 'Error ya existe el Entrenamiento');
             }
-
-            if ($req->input('descripcion') != null) {
-                $EntrenamientoEditar->descripcion = $req->input('descripcion');
-            }
-
-            if ($req->input('urlImagen') != null) {
-                $EntrenamientoEditar->url_img = $req->input('urlImagen');
-            }
-
-            $EntrenamientoEditar->save();
-
-            return redirect()->back()->with('exito', 'Entrenamiento editado');
-        } else {
-            return redirect()->back()->with('error', 'Error ya existe el Entrenamiento');
+        } catch (\Throwable $th) {
+            return abort(503, 'Internal server error');
         }
     }
 

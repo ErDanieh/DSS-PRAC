@@ -12,8 +12,12 @@ class EjerciciosController extends Controller
      *  */
     function getEjercicios()
     {
-        $busquedaRequest = request()->search;
-        return view('ejercicios.ejercicios')->with('ejercicios', Ejercicio::where('name', 'LIKE', "%{$busquedaRequest}%")->simplePaginate(10));
+        try {
+            $busquedaRequest = request()->search;
+            return view('ejercicios.ejercicios')->with('ejercicios', Ejercicio::where('name', 'LIKE', "%{$busquedaRequest}%")->simplePaginate(10));
+        } catch (\Throwable $th) {
+            return abort(503, 'Internal Error');
+        }
     }
 
     /**
@@ -21,73 +25,90 @@ class EjerciciosController extends Controller
      */
     function newEjercicios(Request $req)
     {
-        $nombreEjercicio = $req->input('name');
-        $descripcionEjercicio = $req->input('descripcion');
-        $urlImagenEjercicio = $req->input('urlImagen');
+        try {
+            $nombreEjercicio = $req->input('name');
+            $descripcionEjercicio = $req->input('descripcion');
+            $urlImagenEjercicio = $req->input('urlImagen');
 
-        $ejercicio = Ejercicio::where('name', '=', $nombreEjercicio)->first();
+            $ejercicio = Ejercicio::where('name', '=', $nombreEjercicio)->first();
 
-        if ($ejercicio == null) {
-            $ejercicioNuevo = new Ejercicio();
-            $ejercicioNuevo->name = $nombreEjercicio;
-            $ejercicioNuevo->descripcion = $descripcionEjercicio;
-            $ejercicioNuevo->url_img = $urlImagenEjercicio;
-            $ejercicioNuevo->save();
+            if ($ejercicio == null) {
+                $ejercicioNuevo = new Ejercicio();
+                $ejercicioNuevo->name = $nombreEjercicio;
+                $ejercicioNuevo->descripcion = $descripcionEjercicio;
+                $ejercicioNuevo->url_img = $urlImagenEjercicio;
+                $ejercicioNuevo->save();
 
-            return redirect()->back()->with('exito', 'Ejercicio insertado con exito');
-        } else {
-            return redirect()->back()->with('error', 'Error ya existe el ejercicio');
+                return redirect()->back()->with('exito', 'Ejercicio insertado con exito');
+            } else {
+                return redirect()->back()->with('error', 'Error ya existe el ejercicio');
+            }
+        } catch (\Throwable $th) {
+            return abort(503, 'Internal Error');
         }
     }
 
     function deleteEjercicio($id)
     {
+        try {
+            $ejercicioEsperado = Ejercicio::findOrFail($id);
 
-        $ejercicioEsperado = Ejercicio::findOrFail($id);
-
-        if ($ejercicioEsperado != null) {
-            $ejercicioEsperado->delete();
-            return redirect()->back()->with('exito', 'Ejercicio eliminado con exito');
+            if ($ejercicioEsperado != null) {
+                $ejercicioEsperado->delete();
+                return redirect()->back()->with('exito', 'Ejercicio eliminado con exito');
+            }
+            return redirect()->back()->with('error', 'Error no existe el ejercicio');
+        } catch (\Throwable $th) {
+            return abort(503, 'Internal Error');
         }
-        return redirect()->back()->with('error', 'Error no existe el ejercicio');
     }
 
 
     function getEjercicioDetalle($id)
     {
-        return view('ejercicios.ejercicioDetalle')->with('ejercicio', Ejercicio::findOrFail($id));
+        try {
+            return view('ejercicios.ejercicioDetalle')->with('ejercicio', Ejercicio::findOrFail($id));
+        } catch (\Throwable $th) {
+            return abort(503, 'Internal Error');
+        }
     }
 
     function editEjercicio(Request $req, $id)
     {
-        $EjercicioEditar = Ejercicio::findOrFail($id);
-        if ($EjercicioEditar != null) {
+        try {
+            $EjercicioEditar = Ejercicio::findOrFail($id);
+            if ($EjercicioEditar != null) {
 
-            if ($req->input('name') != null) {
-                $EjercicioEditar->name = $req->input('name');
+                if ($req->input('name') != null) {
+                    $EjercicioEditar->name = $req->input('name');
+                }
+
+                if ($req->input('descripcion') != null) {
+                    $EjercicioEditar->descripcion = $req->input('descripcion');
+                }
+
+                if ($req->input('urlImagen') != null) {
+                    $EjercicioEditar->url_img = $req->input('urlImagen');
+                }
+
+                $EjercicioEditar->save();
+
+                return redirect()->back()->with('exito', 'Ejercicio editado');
+            } else {
+                return redirect()->back()->with('error', 'Error ya existe el Ejercicio');
             }
-
-            if ($req->input('descripcion') != null) {
-                $EjercicioEditar->descripcion = $req->input('descripcion');
-            }
-
-            if ($req->input('urlImagen') != null) {
-                $EjercicioEditar->url_img = $req->input('urlImagen');
-            }
-
-            $EjercicioEditar->save();
-
-            return redirect()->back()->with('exito', 'Ejercicio editado');
-        }
-        else 
-        {
-            return redirect()->back()->with('error', 'Error ya existe el Ejercicio');
+        } catch (\Throwable $th) {
+            return abort(503, 'Internal Error');
         }
     }
 
     function searchEjercicios(Request $req)
     {
-        return view('ejercicios.ejercicios')->with('ejercicios', Ejercicio::where('name', 'LIKE', "%{$req->input('search')}%")
-            ->simplePaginate(10));
+        try {
+            return view('ejercicios.ejercicios')->with('ejercicios', Ejercicio::where('name', 'LIKE', "%{$req->input('search')}%")
+                ->simplePaginate(10));
+        } catch (\Throwable $th) {
+            return abort(503, 'Internal Error');
+        }
     }
 }
