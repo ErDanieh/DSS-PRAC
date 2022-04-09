@@ -73,7 +73,11 @@
             </tbody>
         </table>
         <div class="text-center d-flex justify-content-center m-5">
+            @if(request()->search!=null)
+            {{ $entrenamientos->appends(['search'=>request()->search])->links() }}
+            @else
             {{ $entrenamientos->links() }}
+            @endif
 
         </div>
     </div>

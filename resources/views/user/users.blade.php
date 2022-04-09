@@ -17,7 +17,7 @@
 
     <script src="../js/utils.js"> </script>
     {{-- Buscador --}}
-    <input type="text" class="form-control" name="search" id="search" autofocus onchange="redirectSearch()" placeholder="Busqueda por nombre."></input>
+    <input type="text" class="form-control" name="search" id="search" autofocus onchange="redirectSearch()" placeholder="Busqueda por nombre y correo electronico."></input>
 
 
     {{-- Listado de usuarios --}}
@@ -69,7 +69,11 @@
 
     {{-- Paginacion --}}
     <div class="text-center d-flex justify-content-center m-5">
+        @if(request()->search!=null)
+        {{ $users->appends(['search'=>request()->search])->links() }}
+        @else
         {{ $users->links() }}
+        @endif
     </div>
 
 
