@@ -15,10 +15,19 @@ class MusculosController extends Controller
     function getMusculos()
     {
         $busquedaRequest = request()->search;
-        // $musculos = Musculo::paginate(10);
+        $busquedaOrder = request()->ordered;
+        //echo $busquedaOrder;
+        if ($busquedaOrder == "Ascendente") {
+            return view('musculos.musculos')->with('musculos', Musculo::where('name', 'LIKE', "%{$busquedaRequest}%")
+                ->orderBy('name', 'ASC')
+                ->simplePaginate(10));
+        } elseif ($busquedaOrder == "Descendente") {
+            return view('musculos.musculos')->with('musculos', Musculo::where('name', 'LIKE', "%{$busquedaRequest}%")
+                ->orderBy('name', 'DESC')
+                ->simplePaginate(10));
+        }
         return view('musculos.musculos')->with('musculos', Musculo::where('name', 'LIKE', "%{$busquedaRequest}%")
-        ->simplePaginate(10));
-        //return view('musculos.musculos', compact('musculos'));
+            ->simplePaginate(10));
     }
 
     /**
