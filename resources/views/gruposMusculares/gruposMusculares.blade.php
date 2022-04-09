@@ -25,6 +25,11 @@
     </div>
 
     @include('common.alert')
+    <select type="text" class="form-control" name="ordered" id="ordered" autofocus onchange="redirectUrlParams('ordered')">
+        <option selected disabled> Ordenación</option>
+        <option> Ascendente</option>
+        <option> Descendente</option>
+    </select>
     <h2>Listado de grupos musculares</h2>
     <div class="table-responsive">
         <table class="table">
@@ -54,10 +59,17 @@
             </tbody>
         </table>
         <div class="text-center d-flex justify-content-center m-5">
-            @if(request()->search!=null)
+        @if(request()->search!=null && request()->ordered!=null)
+            {{ $gruposMusculares->appends(['search'=>request()->search, 'ordered'=>request()->ordered])->links() }}
+
+            @elseif(request()->search!=null && request()->ordered==null)
             {{ $gruposMusculares->appends(['search'=>request()->search])->links() }}
-            @else
+
+            @elseif(request()->search==null && request()->ordered!=null)
+            {{ $gruposMusculares->appends(['ordered'=>request()->ordered])->links() }}
+            @else 
             {{ $gruposMusculares->links() }}
+
             @endif
         </div>
     </div>

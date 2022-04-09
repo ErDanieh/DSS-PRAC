@@ -15,9 +15,20 @@ class GrupoMuscularController extends Controller
     function getGruposMusculares()
     {
         $busquedaRequest = request()->search;
-        // $musculos = Musculo::paginate(10);
+        $busquedaOrder = request()->ordered;
+        //echo $busquedaOrder;
+        if ($busquedaOrder == "Ascendente") {
+            return view('gruposMusculares.gruposMusculares')->with('gruposMusculares', GrupoMuscular::where('name', 'LIKE', "%{$busquedaRequest}%")
+                ->orderBy('name', 'ASC')
+                ->simplePaginate(10));
+        } elseif ($busquedaOrder == "Descendente") {
+            return view('gruposMusculares.gruposMusculares')->with('gruposMusculares', GrupoMuscular::where('name', 'LIKE', "%{$busquedaRequest}%")
+                ->orderBy('name', 'DESC')
+                ->simplePaginate(10));
+        }
         return view('gruposMusculares.gruposMusculares')->with('gruposMusculares', GrupoMuscular::where('name', 'LIKE', "%{$busquedaRequest}%")
             ->simplePaginate(10));
+
     }
 
     /**
