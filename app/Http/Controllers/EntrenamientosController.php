@@ -13,13 +13,20 @@ class EntrenamientosController extends Controller
      *  */
     function getEntrenamientos()
     {
-        try {
-            $busquedaRequest = request()->search;
+        $busquedaRequest = request()->search;
+        $busquedaOrder = request()->ordered;
+        //echo $busquedaOrder;
+        if ($busquedaOrder == "Ascendente") {
             return view('entrenamientos.entrenamientos')->with('entrenamientos', Entrenamiento::where('name', 'LIKE', "%{$busquedaRequest}%")
+                ->orderBy('name', 'ASC')
                 ->simplePaginate(10));
-        } catch (\Throwable $th) {
-            return abort(503, 'Internal server error');
+        } elseif ($busquedaOrder == "Descendente") {
+            return view('entrenamientos.entrenamientos')->with('entrenamientos', Entrenamiento::where('name', 'LIKE', "%{$busquedaRequest}%")
+                ->orderBy('name', 'DESC')
+                ->simplePaginate(10));
         }
+        return view('entrenamientos.entrenamientos')->with('entrenamientos', Entrenamiento::where('name', 'LIKE', "%{$busquedaRequest}%")
+            ->simplePaginate(10));
     }
 
     /**
