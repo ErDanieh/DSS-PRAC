@@ -54,8 +54,11 @@
             </tbody>
         </table>
         <div class="text-center d-flex justify-content-center m-5">
+            @if(request()->search!=null)
+            {{ $gruposMusculares->appends(['search'=>request()->search])->links() }}
+            @else
             {{ $gruposMusculares->links() }}
-
+            @endif
         </div>
     </div>
 </div> @endsection
