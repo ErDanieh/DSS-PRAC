@@ -35,11 +35,16 @@
 
 
     <h2>Listado de ejercicios</h2>
+    <select id="gm" class="form-select" onchange="redirectUrlParams('gm')" style="width: min-content;">
+        <option disabled selected> Grupo muscular </option>
+        {{ App\Http\Controllers\EjerciciosController::seleccionableGrupoMuscular();}}
+    </select>
     <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Grupo Muscular</th>
                     <th scope="col">Descripción</th>
                     <th scope="col">URL imagen</th>
                     <th scope="col">Editar</th>
@@ -49,9 +54,13 @@
             <tbody>
                 @foreach($ejercicios as $ejercicio)
                 <tr>
-                    <td>{{$ejercicio->name }}</td>
-                    <td>{{$ejercicio->descripcion }}</td>
-                    <td type="url">{{$ejercicio->url_img }}</td>
+                    <td>{{$ejercicio->name}}</td>
+                    <td>@foreach($ejercicio->grupoMusculares as $grupoMuscular)
+                        {{$grupoMuscular->name}}
+                        @endforeach
+                    </td>
+                    <td>{{$ejercicio->descripcion}}</td>
+                    <td type="url">{{$ejercicio->url_img}}</td>
                     <td>
                         <button class="btn btn-success" type="submit" onclick="showProfile({{$ejercicio->id}})">Editar</button>
                     </td>
@@ -59,7 +68,7 @@
                         <form action="{{url('/admin/ejercicios', $ejercicio->id)}}" class="mr-4" method="POST">
                             @csrf
                             {{ method_field('DELETE') }}
-                            <button class="btn btn-danger m-3" style="width: 100%;" type="submit">Delete</button>
+                            <button class="btn btn-danger" style="width: 100%;" type="submit">Delete</button>
                         </form>
                     </td>
                 </tr>
@@ -68,11 +77,7 @@
         </table>
     </div>
     <div class="text-center d-flex justify-content-center m-5">
-        @if(request()->search!=null)
-        {{ $ejercicios->appends(['search'=>request()->search])->links() }}
-        @else
         {{ $ejercicios->links() }}
-        @endif
     </div>
 
 </div>

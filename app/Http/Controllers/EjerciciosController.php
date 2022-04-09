@@ -26,23 +26,18 @@ class EjerciciosController extends Controller
             try {
                 if ($grupoMuscularFilter != null) {
                     $grupoMuscular = GrupoMuscular::where('name', '=', $grupoMuscularFilter)->first();
-                    $resultado = $grupoMuscular->ejercicios();
+                    $resultado = $grupoMuscular->ejercicios()->paginate(10);
                 }
                 if ($busquedaRequest != null) {
                     $ejerciciosFIltradosNombre = Ejercicio::where('name', 'like', "%{$busquedaRequest}%");
-                    if ($grupoMuscularFilter != null) {
-                        $resultado = array_intersect($resultado ,$ejerciciosFIltradosNombre);
-                        echo "he hehco la interseccion";
-                    } else {
-                        $resultado = $ejerciciosFIltradosNombre;
-                    }
+                    $resultado = $ejerciciosFIltradosNombre->simplePaginate(10);  
                 }
             } catch (\Throwable $th) {
                 echo "error";
                 return view('ejercicios.ejercicios', ['ejercicios' => Ejercicio::paginate(10)]);
             }
 
-            return view('ejercicios.ejercicios', ['ejercicios' => $resultado->simplePaginate(10)]);
+            return view('ejercicios.ejercicios', ['ejercicios' => $resultado]);
         } catch (\Throwable $th) {
             return abort(503, 'Internal Error');
         }
