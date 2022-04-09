@@ -15,12 +15,12 @@ class Ejercicio extends Model
 
     public function grupoMusculares()
     {
-        return $this->belongsToMany('App\Models\GrupoMuscular');
+        return $this->belongsToMany(GrupoMuscular::class);
     }
 
     public function entrenamientos()
     {
-        return $this->belongsToMany('App\Models\Entrenamiento');
+        return $this->belongsToMany(Entrenamiento::class);
     }
 
 }

@@ -3,22 +3,51 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ejercicio;
+use App\Models\GrupoMuscular;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\Input;
+use DB;
 
 class EjerciciosController extends Controller
 {
     /**
      * Lista todos los ejercicios
      *  */
-    function getEjercicios()
+    function getEjercicios(Request $req)
     {
+
+
         try {
             $busquedaRequest = request()->search;
-            return view('ejercicios.ejercicios')->with('ejercicios', Ejercicio::where('name', 'LIKE', "%{$busquedaRequest}%")->simplePaginate(10));
+            $grupoMuscularFilter = request()->gm;
+            $resultado = Ejercicio::paginate(10);
+
+
+            try {
+                if ($grupoMuscularFilter != null) {
+                    $grupoMuscular = GrupoMuscular::where('name', '=', $grupoMuscularFilter)->first();
+                    $resultado = $grupoMuscular->ejercicios();
+                }
+                if ($busquedaRequest != null) {
+                    $ejerciciosFIltradosNombre = Ejercicio::where('name', 'like', "%{$busquedaRequest}%");
+                    if ($grupoMuscularFilter != null) {
+                        $resultado = array_intersect($resultado ,$ejerciciosFIltradosNombre);
+                        echo "he hehco la interseccion";
+                    } else {
+                        $resultado = $ejerciciosFIltradosNombre;
+                    }
+                }
+            } catch (\Throwable $th) {
+                echo "error";
+                return view('ejercicios.ejercicios', ['ejercicios' => Ejercicio::paginate(10)]);
+            }
+
+            return view('ejercicios.ejercicios', ['ejercicios' => $resultado->simplePaginate(10)]);
         } catch (\Throwable $th) {
             return abort(503, 'Internal Error');
         }
     }
+
 
     /**
      * Añade ejercicios
@@ -109,6 +138,16 @@ class EjerciciosController extends Controller
                 ->simplePaginate(10));
         } catch (\Throwable $th) {
             return abort(503, 'Internal Error');
+        }
+    }
+
+    static function seleccionableGrupoMuscular()
+    {
+        $gruposMusculares = GrupoMuscular::all();
+
+        foreach ($gruposMusculares as $grupoMuscular) {
+
+            echo "<option value='" . $grupoMuscular->name . "'>" . $grupoMuscular->name . "</option>";
         }
     }
 }
