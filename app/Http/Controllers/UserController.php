@@ -16,7 +16,7 @@ class UserController extends Controller
     {
         $busquedaRequest = request()->search;
         // $musculos = Musculo::paginate(10);
-        return view('user.users')->with('users', User::where('name', 'LIKE', "%{$busquedaRequest}%")
+        return view('user.users')->with('users', User::where('name', 'LIKE', "%{$busquedaRequest}%")->orWhere('email', 'LIKE', "%{$busquedaRequest}%")
         ->simplePaginate(10));
         //return view('musculos.musculos', compact('musculos'));
     }
