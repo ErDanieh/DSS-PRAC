@@ -20,13 +20,13 @@ class EjerciciosController extends Controller
         try {
             $busquedaRequest = request()->search;
             $grupoMuscularFilter = request()->gm;
-            $resultado = Ejercicio::paginate(10);
+            $resultado = Ejercicio::simplePaginate(10);
 
 
             try {
                 if ($grupoMuscularFilter != null) {
                     $grupoMuscular = GrupoMuscular::where('name', '=', $grupoMuscularFilter)->first();
-                    $resultado = $grupoMuscular->ejercicios()->paginate(10);
+                    $resultado = $grupoMuscular->ejercicios()->simplePaginate(10);
                 }
                 if ($busquedaRequest != null) {
                     $ejerciciosFIltradosNombre = Ejercicio::where('name', 'like', "%{$busquedaRequest}%");
@@ -34,7 +34,7 @@ class EjerciciosController extends Controller
                 }
             } catch (\Throwable $th) {
                 echo "error";
-                return view('ejercicios.ejercicios', ['ejercicios' => Ejercicio::paginate(10)]);
+                return view('ejercicios.ejercicios', ['ejercicios' => Ejercicio::simplePaginate(10)]);
             }
 
             return view('ejercicios.ejercicios', ['ejercicios' => $resultado]);
