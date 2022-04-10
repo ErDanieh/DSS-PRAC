@@ -75,9 +75,10 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
-    <div class="text-center d-flex justify-content-center m-5">
-        {{ $ejercicios->links() }}
+        <div class="text-center d-flex justify-content-center m-5">
+            {{ $ejercicios->links() }}
+        </div>
+
     </div>
 
 </div>
