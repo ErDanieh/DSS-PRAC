@@ -8,7 +8,7 @@
       </a>
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 link-secondary">Inicio</a></li>
+        <li><a href="/" class="nav-link px-2 link-secondary">Inicio</a></li>
         <li><a href="#" class="nav-link px-2 link-dark">Explorar</a></li>
         <li><a href="#" class="nav-link px-2 link-dark">Planes</a></li>
         <li><a href="#" class="nav-link px-2 link-dark">Entrenadores</a></li>
@@ -33,7 +33,7 @@
           <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
         </a>
         <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="cursor: pointer;">
-          <li><a class="dropdown-item disabled" href="#">Perfil</a></li>
+          <li><a class="dropdown-item" href="/perfil">Perfil</a></li>
           <li><a class="dropdown-item disabled" href="#">Ajustes</a></li>
           <li>
             <hr class="dropdown-divider">

@@ -8,7 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\GrupoMuscularController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdministracionController;
-
+use App\Http\Controllers\PerfilController;
 use App\Models\Ejercicio;
 use App\Models\Musculo;
 
@@ -98,5 +98,9 @@ Route::post('/admin/entrenamientos/{id}/ejercicio/add', [EntrenamientosControlle
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'getHome'])->middleware(['dbcheck'])->name('home');
 
 Route::get('/admin', [AdministracionController::class, 'getAdministracion'])->middleware(['dbcheck'])->middleware(['auth']); //Lista todos los entrenamientos
+
+Route::get('/perfil', [PerfilController::class, 'getPerfil'])->middleware(['dbcheck'])->middleware(['auth'])->name('perfil');
+
+
 
 Auth::routes();
