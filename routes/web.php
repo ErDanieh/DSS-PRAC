@@ -90,7 +90,8 @@ Route::delete('/admin/entrenamientos/{id}', [EntrenamientosController::class, 'd
 Route::put('/admin/entrenamientos/{id}', [EntrenamientosController::class, 'editEntrenamiento'])->middleware(['auth']);
 Route::post('/admin/entrenamientos/{id}/ejercicio/{idEjercicio}/disociate', [EntrenamientosController::class, 'eliminarEjercicioDeEntrenamiento'] )->middleware(['auth'])->name('entrenamiento.disociateEjercicio');
 Route::post('/admin/entrenamientos/{id}/ejercicio/add', [EntrenamientosController::class, 'addEjercicioEntrenamiento'] )->middleware(['auth'])->name('entrenamiento.addEjercicio');
-//Route::post('/admin/entrenamientos/search', [EntrenamientosController::class, 'searchEntreamiento'])->middleware(['auth'])->name('entrenamientos.search');;//Buscar ejercicios nombre
+Route::get('/trainer/entrenamientos', [EntrenamientosController::class, 'getEntrenamientos'])->middleware(['auth']); //Lista todos los entrenamientos
+Route::post('/trainer/entrenamientos', [EntrenamientosController::class, 'newEntrenamiento'])->middleware(['auth']);
 
 /**
  * Controlador del home
