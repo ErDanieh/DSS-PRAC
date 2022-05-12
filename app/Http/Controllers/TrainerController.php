@@ -13,7 +13,6 @@ class TrainerController extends Controller
 
         $busquedaRequest = request()->search;
         $busquedaOrder = request()->ordered;
-        return view('trainers.trainer')->with('entrenamientos', Entrenamiento::where('name', 'LIKE', "%{$busquedaRequest}%")
-            ->simplePaginate(10));
+        return view('trainers.trainer')->with('entrenamientos', Entrenamiento::where('name', 'LIKE', "%{$busquedaRequest}%")->simplePaginate(10));
     }
 }
