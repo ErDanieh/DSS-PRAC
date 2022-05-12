@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserTableSeeder extends Seeder
 {
@@ -14,10 +15,11 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
+        $hashedPassword = Hash::make('12345');
         $user = new User([
             'name' => 'Ander',
             'email' => 'ander@uafit.com',
-            'password' => '12345',
+            'password' => $hashedPassword,
             'is_trainer' =>'0',
             'is_admin' =>'0'
         ]);
@@ -28,10 +30,11 @@ class UserTableSeeder extends Seeder
             echo $e->getMessage();
         }
 
+        $hashedPassword = Hash::make('caballo');
         $user = new User([
             'name' => 'Juan',
             'email' => 'juan@uafit.com',
-            'password' => 'caballo',
+            'password' => $hashedPassword,
             'is_trainer' =>'0',
             'is_admin' =>'0'
         ]);
@@ -43,10 +46,11 @@ class UserTableSeeder extends Seeder
         }
 
 
+        $hashedPassword = Hash::make('23456');
         $user = new User([
             'name' => 'daniel',
             'email' => 'daniel@uafit.com',
-            'password' => '23456',  
+            'password' => $hashedPassword,
             'is_trainer' =>'0',
             'is_admin' =>'0'
         ]);
@@ -57,10 +61,11 @@ class UserTableSeeder extends Seeder
             echo $e->getMessage();
         }
 
+        $hashedPassword = Hash::make('34567');
         $user = new User([
             'name' => 'Laura',
             'email' => 'laura@uafit.com',
-            'password' => '34567',
+            'password' => $hashedPassword,
             'is_trainer' =>'0',
             'is_admin' =>'0'
         ]);
