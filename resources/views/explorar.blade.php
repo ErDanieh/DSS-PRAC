@@ -1,6 +1,7 @@
 @extends('home')
 
 @section('content')
+<script src="../js/utils.js"> </script>
     <div style="width: 900px; margin: auto;">
         <h1>Pagina de explorar</h1>
 
@@ -13,8 +14,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{$entrenamiento->name}}</h5>
                             <p class="card-text">{{Str::limit($entrenamiento->descripcion, 50)}}</p>
-
-                            <a href="#" class="btn btn-primary">Más información</a>
+                            <a onclick="redirectToId({{$entrenamiento->id}})" class="btn btn-primary">Más información</a>
                         </div>
                     
                     </div>

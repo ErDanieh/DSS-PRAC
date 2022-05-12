@@ -106,8 +106,9 @@ Route::get('/trainer',[TrainerController::class, 'getTrainer'])->middleware('dbc
 
 Route::get('/perfil', [PerfilController::class, 'getPerfil'])->middleware(['dbcheck'])->middleware(['auth'])->name('perfil');
 
-Route::get('/explorar', [ExplorarController::class, 'getExplorar'])->middleware(['dbcheck']);
+Route::get('/entrenamientos', [ExplorarController::class, 'getExplorar'])->middleware(['dbcheck']);
 
+Route::get('/entrenamientos/{idEntrenamiento}', [EntrenamientosController::class, 'getInformacionEntrenamiento'])->middleware(['dbcheck']);
 
 
 Auth::routes();

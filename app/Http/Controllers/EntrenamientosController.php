@@ -30,7 +30,8 @@ class EntrenamientosController extends Controller
     }
 
     /**
-     * Devuelve la vista del entrenamiento detallado
+     * Devuelve la vista del entrenamiento detallado.
+     * ADMINISTRADOR
      */
     function getEntrenamientoDetalle($id)
     {
@@ -156,5 +157,17 @@ class EntrenamientosController extends Controller
     {
         return view('entrenamientos.entrenamientos')->with('entrenamientos', Entrenamiento::where('name', 'LIKE', "%{$req->input('search')}%")
             ->simplePaginate(10));
+    }
+
+
+
+    function getInformacionEntrenamiento($id)
+    {
+        try {
+            $entrenamiento = Entrenamiento::findOrFail($id);
+        } catch (\Throwable $th) {
+            return abort('404');
+        }
+        return view('entrenamientos.entrenamientoInformacion')->with('entrenamiento', $entrenamiento);
     }
 }
