@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdministracionController;
 use App\Http\Controllers\ExplorarController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\TrainerController;
 use App\Models\Ejercicio;
 use App\Models\Musculo;
 
@@ -91,7 +92,8 @@ Route::delete('/admin/entrenamientos/{id}', [EntrenamientosController::class, 'd
 Route::put('/admin/entrenamientos/{id}', [EntrenamientosController::class, 'editEntrenamiento'])->middleware(['auth']);
 Route::post('/admin/entrenamientos/{id}/ejercicio/{idEjercicio}/disociate', [EntrenamientosController::class, 'eliminarEjercicioDeEntrenamiento'] )->middleware(['auth'])->name('entrenamiento.disociateEjercicio');
 Route::post('/admin/entrenamientos/{id}/ejercicio/add', [EntrenamientosController::class, 'addEjercicioEntrenamiento'] )->middleware(['auth'])->name('entrenamiento.addEjercicio');
-//Route::post('/admin/entrenamientos/search', [EntrenamientosController::class, 'searchEntreamiento'])->middleware(['auth'])->name('entrenamientos.search');;//Buscar ejercicios nombre
+Route::get('/trainer/entrenamientos', [EntrenamientosController::class, 'getEntrenamientos'])->middleware(['auth']); //Lista todos los entrenamientos
+Route::post('/trainer/entrenamientos', [EntrenamientosController::class, 'newEntrenamiento'])->middleware(['auth']);
 
 /**
  * Controlador del home
@@ -99,6 +101,8 @@ Route::post('/admin/entrenamientos/{id}/ejercicio/add', [EntrenamientosControlle
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'getHome'])->middleware(['dbcheck'])->name('home');
 
 Route::get('/admin', [AdministracionController::class, 'getAdministracion'])->middleware(['dbcheck'])->middleware(['auth']); //Lista todos los entrenamientos
+
+Route::get('/trainer',[TrainerController::class, 'getTrainer'])->middleware('dbcheck')->middleware('auth');
 
 Route::get('/perfil', [PerfilController::class, 'getPerfil'])->middleware(['dbcheck'])->middleware(['auth'])->name('perfil');
 
