@@ -100,14 +100,16 @@ Route::post('/trainer/entrenamientos', [EntrenamientosController::class, 'newEnt
  */
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'getHome'])->middleware(['dbcheck'])->name('home');
 
-Route::get('/admin', [AdministracionController::class, 'getAdministracion'])->middleware(['dbcheck'])->middleware(['auth']); //Lista todos los entrenamientos
 
-Route::get('/trainer',[TrainerController::class, 'getTrainer'])->middleware('dbcheck')->middleware('auth');
+
+Route::get('/trainer',[TrainerController::class, 'getTrainerAll'])->middleware('dbcheck')->middleware('auth');
 
 Route::get('/perfil', [PerfilController::class, 'getPerfil'])->middleware(['dbcheck'])->middleware(['auth'])->name('perfil');
 
 Route::get('/explorar', [ExplorarController::class, 'getExplorar'])->middleware(['dbcheck']);
 
+
+Route::get('/admin', [AdministracionController::class, 'getAdministracion'])->middleware(['dbcheck'])->middleware(['auth']); //Lista todos los entrenamientos
 
 
 Auth::routes();
