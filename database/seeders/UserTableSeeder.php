@@ -21,7 +21,7 @@ class UserTableSeeder extends Seeder
             'email' => 'ander@uafit.com',
             'password' => $hashedPassword,
             'is_trainer' =>'0',
-            'is_admin' =>'0'
+            'is_admin' =>'1'
         ]);
 
         try {
@@ -51,7 +51,7 @@ class UserTableSeeder extends Seeder
             'name' => 'daniel',
             'email' => 'daniel@uafit.com',
             'password' => $hashedPassword,
-            'is_trainer' =>'0',
+            'is_trainer' =>'1',
             'is_admin' =>'0'
         ]);
 
@@ -66,8 +66,8 @@ class UserTableSeeder extends Seeder
             'name' => 'Laura',
             'email' => 'laura@uafit.com',
             'password' => $hashedPassword,
-            'is_trainer' =>'0',
-            'is_admin' =>'0'
+            'is_trainer' =>'1',
+            'is_admin' =>'1'
         ]);
 
         try {
