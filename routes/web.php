@@ -106,8 +106,9 @@ Route::get('/trainer',[TrainerController::class, 'getTrainerAll'])->middleware('
 
 Route::get('/perfil', [PerfilController::class, 'getPerfil'])->middleware(['dbcheck'])->middleware(['auth'])->name('perfil');
 
-Route::get('/explorar', [ExplorarController::class, 'getExplorar'])->middleware(['dbcheck']);
+Route::get('/entrenamientos', [ExplorarController::class, 'getExplorar'])->middleware(['dbcheck']);
 
+Route::get('/entrenamientos/{idEntrenamiento}', [EntrenamientosController::class, 'getInformacionEntrenamiento'])->middleware(['dbcheck']);
 
 Route::get('/admin', [AdministracionController::class, 'getAdministracion'])->middleware(['dbcheck'])->middleware(['auth']); //Lista todos los entrenamientos
 
