@@ -54,9 +54,7 @@
                     <th scope="col">Descripción</th>
                     <th scope="col">URL Imagen</th>
                     <th scope="col">Editar</th>
-                    @if(auth::user()->is_admin == '1')
                     <th scope="col">Eliminar</th>
-                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -68,7 +66,6 @@
                     <td>
                         <button class="btn btn-success" type="submit" onclick="showProfile({{$entrenamiento->id}})">Editar</button>
                     </td>
-                    @if(auth::user()->is_admin == '1')
                     <td>
                         <form action="{{url('/admin/entrenamientos', $entrenamiento->id)}}" method="POST">
                             @csrf
@@ -76,7 +73,6 @@
                             <button class="btn btn-danger" type="submit">Eliminar</button>
                         </form>
                     </td>
-                    @endif
                 </tr>
                 @endforeach
             </tbody>

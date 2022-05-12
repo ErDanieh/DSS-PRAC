@@ -1,16 +1,8 @@
 <div class="col-md-3 col-xl-2 px-sm-2 px-0 " style="position: fixed; font-size: larger; width: auto; max-width: 20%; background: linear-gradient(45deg, #2937f0, #9f1ae2) !important;">
     <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-        @if(auth::user()->is_trainer == '1' && auth::user()->is_admin == '1')
         <a href="/admin" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <span class="d-none d-sm-inline" style="font-weight: bold; font-size: 2rem; ">Administración</span>
         </a>
-        @elseif (auth::user()->is_trainer == '1' && auth::user()->is_admin == '0')
-        <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <span class="d-none d-sm-inline" style="font-weight: bold; font-size: 2rem; ">Entrenamientos</span>
-        </a>
-        @else
-        <script> window.location.replace("/"); </script>
-        @endif
         <div class="dropdown-divider" style="color: white;">
 
         </div>
@@ -22,7 +14,7 @@
                     <i class="fas fa-dumbbell" style="color: white;"></i> <span style="color: white;" class="ms-1 d-none d-sm-inline" style="color: white;">Entrenamientos</span>
                 </a>
             </li>
-            @if(auth::user()->is_admin == '1')
+
             <li class="nav-item">
                 <a href="/admin/ejercicios" class="nav-link align-middle px-0" style="color: white;">
                     <i class="fa-solid fa-person-running" style="color: white;"></i> <span class="ms-1 d-none d-sm-inline" style="color: white;">Ejercicios</span>
@@ -45,7 +37,6 @@
                     <i class="bi bi-people-fill" style="color: white;"></i> <span class="ms-1 d-none d-sm-inline" style="color: white;">Usuarios</span>
                 </a>
             </li>
-            @endif
 
         </ul>
         <hr>
