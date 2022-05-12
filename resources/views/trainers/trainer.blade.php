@@ -12,7 +12,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{$entrenamiento->name}}</h5>
                 <p class="card-text">{{Str::limit($entrenamiento->descripcion, 50)}}</p>
-
+                <a href="/entrenamientos/{{$entrenamiento->id}}" class="btn btn-primary">Editar</a>
                 <a href="/entrenamientos/{{$entrenamiento->id}}" class="btn btn-primary">Más información</a>
             </div>
 
