@@ -16,6 +16,7 @@ class CreateUsuarioEntrenamiento extends Migration
         Schema::create('entrenamiento_user', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('entrenamiento_id');
+            $table->primary(['user_id','entrenamiento_id']);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('entrenamiento_id')->references('id')->on('entrenamientos')->onDelete('cascade');
             $table->timestamps();
