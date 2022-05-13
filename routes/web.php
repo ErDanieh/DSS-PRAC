@@ -92,8 +92,8 @@ Route::delete('/admin/entrenamientos/{id}', [EntrenamientosController::class, 'd
 Route::put('/admin/entrenamientos/{id}', [EntrenamientosController::class, 'editEntrenamiento'])->middleware(['auth']);
 Route::post('/admin/entrenamientos/{id}/ejercicio/{idEjercicio}/disociate', [EntrenamientosController::class, 'eliminarEjercicioDeEntrenamiento'] )->middleware(['auth'])->name('entrenamiento.disociateEjercicio');
 Route::post('/admin/entrenamientos/{id}/ejercicio/add', [EntrenamientosController::class, 'addEjercicioEntrenamiento'] )->middleware(['auth'])->name('entrenamiento.addEjercicio');
-Route::get('/trainer/entrenamientos', [EntrenamientosController::class, 'getEntrenamientos'])->middleware(['auth']); //Lista todos los entrenamientos
-Route::post('/trainer/entrenamientos', [EntrenamientosController::class, 'newEntrenamiento'])->middleware(['auth']);
+//Route::get('/trainer/entrenamientos', [EntrenamientosController::class, 'getEntrenamientos'])->middleware(['auth']); //Lista todos los entrenamientos
+//Route::post('/trainer/entrenamientos', [EntrenamientosController::class, 'newEntrenamiento'])->middleware(['auth']);
 
 /**
  * Controlador del home
@@ -103,6 +103,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'getHome'])->mi
 
 
 Route::get('/trainer',[TrainerController::class, 'getTrainerAll'])->middleware('dbcheck')->middleware('auth');
+Route::post('/trainer', [TrainerController::class, 'newEntrenamiento'])->middleware(['auth']);
+Route::get('/trainer/entrenamientos/{id}', [TrainerController::class, 'getEntrenamientoDetalle'])->middleware(['auth']);
+Route::put('/trainer/entrenamientos/{id}', [TrainerController::class, 'editEntrenamiento'])->middleware(['auth']);
+Route::delete('/trainer/entrenamientos/{id}', [TrainerController::class, 'deleteEntrenamiento'])->middleware(['auth']);
+Route::post('/trainer/entrenamientos/{id}/ejercicio/{idEjercicio}/disociate', [TrainerController::class, 'eliminarEjercicioDeEntrenamiento'] )->middleware(['auth'])->name('entrenamiento.disociateEjercicio');
+Route::post('/trainer/entrenamientos/{id}/ejercicio/add', [TrainerController::class, 'addEjercicioEntrenamiento'] )->middleware(['auth'])->name('entrenamiento.addEjercicio');
+
+
+
+
 
 Route::get('/perfil', [PerfilController::class, 'getPerfil'])->middleware(['dbcheck'])->middleware(['auth'])->name('perfil');
 
