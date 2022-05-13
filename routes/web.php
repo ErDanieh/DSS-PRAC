@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdministracionController;
 use App\Http\Controllers\ExplorarController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TrainerController;
 use App\Models\Ejercicio;
 use App\Models\Musculo;
@@ -126,6 +127,9 @@ Route::get('/admin', [AdministracionController::class, 'getAdministracion'])->mi
 
 Route::get('/ejercicios', [EjerciciosController::class, 'getExplorarEjercicios'])->middleware(['dbcheck']);
 Route::get('/ejercicios/{idEjercicio}', [EjerciciosController::class, 'getInformacionEjercicio'])->middleware(['dbcheck']);
+
+
+Route::get('/search', [SearchController::class, 'getSearch'])->middleware(['dbcheck']);
 
 
 Auth::routes();

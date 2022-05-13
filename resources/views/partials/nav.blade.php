@@ -26,7 +26,7 @@
       </ul>
 
       <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-        <input type="search" class="form-control disabled" placeholder="Search..." aria-label="Search">
+        <input id="search" type="search" class="form-control disabled" placeholder="Buscar..." aria-label="Search" onchange="buscadorHome()">
       </form>
 
 

@@ -17,3 +17,9 @@ function redirectUrlParams($nameParam) {
     params.append($nameParam, document.getElementById($nameParam).value); // add selected city
     document.location.href = "?" + params.toString(); // refresh the page with new url
 }
+
+
+function buscadorHome() {
+    console.log('asdfasdfasdf');
+    window.location.href = `${window.location.origin}?q=${document.getElementById('search').value}`;
+}
