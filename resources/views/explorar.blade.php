@@ -10,7 +10,7 @@
             <div class="row">
                 @foreach($subentrenamiento as $entrenamiento)
                     <div class="col card" style="margin: 10px; max-width: 46%;">
-                        <img class="card-img-top" src="{{$entrenamiento->url_img}}" alt="Card image cap">
+                        <img class="card-img-top" src="{{$entrenamiento->url_img}}" alt="Card image cap" style="height: 200px; width: 350px; object-fit:cover; border-radius: 10px;">
                         <div class="card-body">
                             <h5 class="card-title">{{$entrenamiento->name}}</h5>
                             <p class="card-text">{{Str::limit($entrenamiento->descripcion, 50)}}</p>

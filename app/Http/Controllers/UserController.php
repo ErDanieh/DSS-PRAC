@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 
 class UserController extends Controller
@@ -17,7 +18,7 @@ class UserController extends Controller
         $busquedaRequest = request()->search;
         // $musculos = Musculo::paginate(10);
         return view('user.users')->with('users', User::where('name', 'LIKE', "%{$busquedaRequest}%")->orWhere('email', 'LIKE', "%{$busquedaRequest}%")
-        ->simplePaginate(10));
+            ->simplePaginate(10));
         //return view('musculos.musculos', compact('musculos'));
     }
 
@@ -52,6 +53,15 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    function deleteUserFromProfile()
+    {
+        $UsuarioEditar = User::findOrFail(auth::user()->id);
+        if ($UsuarioEditar != null) {
+            $UsuarioEditar->delete();
+            return redirect('/');
+        }
+    }
+
     function editProfile(Request $req, $id)
     {
 
@@ -59,8 +69,8 @@ class UserController extends Controller
         if (
             $req->input('name') == null && $req->input('email') == null && $req->input('password') == null &&
             (!isset($_POST['beTrainer']) && $UsuarioEditar->is_trainer == 0 || isset($_POST['beTrainer']) && $UsuarioEditar->is_trainer == 1)
-            &&(!isset($_POST['beAdmin']) && $UsuarioEditar->is_admin == 0 || isset($_POST['beAdmin']) && $UsuarioEditar->is_admin == 1))
-            {
+            && (!isset($_POST['beAdmin']) && $UsuarioEditar->is_admin == 0 || isset($_POST['beAdmin']) && $UsuarioEditar->is_admin == 1)
+        ) {
             return redirect()->back()->with('error', 'No se han introducido nuevos valores');
         }
 

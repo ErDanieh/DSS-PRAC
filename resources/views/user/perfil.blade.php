@@ -22,7 +22,7 @@
     @foreach($misEntrenamientos as $entrenamineto)
     <div>{{$entrenamineto->name}}</div>
     @endforeach
-    
+
     @include('common.alert')
     <form action="{{url('/perfil')}}" method="POST">
         @csrf
@@ -36,6 +36,13 @@
         </button>
     </form>
 
+    <div>
+        <form action="{{url('/perfil')}}" class="mr-4" method="POST">
+            @csrf
+            {{ method_field('DELETE') }}
+            <button class="btn btn-danger m-3" type="submit">Eliminar mi cuenta</button>
+        </form>
+    </div>
 
 
 </div>
