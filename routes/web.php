@@ -115,6 +115,7 @@ Route::post('/trainer/entrenamientos/{id}/ejercicio/add', [TrainerController::cl
 
 
 Route::get('/perfil', [PerfilController::class, 'getPerfil'])->middleware(['dbcheck'])->middleware(['auth'])->name('perfil');
+Route::put('/perfil', [PerfilController::class, 'updateProfilePicture'])->middleware(['dbcheck'])->middleware(['auth']);
 
 Route::get('/entrenamientos', [ExplorarController::class, 'getExplorar'])->middleware(['dbcheck']);
 

@@ -5,9 +5,7 @@
     <h1>Mi perfil</h1>
 
     <div style="margin-top: 50px; display: flex; flex-direction: row; justify-content: space-between;">
-        <img src="https://www.protibest.es/wp-content/uploads/2021/10/jacked-factory-cbum-phone-line.jpg" 
-        style="height: 300px; width: 250px; object-fit:cover; border-radius: 10px;"
-        />
+        <img src={{Auth::user()->picture}} style="height: 300px; width: 250px; object-fit:cover; border-radius: 10px;" />
 
         <div style="display: flex; flex-direction: column; margin-right: min(100px); justify-content: center;">
             <label>Email:</label>
@@ -22,8 +20,22 @@
 
     <h2 style="margin-top: 50px;">Mis entrenamientos:</h2>
     @foreach($misEntrenamientos as $entrenamineto)
-        <div>{{$entrenamineto->name}}</div>
+    <div>{{$entrenamineto->name}}</div>
     @endforeach
+    
+    @include('common.alert')
+    <form action="{{url('/perfil')}}" method="POST">
+        @csrf
+        {{ method_field('PUT') }}
+        <div class="form-group">
+            <label for="name">Url de la imagen</label>
+            <input class="form-control" name="picture" id="picture">
+        </div>
+        <button class="btn btn-primary" type="submit" style="margin-top: 20px; font-size: 1.2rem;">
+            Cambiar
+        </button>
+    </form>
+
 
 
 </div>
