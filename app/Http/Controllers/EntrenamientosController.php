@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Entrenamiento;
 use App\Models\Ejercicio;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EntrenamientosController extends Controller
 {
@@ -140,6 +142,33 @@ class EntrenamientosController extends Controller
             return redirect()->back()->with('exito', 'Ejercicio anadido al entrenamiento.');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', 'No se ha podido anadir el ejercicio');
+        }
+    }
+
+    function anadirAUsuario($idEntrenamiento)
+    {
+        try {
+            $entrenamiento = Entrenamiento::findOrFail($idEntrenamiento);
+            $usuario = User::findOrFail(auth::user()->id);
+            $entrenamiento->usuarios()->attach($usuario);
+            $entrenamiento->save();
+            return redirect()->back()->with('exito', 'Has seguido al entrenamiento con exito');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('ERROR', 'Fallo al seguir al entrenamiento');
+        }
+    }
+
+
+    function quitarAUsuario($idEntrenamiento)
+    {
+        try {
+            $entrenamiento = Entrenamiento::findOrFail($idEntrenamiento);
+            $usuario = User::findOrFail(auth::user()->id);
+            $entrenamiento->usuarios()->detach($usuario);
+            $entrenamiento->save();
+            return redirect()->back()->with('exito', 'Has seguido al entrenamiento con exito');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('ERROR', 'Fallo al seguir al entrenamiento');
         }
     }
 

@@ -87,8 +87,17 @@
     @endforeach
 
 
+    <form action="{{url('/entrenamientos', $entrenamiento->id)}}" method="POST">
+        @csrf
+        {{ method_field('POST') }}
+        <button class="btn btn-danger" type="submit">Seguir Entrenamiento</button>
+    </form>
 
-    <button>Añadir a mis entrenamientos</button>
+    <form action="{{url('/entrenamientos', $entrenamiento->id)}}" method="POST">
+        @csrf
+        {{ method_field('PUT') }}
+        <button class="btn btn-danger" type="submit">Dejar de seguir Entrenamiento</button>
+    </form>
 
 </div>
 @endsection

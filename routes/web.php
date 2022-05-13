@@ -121,6 +121,8 @@ Route::delete('/perfil', [UserController::class, 'deleteUserFromProfile'])->midd
 Route::get('/entrenamientos', [ExplorarController::class, 'getExplorar'])->middleware(['dbcheck']);
 
 Route::get('/entrenamientos/{idEntrenamiento}', [EntrenamientosController::class, 'getInformacionEntrenamiento'])->middleware(['dbcheck']);
+Route::post('/entrenamientos/{idEntrenamiento}', [EntrenamientosController::class, 'anadirAUsuario'])->middleware(['dbcheck']);
+Route::put('/entrenamientos/{idEntrenamiento}', [EntrenamientosController::class, 'quitarAUsuario'])->middleware(['dbcheck']);
 
 Route::get('/admin', [AdministracionController::class, 'getAdministracion'])->middleware(['dbcheck'])->middleware(['auth']); //Lista todos los entrenamientos
 
