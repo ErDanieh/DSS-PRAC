@@ -16,7 +16,6 @@ class EjerciciosController extends Controller
     function getEjercicios(Request $req)
     {
 
-
         try {
             $busquedaRequest = request()->search;
             $grupoMuscularFilter = request()->gm;
@@ -41,6 +40,23 @@ class EjerciciosController extends Controller
         } catch (\Throwable $th) {
             return abort(503, 'Internal Error');
         }
+    }
+
+    function getExplorarEjercicios() 
+    {
+        return view('ejercicios.ejerciciosExplorar')->with('ejercicios', Ejercicio::all());
+    }
+
+    function getInformacionEjercicio($idEjercicio)
+    {
+        try {
+            $ejercicio = Ejercicio::findOrFail($idEjercicio);
+
+        } catch (\Throwable $th) {
+            abort(404);
+        }
+
+        return view('ejercicios.ejercicioInformacion')->with('ejercicio', $ejercicio);
     }
 
 

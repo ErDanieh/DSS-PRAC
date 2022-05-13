@@ -123,5 +123,8 @@ Route::get('/entrenamientos/{idEntrenamiento}', [EntrenamientosController::class
 
 Route::get('/admin', [AdministracionController::class, 'getAdministracion'])->middleware(['dbcheck'])->middleware(['auth']); //Lista todos los entrenamientos
 
+Route::get('/ejercicios', [EjerciciosController::class, 'getExplorarEjercicios'])->middleware(['dbcheck']);
+Route::get('/ejercicios/{idEjercicio}', [EjerciciosController::class, 'getInformacionEjercicio'])->middleware(['dbcheck']);
+
 
 Auth::routes();
