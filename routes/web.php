@@ -100,7 +100,7 @@ Route::post('/admin/entrenamientos/{id}/ejercicio/add', [EntrenamientosControlle
  * Controlador del home
  */
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'getHome'])->middleware(['dbcheck'])->name('home');
-Route::get('/entrenadores', [UserController::class, 'getEntrenadores'])->middleware(['auth']); //Lista todos los usuarios
+Route::get('/entrenadores', [UserController::class, 'getEntrenadores']); //Lista todos los usuarios
 
 
 
