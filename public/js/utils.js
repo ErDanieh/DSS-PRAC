@@ -20,6 +20,5 @@ function redirectUrlParams($nameParam) {
 
 
 function buscadorHome() {
-    console.log('asdfasdfasdf');
-    window.location.href = `${window.location.origin}?q=${document.getElementById('search').value}`;
+    window.location.href = `${window.location.origin}/search?q=${document.getElementById('search').value}`;
 }

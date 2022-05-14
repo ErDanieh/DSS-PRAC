@@ -1,3 +1,4 @@
+<script src="/js/utils.js"> </script>
 <header class="p-3 mb-3 border-bottom">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -25,9 +26,9 @@
 
       </ul>
 
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+      <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
         <input id="search" type="search" class="form-control disabled" placeholder="Buscar..." aria-label="Search" onchange="buscadorHome()">
-      </form>
+      </div>
 
 
       @if (Auth::guest())
