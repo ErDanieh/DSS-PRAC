@@ -133,4 +133,9 @@ class TrainerController extends Controller
         }
         return view('entrenamientos.entrenamientoInformacion')->with('entrenamiento', $entrenamiento);
     }
+
+    function getEjercicioCreator()
+    {
+        return view('ejercicios.ejercicioCreator');
+    }
 }

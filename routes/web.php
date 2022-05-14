@@ -91,8 +91,8 @@ Route::post('/admin/entrenamientos', [EntrenamientosController::class, 'newEntre
 Route::get('/admin/entrenamientos/{id}', [EntrenamientosController::class, 'getEntrenamientoDetalle'])->middleware(['auth']);
 Route::delete('/admin/entrenamientos/{id}', [EntrenamientosController::class, 'deleteEntrenamiento'])->middleware(['auth']);
 Route::put('/admin/entrenamientos/{id}', [EntrenamientosController::class, 'editEntrenamiento'])->middleware(['auth']);
-Route::post('/admin/entrenamientos/{id}/ejercicio/{idEjercicio}/disociate', [EntrenamientosController::class, 'eliminarEjercicioDeEntrenamiento'] )->middleware(['auth'])->name('entrenamiento.disociateEjercicio');
-Route::post('/admin/entrenamientos/{id}/ejercicio/add', [EntrenamientosController::class, 'addEjercicioEntrenamiento'] )->middleware(['auth'])->name('entrenamiento.addEjercicio');
+Route::post('/admin/entrenamientos/{id}/ejercicio/{idEjercicio}/disociate', [EntrenamientosController::class, 'eliminarEjercicioDeEntrenamiento'])->middleware(['auth'])->name('entrenamiento.disociateEjercicio');
+Route::post('/admin/entrenamientos/{id}/ejercicio/add', [EntrenamientosController::class, 'addEjercicioEntrenamiento'])->middleware(['auth'])->name('entrenamiento.addEjercicio');
 //Route::get('/trainer/entrenamientos', [EntrenamientosController::class, 'getEntrenamientos'])->middleware(['auth']); //Lista todos los entrenamientos
 //Route::post('/trainer/entrenamientos', [EntrenamientosController::class, 'newEntrenamiento'])->middleware(['auth']);
 
@@ -103,14 +103,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'getHome'])->mi
 
 
 
-Route::get('/trainer',[TrainerController::class, 'getTrainerAll'])->middleware('dbcheck')->middleware('auth');
+Route::get('/trainer', [TrainerController::class, 'getTrainerAll'])->middleware('dbcheck')->middleware('auth');
 Route::post('/trainer', [TrainerController::class, 'newEntrenamiento'])->middleware(['auth']);
 Route::get('/trainer/entrenamientos/{id}', [TrainerController::class, 'getEntrenamientoDetalle'])->middleware(['auth']);
 Route::put('/trainer/entrenamientos/{id}', [TrainerController::class, 'editEntrenamiento'])->middleware(['auth']);
 Route::delete('/trainer/entrenamientos/{id}', [TrainerController::class, 'deleteEntrenamiento'])->middleware(['auth']);
-Route::post('/trainer/entrenamientos/{id}/ejercicio/{idEjercicio}/disociate', [TrainerController::class, 'eliminarEjercicioDeEntrenamiento'] )->middleware(['auth'])->name('entrenamiento.disociateEjercicio');
-Route::post('/trainer/entrenamientos/{id}/ejercicio/add', [TrainerController::class, 'addEjercicioEntrenamiento'] )->middleware(['auth'])->name('entrenamiento.addEjercicio');
-
+Route::post('/trainer/entrenamientos/{id}/ejercicio/{idEjercicio}/disociate', [TrainerController::class, 'eliminarEjercicioDeEntrenamiento'])->middleware(['auth'])->name('entrenamiento.disociateEjercicio');
+Route::post('/trainer/entrenamientos/{id}/ejercicio/add', [TrainerController::class, 'addEjercicioEntrenamiento'])->middleware(['auth'])->name('entrenamiento.addEjercicio');
+Route::get('/trainer/ejercicioCreation', [TrainerController::class, 'getEjercicioCreator'])->middleware('auth');
+Route::post('/trainer/ejercicioCreation', [EjerciciosController::class, 'newEjercicios'])->middleware('auth');
 
 
 
