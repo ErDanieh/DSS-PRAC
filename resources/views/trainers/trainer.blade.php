@@ -26,6 +26,11 @@
                 Añadir entrenamiento
             </button>
         </form>
+        <a href="/trainer/ejercicioCreation">
+            <button class="btn btn-primary" type="submit" style="margin-top: 20px; font-size: 1.2rem;" >
+                Crear un nuevo ejercicio
+            </button>
+        </a>
 
     </div>
     <div class="row">
