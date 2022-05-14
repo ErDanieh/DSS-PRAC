@@ -14,13 +14,13 @@ class SearchController extends Controller
 
         try {
             $searchRequest = request()->q;
-            $entrenamientosSearch = Entrenamiento::where('name', 'like', "%{$searchRequest}%")->get();
-            $ejerciciosSearch = Ejercicio::where('name', 'like', "%{$searchRequest}%")->get();
+            $entrenamientosSearch = Entrenamiento::where('name', 'like', "%{$searchRequest}%")->take(4)->get();
+            $ejerciciosSearch = Ejercicio::where('name', 'like', "%{$searchRequest}%")->take(4)->get();
             $entrenadoresSearch = User::where([
                 ['is_trainer', '=', '1'],
                 ['name', 'like', "%{$searchRequest}%"]
                 ]
-            )->get();
+            )->take(4)->get();
 
             $data = [
                 'entrenamientos' => $entrenamientosSearch,
