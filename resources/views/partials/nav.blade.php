@@ -13,7 +13,7 @@
         <li><a href="/entrenamientos" class="nav-link px-2 link-dark">Explorar</a></li>
         <li><a href="/ejercicios" class="nav-link px-2 link-dark">Ejercicios</a></li>
         <li><a href="#" class="nav-link px-2 link-dark">Planes</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Entrenadores</a></li>
+        <li><a href="/entrenadores" class="nav-link px-2 link-dark">Entrenadores</a></li>
         @if (!Auth::guest())
         @if (Auth::user()->is_admin == '1')
         <li><a href="/admin" class="nav-link px-2 link-dark">Administrar</a></li>

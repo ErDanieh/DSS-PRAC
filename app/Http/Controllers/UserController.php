@@ -22,6 +22,11 @@ class UserController extends Controller
         //return view('musculos.musculos', compact('musculos'));
     }
 
+    function getEntrenadores()
+    {
+
+        return view('entrenadoresGeneral')->with('entrenadores', User::where('is_trainer', 'LIKE', "1")->simplePaginate(10));
+    }
     /**Busca usuarios por nombre o email
      * 
      */
