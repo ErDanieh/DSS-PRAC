@@ -124,14 +124,14 @@ Route::delete('/perfil', [UserController::class, 'deleteUserFromProfile'])->midd
 
 Route::get('/entrenamientos', [ExplorarController::class, 'getExplorar'])->middleware(['dbcheck']);
 
-Route::get('/entrenamientos/{idEntrenamiento}', [EntrenamientosController::class, 'getInformacionEntrenamiento'])->middleware(['dbcheck']);
+Route::get('/entrenamientos/{idEntrenamiento}', [EntrenamientosController::class, 'getInformacionEntrenamiento'])->middleware(['dbcheck'])->middleware('auth');
 Route::post('/entrenamientos/{idEntrenamiento}', [EntrenamientosController::class, 'anadirAUsuario'])->middleware(['dbcheck']);
 Route::put('/entrenamientos/{idEntrenamiento}', [EntrenamientosController::class, 'quitarAUsuario'])->middleware(['dbcheck']);
 
 Route::get('/admin', [AdministracionController::class, 'getAdministracion'])->middleware(['dbcheck'])->middleware(['auth']); //Lista todos los entrenamientos
 
 Route::get('/ejercicios', [EjerciciosController::class, 'getExplorarEjercicios'])->middleware(['dbcheck']);
-Route::get('/ejercicios/{idEjercicio}', [EjerciciosController::class, 'getInformacionEjercicio'])->middleware(['dbcheck']);
+Route::get('/ejercicios/{idEjercicio}', [EjerciciosController::class, 'getInformacionEjercicio'])->middleware(['dbcheck'])->middleware('auth');
 
 
 Route::get('/search', [SearchController::class, 'getSearch'])->middleware(['dbcheck']);
