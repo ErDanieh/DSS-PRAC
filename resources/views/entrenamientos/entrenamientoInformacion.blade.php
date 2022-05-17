@@ -1,50 +1,58 @@
 @extends('home')
 
 @section('content')
-<div>
-    <h1>{{$entrenamiento->name}}</h1>
-    <p>{{$entrenamiento->descripcion}}</p>
+<div class="container">
+    <h1 class="display-1">{{$entrenamiento->name}}</h1>
 
-    <img src={{$entrenamiento->url_img}}>
+    <div class="row">
 
+        <img src="{{$entrenamiento->url_img}}" class="col-md-9" style="object-fit: cover;" />
 
-    @if(!auth::guest() && auth::user()->id == $entrenamiento->creator_id)
-    @include('common.alert')
-    <div class="" style="margin-top: 20px;">
-        <form action="{{ url('/trainer/entrenamientos',$entrenamiento->id)}}" method="POST">
-            @csrf
-            {{ method_field('PUT') }}
-            <div class="form-group">
-                <label for="name">Nombre entrenamiento</label>
-                <input class="form-control" name="name" id="name">
-            </div>
+        <div class="container col-md-3">
 
-            <div class="form-group">
-                <label for="descripcion">Descripción del entrenamiento</label>
-                <textarea class="form-control" name="descripcion" id="descripcion"></textarea>
-            </div>
+            @if(!auth::guest() && auth::user()->id == $entrenamiento->creator_id)
+            @include('common.alert')
+            <form action="{{ url('/trainer/entrenamientos',$entrenamiento->id)}}" method="POST" class="form-group">
+                <h2>Modificar ejercicio</h2>
 
-            <div class="form-group">
-                <label for="urlImagen">Imagen del entrenamiento</label>
-                <input class="form-control" name="urlImagen" id="urlImagen"></textarea>
-            </div>
+                @csrf
+                {{ method_field('PUT') }}
+                <div class="row">
+                    <label for="name">Nombre entrenamiento</label>
+                    <input name="name" id="name" value="{{$entrenamiento->name}}" class="form-control">
+                </div>
 
-            <button class="btn btn-primary" type="submit" style="margin-top: 20px;">Editar entrenamiento</button>
-        </form>
-        <form action="{{url('/trainer/entrenamientos', $entrenamiento->id)}}" method="POST">
-            @csrf
-            {{ method_field('DELETE') }}
-            <button class="btn btn-danger" type="submit">Eliminar</button>
-        </form>
+                <div class="row">
+                    <label for="descripcion">Descripción del entrenamiento</label>
+                    <textarea name="descripcion" id="descripcion" class="form-control">{{$entrenamiento->descripcion}}</textarea>
+                </div>
+
+                <div class="row">
+                    <label for="urlImagen">Imagen del entrenamiento</label>
+                    <input name="urlImagen" id="urlImagen" class="form-control" value="{{$entrenamiento->url_img}}" />
+                </div>
+
+                <div class="row mt-4">
+                    <button type="submit" class="mb-3 btn btn-warning">Editar entrenamiento</button>
+                </div>
+            </form>
+            
+            <form action="{{url('/trainer/entrenamientos', $entrenamiento->id)}}" method="POST" class="col-md-12 mt-3">
+                @csrf
+                {{ method_field('DELETE') }}
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+            </form>
+        </div>
+
     </div>
 
     <h2>Añadir un ejercicio</h2>
     <form action="{{route('entrenamiento.addEjercicio', $entrenamiento->id)}}" method="POST">
         @csrf
-        <select name="grupo" class="form-select">
+        <select name="grupo">
             {{ App\Http\Controllers\TrainerController::seleccionableEjercicios();}}
         </select>
-        <button class="btn btn-primary" type="submit" style="margin-top: 20px;">Añadir Ejercicio</button>
+        <button type="submit">Añadir Ejercicio</button>
     </form>
 
     <h2>Ejercicios del entrenamiento</h2>
@@ -90,13 +98,13 @@
     <form action="{{url('/entrenamientos', $entrenamiento->id)}}" method="POST">
         @csrf
         {{ method_field('POST') }}
-        <button class="btn btn-danger" type="submit">Seguir Entrenamiento</button>
+        <button type="submit">Seguir Entrenamiento</button>
     </form>
 
     <form action="{{url('/entrenamientos', $entrenamiento->id)}}" method="POST">
         @csrf
         {{ method_field('PUT') }}
-        <button class="btn btn-danger" type="submit">Dejar de seguir Entrenamiento</button>
+        <button type="submit">Dejar de seguir Entrenamiento</button>
     </form>
 
 </div>
