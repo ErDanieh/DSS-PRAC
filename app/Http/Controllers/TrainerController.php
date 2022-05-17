@@ -82,7 +82,7 @@ class TrainerController extends Controller
 
             if ($EntrenamientoEsperado != null) {
                 $EntrenamientoEsperado->delete();
-                return redirect()->back()->with('exito', 'Entrenamiento eliminado');
+                return redirect('/entrenamientos')->with('exito', 'Entrenamiento eliminado');
             }
             return redirect()->back()->with('error', 'Error no existe el Entrenamiento');
         } catch (\Throwable $th) {

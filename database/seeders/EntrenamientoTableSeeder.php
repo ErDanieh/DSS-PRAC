@@ -17,7 +17,7 @@ class EntrenamientoTableSeeder extends Seeder
         $entrenamiento = new Entrenamiento([
             'name' => 'Entrenamiento 1',
             'descripcion' => 'Esta es la descripcion del entrenamiento 1.',
-            'url_img' => 'https://url_de_prueba.img'
+            'url_img' => 'https://media.revistagq.com/photos/5ecea90bd6d588d6f671d17c/16:9/w_2560%2Cc_limit/ejercicios-comba.jpg'
         ]);
 
         try
@@ -31,7 +31,7 @@ class EntrenamientoTableSeeder extends Seeder
         $entrenamiento = new Entrenamiento([
             'name' => 'Entrenamiento 2',
             'descripcion' => 'Esta es la descripcion del entrenamiento 2.',
-            'url_img' => 'https://url_de_prueba2.img'
+            'url_img' => 'https://quieroserdeportista.com/wp-content/uploads/2021/04/Categorias-del-entrenamiento-deportivo1.jpg'
         ]);
 
         try
