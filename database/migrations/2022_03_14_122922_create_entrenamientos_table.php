@@ -14,10 +14,15 @@ class CreateEntrenamientosTable extends Migration
     public function up()
     {
         Schema::create('entrenamientos', function (Blueprint $table) {
+
             $table->id();
             $table->string('name');
             $table->text('descripcion');
             $table->string('url_img');
+
+            $table->unsignedBigInteger('creator_id')->nullable();
+            $table->foreign('creator_id')->references('id')->on('users')->default(null);
+            
             $table->timestamps();
         });
     }

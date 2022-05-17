@@ -1,4 +1,3 @@
-
 @extends('layouts.admin')
 
 
@@ -10,56 +9,72 @@
 
 <div>
 
-    <h1>Esta es la lista de Usuarios</h1>
+    <h1>Usuarios</h1>
 
-    <div class="col py-3">
+    @include('common.alert')
+
+    <h2>Listado de usuarios</h2>
+
+    <script src="../js/utils.js"> </script>
+    {{-- Buscador --}}
+    <input type="text" class="form-control" name="search" id="search" autofocus onchange="redirectSearch()" placeholder="Busqueda por nombre y correo electronico."></input>
+
+
+    {{-- Listado de usuarios --}}
+    <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Administrador</th>
+                    <th scope="col">Entrenador</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Eliminar</th>
                 </tr>
             </thead>
-            <tbody>
+
+            <tbody class="align-middle">
                 @foreach($users as $user)
-                <tr style="cursor: pointer;" class="card bg-dark mb-1 text-white">
-                    <td class="text-primary" onclick="showProfile({{$user->id}})">{{$user->name}}</td>
-                    <td class="text-primary" onclick="showProfile({{$user->id}})">{{$user->email}}</td>
+                <tr>
+                    <td onclick="showProfile({{$user->id}})">{{$user->name}}</td>
+                    <td onclick="showProfile({{$user->id}})">{{$user->email}}</td>
                     @if($user->is_admin == '1')
-                        <td class="text-warning"> ADMINISTRADOR</td>
+                    <td>X</td>
+                    @else
+                    <td></td>
                     @endif
                     @if($user->is_trainer == '1')
-                        <td class="text-primary"> ENTRENADOR</td>
+                    <td>X</td>
+                    @else
+                    <td></td>
                     @endif
-
+                    <td>
+                        <button class="btn btn-success" type="submit" onclick="showProfile({{$user->id}})">Editar</button>
+                    </td>
                     <td>
                         <form action="{{url('/admin/usuarios', $user->id)}}" class="mr-4" method="POST">
                             @csrf
                             {{ method_field('DELETE') }}
-                            <button class="btn btn-danger m-3" style="width: 100%;" type="submit">Delete</button>
+                            <button class="btn btn-danger m-3" type="submit">Eliminar</button>
                         </form>
                     </td>
-
                 </tr>
                 @endforeach
             </tbody>
-        </table>
+
+
     </div>
 
 
-    @include('common.alert')
-    <form action="{{ url('/admin/usuarios') }}" method="POST" class="form-group">
-        @csrf
-        <label for="search"> Buscar por nombre o email. </label>
-        <div class="mb-3">
-            <input class="form-control" name="search" type="text" id="search" autofocus></input>
-            <button hidden type="submit" class="btn btn-primary">Buscar</button>
-        </div>
-    </form>
-
-</div>
-<div class="text-center d-flex justify-content-center m-5">
-    {{ $users->links() }}
-</div>
+    {{-- Paginacion --}}
+    <div class="text-center d-flex justify-content-center m-5">
+        @if(request()->search!=null)
+        {{ $users->appends(['search'=>request()->search])->links() }}
+        @else
+        {{ $users->links() }}
+        @endif
+    </div>
 
 
 </div>

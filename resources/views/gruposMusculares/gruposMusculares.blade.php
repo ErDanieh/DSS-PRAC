@@ -1,72 +1,76 @@
-@extends('layouts.admin')
-
-@section('content')
+@extends('layouts.admin') @section('content') <script src="../js/users.js"> </script>
 <div>
+    <h1>Grupos Musculares</h1>
+    <script src="../js/utils.js"> </script>
+    {{-- Buscador --}}
+    <input type="text" class="form-control" name="search" id="search" autofocus onchange="redirectSearch()" placeholder="Busqueda por nombre."></input>
 
-    <h1>Esta es la lista de Grupos Musculares</h1>
 
-    <script src="../js/users.js"> </script>
+    <div class="" style="margin: 50px auto;">
+        <h2>Añadir grupo muscular</h2>
+        <form action="{{ url('/admin/gruposMusculares') }}" method="POST"> @csrf <div class="form-group">
+                <label for="name">Grupo Muscular</label>
+                <input class="form-control" placeholder="Nombre del grupo muscular..." required type="text" name="name" id="name">
+            </div>
+            <div class="form-group">
+                <label for="descripcion">
+                    Descripción de grupo muscular
+                </label>
+                <input class="form-control" placeholder="Descripción del grupo muscular..." required type="text" name="descripcion" id="descripcion">
+            </div>
+            <button class="btn btn-primary" type="submit" style="margin-top: 20px; font-size: 1.2rem;">
+                Añadir grupo muscular
+            </button>
+        </form>
+    </div>
 
-
-    <div class="col py-3">
+    @include('common.alert')
+    <select type="text" class="form-control" name="ordered" id="ordered" autofocus onchange="redirectUrlParams('ordered')">
+        <option selected disabled> Ordenación</option>
+        <option> Ascendente</option>
+        <option> Descendente</option>
+    </select>
+    <h2>Listado de grupos musculares</h2>
+    <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Eliminar</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="align-middle">
                 @foreach($gruposMusculares as $grupo)
-                <tr style="cursor: pointer;" class="card bg-dark mb-1 text-white">
-                    <td class="text-primary" onclick="showProfile({{$grupo->id}})">{{$grupo->name }}
-                        <form action="{{url('/admin/gruposMusculares', $grupo->id)}}" class="mr-4" method="POST">
-                            @csrf
-                            {{ method_field('DELETE') }}
-                            <button class="btn btn-danger m-3" style="width: 100%;" type="submit">Delete</button>
+                <tr>
+                    <td>{{$grupo->name }}</td>
+                    <td>{{$grupo->descripcion }}</td>
+                    <td>
+                        <button class="btn btn-success" type="submit" onclick="showProfile({{$grupo->id}})">Editar</button>
+                    </td>
+                    <td>
+                        <form action="{{url('/admin/gruposMusculares', $grupo->id)}}" method="POST">
+                            @csrf {{ method_field('DELETE') }}
+                            <button class="btn btn-danger" type="submit">Eliminar</button>
                         </form>
                     </td>
-                </tr>
-                @endforeach
+                </tr> @endforeach
             </tbody>
         </table>
-    </div>
+        <div class="text-center d-flex justify-content-center m-5">
+        @if(request()->search!=null && request()->ordered!=null)
+            {{ $gruposMusculares->appends(['search'=>request()->search, 'ordered'=>request()->ordered])->links() }}
 
-    @include('common.alert')
-    <div class="m-3 justify-content-center text-dark">
-        <form action="{{ url('/admin/gruposMusculares') }}" method="POST">
-            @csrf
-            <div class="mb-3">
-                <label for="name">Grupo Muscular</label>
-                <input required type="text" name="name" id="name">
-                <label for="descripcion">Descripción de grupo muscular</label>
-                <textarea required type="text" name="descripcion" id="descripcion"></textarea>
-            </div>
-            <div class="text-right">
-                <button type="submit">Enviar</button>
-            </div>
-        </form>
-    </div>
+            @elseif(request()->search!=null && request()->ordered==null)
+            {{ $gruposMusculares->appends(['search'=>request()->search])->links() }}
 
-</div>
+            @elseif(request()->search==null && request()->ordered!=null)
+            {{ $gruposMusculares->appends(['ordered'=>request()->ordered])->links() }}
+            @else 
+            {{ $gruposMusculares->links() }}
 
-@endsection
-
-<!--Para cada usuario se mostrará el nombre y el correo-->
-
-
-<!--
-<div class="m-3 justify-content-center text-dark">
-    <form action="{{ url('/gruposMusculares') }}" method="POST">
-        @csrf
-        <div class="mb-3">
-            <label for="delname">Grupo muscular a borrar</label>
-            <input required type="text" name="delname" id="delname">
+            @endif
         </div>
-        @csrf
-        {{ method_field('DELETE') }}
-        <div class="text-right">
-            <button type="submit">Enviar</button>
-        </div>
-    </form>
-</div>
--->
+    </div>
+</div> @endsection

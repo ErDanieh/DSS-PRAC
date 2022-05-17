@@ -6,6 +6,7 @@ use App\Models\GrupoMuscular;
 use App\Models\Musculo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\MusculosController;
+
 class GrupoMuscularController extends Controller
 {
     /**
@@ -13,7 +14,21 @@ class GrupoMuscularController extends Controller
      *  */
     function getGruposMusculares()
     {
-        return view('gruposMusculares.gruposMusculares')->with('gruposMusculares', GrupoMuscular::simplePaginate(10));
+        $busquedaRequest = request()->search;
+        $busquedaOrder = request()->ordered;
+        //echo $busquedaOrder;
+        if ($busquedaOrder == "Ascendente") {
+            return view('gruposMusculares.gruposMusculares')->with('gruposMusculares', GrupoMuscular::where('name', 'LIKE', "%{$busquedaRequest}%")
+                ->orderBy('name', 'ASC')
+                ->simplePaginate(10));
+        } elseif ($busquedaOrder == "Descendente") {
+            return view('gruposMusculares.gruposMusculares')->with('gruposMusculares', GrupoMuscular::where('name', 'LIKE', "%{$busquedaRequest}%")
+                ->orderBy('name', 'DESC')
+                ->simplePaginate(10));
+        }
+        return view('gruposMusculares.gruposMusculares')->with('gruposMusculares', GrupoMuscular::where('name', 'LIKE', "%{$busquedaRequest}%")
+            ->simplePaginate(10));
+
     }
 
     /**
@@ -70,9 +85,7 @@ class GrupoMuscularController extends Controller
             $grupoEditar->save();
 
             return redirect()->back()->with('exito', 'Grupo muscular editado');
-        }
-        else 
-        {
+        } else {
             return redirect()->back()->with('error', 'Error no existe el Grupo muscular');
         }
     }
@@ -80,6 +93,12 @@ class GrupoMuscularController extends Controller
     function editMusculosContiene($idMusculo)
     {
         return MusculosController::deleteMusculo($idMusculo);
-        
+    }
+
+
+    function searchGrupoMuscular(Request $req)
+    {
+        return view('gruposMusculares.gruposMusculares')->with('gruposMusculares', GrupoMuscular::where('name', 'LIKE', "%{$req->input('search')}%")
+            ->simplePaginate(10));
     }
 }

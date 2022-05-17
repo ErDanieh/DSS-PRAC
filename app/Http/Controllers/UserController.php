@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 
 class UserController extends Controller
@@ -14,9 +15,18 @@ class UserController extends Controller
      *  */
     function getUsers()
     {
-        return view('user.users')->with('users', User::simplePaginate(10));
+        $busquedaRequest = request()->search;
+        // $musculos = Musculo::paginate(10);
+        return view('user.users')->with('users', User::where('name', 'LIKE', "%{$busquedaRequest}%")->orWhere('email', 'LIKE', "%{$busquedaRequest}%")
+            ->simplePaginate(10));
+        //return view('musculos.musculos', compact('musculos'));
     }
 
+    function getEntrenadores()
+    {
+
+        return view('entrenadoresGeneral')->with('entrenadores', User::where('is_trainer', 'LIKE', "1")->simplePaginate(10));
+    }
     /**Busca usuarios por nombre o email
      * 
      */
@@ -48,22 +58,55 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    function deleteUserFromProfile()
+    {
+        $UsuarioEditar = User::findOrFail(auth::user()->id);
+        if ($UsuarioEditar != null) {
+            $UsuarioEditar->delete();
+            return redirect('/');
+        }
+    }
+
     function editProfile(Request $req, $id)
     {
 
         $UsuarioEditar = User::findOrFail($id);
-        if ($UsuarioEditar != null) {
+        if (
+            $req->input('name') == null && $req->input('email') == null && $req->input('password') == null &&
+            (!isset($_POST['beTrainer']) && $UsuarioEditar->is_trainer == 0 || isset($_POST['beTrainer']) && $UsuarioEditar->is_trainer == 1)
+            && (!isset($_POST['beAdmin']) && $UsuarioEditar->is_admin == 0 || isset($_POST['beAdmin']) && $UsuarioEditar->is_admin == 1)
+        ) {
+            return redirect()->back()->with('error', 'No se han introducido nuevos valores');
+        }
 
+        if ($UsuarioEditar != null) {
 
             if ($req->input('name') != null) {
                 $UsuarioEditar->name = $req->input('name');
             }
+
             if ($req->input('email') != null) {
-                $UsuarioEditar->email = $req->input('email');
+                if (User::where('email', '=', $req->input('email'))->count() == 0) {
+                    $UsuarioEditar->email = $req->input('email');
+                } else {
+                    return redirect()->back()->with('error', 'Ese email ya ha sido registrado');
+                }
             }
+
             if ($req->input('password') != null) {
                 $UsuarioEditar->password = bcrypt($req->input('password'));
             }
+
+            if (!isset($_POST['beTrainer']))
+                $UsuarioEditar->is_trainer = 0;
+            else
+                $UsuarioEditar->is_trainer = 1;
+
+            if (!isset($_POST['beAdmin']))
+                $UsuarioEditar->is_admin = 0;
+            else
+                $UsuarioEditar->is_admin = 1;
+
             $UsuarioEditar->save();
             return redirect()->back()->with('exito', 'Perfil editado');
         }

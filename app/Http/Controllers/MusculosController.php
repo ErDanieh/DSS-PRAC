@@ -14,9 +14,20 @@ class MusculosController extends Controller
      *  */
     function getMusculos()
     {
-        // $musculos = Musculo::paginate(10);
-        return view('musculos.musculos')->with('musculos', Musculo::simplepaginate(10));
-        //return view('musculos.musculos', compact('musculos'));
+        $busquedaRequest = request()->search;
+        $busquedaOrder = request()->ordered;
+        //echo $busquedaOrder;
+        if ($busquedaOrder == "Ascendente") {
+            return view('musculos.musculos')->with('musculos', Musculo::where('name', 'LIKE', "%{$busquedaRequest}%")
+                ->orderBy('name', 'ASC')
+                ->simplePaginate(10));
+        } elseif ($busquedaOrder == "Descendente") {
+            return view('musculos.musculos')->with('musculos', Musculo::where('name', 'LIKE', "%{$busquedaRequest}%")
+                ->orderBy('name', 'DESC')
+                ->simplePaginate(10));
+        }
+        return view('musculos.musculos')->with('musculos', Musculo::where('name', 'LIKE', "%{$busquedaRequest}%")
+            ->simplePaginate(10));
     }
 
     /**
@@ -92,5 +103,11 @@ class MusculosController extends Controller
         foreach ($gruposMusculares as $grupoMuscular) {
             echo "<option>" . $grupoMuscular->name . "</option>";
         }
+    }
+
+    function searchMusculo(Request $req)
+    {
+        return view('musculos.musculos')->with('musculos', Musculo::where('name', 'LIKE', "%{$req->input('search')}%")
+            ->simplePaginate(10));
     }
 }

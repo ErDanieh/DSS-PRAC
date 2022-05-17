@@ -1,7 +1,6 @@
-@section('footer')
 
 <!-- Footer -->
-<footer class="bg-warning text-center text-white">
+<footer class="text-center text-white mt-auto" style="margin-top: max; background: linear-gradient(45deg, #2937f0, #9f1ae2) !important;">
     <!-- Grid container -->
     <div class="container p-4">
 
@@ -30,10 +29,9 @@
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
         © 2022 Copyright:
-        <a class="text-white" href="https://mdbootstrap.com/">UAfit.com</a>
+        <a class="text-white" href="https://www.youtube.com/watch?v=HtzZ_oomFjc&ab_channel=FOCHBY">UAfit.com</a>
     </div>
     <!-- Copyright -->
 
 </footer>
 <!-- Footer -->
-@endsection
