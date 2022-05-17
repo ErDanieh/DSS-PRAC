@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Entrenamiento;
 use App\Models\Ejercicio;
 use App\Models\User;
+use App\Mail\contactar;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 
 class TrainerController extends Controller
@@ -142,18 +144,8 @@ class TrainerController extends Controller
 
     function sendMail(Request $req, $id)
     {
-        try {
-            ini_set('display_errors', 1);
-            error_reporting(E_ALL);
-            $from = auth::user()->email;
-            $to = User::findOrFail($id)->email;
-            $subject = "Solicitud de entrenamiento";
-            $message = $req->input('mensaje');
-            $headers = "From:" . $from;
-            mail($to, $subject, $message, $headers);
-            return redirect()->back()->with('exito', 'Email enviado.');
-        } catch (\Throwable $th) {
-            return redirect()->back()->with('error', 'No se ha mandado el email');
-        }
+        $usuario = auth::user();
+        Mail::to(User::findOrFail($id)->email)->send(new contactar($usuario));
+        return redirect()->back()->with('exito', 'Email enviado con exito');
     }
 }
