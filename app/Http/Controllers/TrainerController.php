@@ -145,7 +145,7 @@ class TrainerController extends Controller
     function sendMail(Request $req, $id)
     {
         $usuario = auth::user();
-        Mail::to(User::findOrFail($id)->email)->send(new contactar($usuario));
+        Mail::to(User::findOrFail($id)->email)->send(new contactar($usuario, $req->input('mensaje')));
         return redirect()->back()->with('exito', 'Email enviado con exito');
     }
 }
