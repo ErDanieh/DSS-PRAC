@@ -1,24 +1,34 @@
 @extends('home')
 
 @section('content')
+<div class="container min-vh-100">
+
+
     <h1>{{$ejercicio->name}}</h1>
-    <p>{{$ejercicio->descripcion}}</p>
-    <img src={{$ejercicio->url_img}}>
-
-
-    <h2>Puedes encontrar este ejercicio en:</h2>
-    <div class="container">
-    @foreach($ejercicio->entrenamientos->chunk(2) as $entrenamientoChunk)
-        <div class="row">
-        @foreach($entrenamientoChunk as $entrenamiento)
-            <div class="col">
-                <h4>{{$entrenamiento->name}}</h4>
-                <p>{{Str::limit($entrenamiento->descripcion, 50)}}</p>
-            </div>
-        @endforeach
-        </div>
-    @endforeach
+    <div class="row">
+        <img src="{{$ejercicio->url_img}}" class="col-md-3" style="object-fit: cover;" />
+        <p class="col-md-3">{{$ejercicio->descripcion}}</p>
     </div>
 
-    
+
+    <h2 class="mt-4">Puedes encontrar este ejercicio en:</h2>
+    <div class="container">
+        <div class="row">
+            @foreach($ejercicio->entrenamientos as $entrenamiento)
+            <div class="col-md-3">
+                <a href="/entrenamientos/{{$entrenamiento->id}}" style="color: inherit; text-decoration: inherit;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">{{$entrenamiento->name}}</h4>
+                            <p class="card-text">{{Str::limit($entrenamiento->descripcion, 50)}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            @endforeach
+        </div>
+    </div>
+
+</div>
+
 @endsection
