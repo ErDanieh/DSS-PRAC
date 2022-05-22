@@ -27,6 +27,11 @@ class UserController extends Controller
 
         return view('entrenadoresGeneral')->with('entrenadores', User::where('is_trainer', 'LIKE', "1")->simplePaginate(10));
     }
+
+    function getEntrenadoresProfile($id)
+    {
+        return view('trainers.trainerProfile')->with('user', User::findOrFail($id));
+    }
     /**Busca usuarios por nombre o email
      * 
      */

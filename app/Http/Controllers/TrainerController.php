@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Entrenamiento;
 use App\Models\Ejercicio;
+use App\Models\User;
+use App\Mail\contactar;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 
 class TrainerController extends Controller
@@ -79,7 +82,7 @@ class TrainerController extends Controller
 
             if ($EntrenamientoEsperado != null) {
                 $EntrenamientoEsperado->delete();
-                return redirect()->back()->with('exito', 'Entrenamiento eliminado');
+                return redirect('/entrenamientos')->with('exito', 'Entrenamiento eliminado');
             }
             return redirect()->back()->with('error', 'Error no existe el Entrenamiento');
         } catch (\Throwable $th) {
@@ -137,5 +140,12 @@ class TrainerController extends Controller
     function getEjercicioCreator()
     {
         return view('ejercicios.ejercicioCreator');
+    }
+
+    function sendMail(Request $req, $id)
+    {
+        $usuario = auth::user();
+        Mail::to(User::findOrFail($id)->email)->send(new contactar($usuario, $req->input('mensaje')));
+        return redirect()->back()->with('exito', 'Email enviado con exito');
     }
 }
