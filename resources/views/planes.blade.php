@@ -1,3 +1,7 @@
+@extends('layouts.principal')
+
+@section('content')
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -49,28 +53,28 @@
 <body>
 
 
-  <div class="container-fluid" style="background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);">
+  <div class="container-fluid" style="background: linear-gradient(45deg, #2937f0, #9f1ae2);">
     <div class="container p-5">
       <div class="row">
         <div class="col-lg-4 col-md-12 mb-4">
           <div class="card h-100 shadow-lg">
             <div class="card-body">
               <div class="text-center p-3">
-                <h5 class="card-title">Basic</h5>
+                <h5 class="card-title">Básico</h5>
                 <small>Individual</small>
                 <br><br>
-                <span class="h2">$8</span>/month
+                <span class="h2">9,99€</span>/mes
                 <br><br>
               </div>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <p class="card-text">Acceso a videos de entrenamiento limitado</p>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
                 <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
-              </svg> Cras justo odio</li>
+              </svg> Nuestros mejores videos</li>
               <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
                 <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
-              </svg> Dapibus ac facilisis in</li>
+              </svg> Acceso a entrenamientos</li>
               <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
                 <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
               </svg> Vestibulum at eros</li>
@@ -85,9 +89,9 @@
             <div class="card-body">
               <div class="text-center p-3">
                 <h5 class="card-title">Standard</h5>
-                <small>Small Business</small>
+                <small>Individual</small>
                 <br><br>
-                <span class="h2">$20</span>/month 
+                <span class="h2">14,99€</span>/mes 
                 <br><br>
               </div>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -112,10 +116,10 @@
           <div class="card h-100 shadow-lg">
             <div class="card-body">
               <div class="text-center p-3">
-                <h5 class="card-title">Premium</h5>
-                <small>Large Companies</small>
+                <h5 class="card-title">Sin Límite</h5>
+                <small>Individual</small>
                 <br><br>
-                <span class="h2">$40</span>/month
+                <span class="h2">20,99€</span>/mes
                 <br><br>
               </div>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -147,3 +151,5 @@
 
 </body>
 </html>
+
+@endsection
