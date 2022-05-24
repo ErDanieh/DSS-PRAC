@@ -6,8 +6,8 @@
 
     <h1>{{$ejercicio->name}}</h1>
     <div class="row">
-        <img src="{{$ejercicio->url_img}}" class="col-md-3" style="object-fit: cover;" />
-        <p class="col-md-3">{{$ejercicio->descripcion}}</p>
+        <img src="{{$ejercicio->url_img}}" class="col-md-7 rounded" style="object-fit: cover;" />
+        <p class="col-md-4 h3 mt-2">{{$ejercicio->descripcion}}</p>
     </div>
 
 

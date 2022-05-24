@@ -6,7 +6,7 @@
     <div class="row">
 
         <h1 class="display-1">{{$entrenamiento->name}}</h1>
-        <img src="{{$entrenamiento->url_img}}" class="col-md-8" style="object-fit: cover;" />
+        <img src="{{$entrenamiento->url_img}}" class="col-md-8 " style="object-fit: cover;" />
 
         @if(!auth::guest() && auth::user()->id == $entrenamiento->creator_id)
         <div class="container col-md-4">
