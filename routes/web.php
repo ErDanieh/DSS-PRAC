@@ -13,7 +13,6 @@ use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\PlanesController;
-use App\Http\Controllers\ContactanosController;
 use App\Http\Controllers\SobreNosotrosController;
 use App\Models\Ejercicio;
 use App\Models\Musculo;
@@ -142,7 +141,8 @@ Route::get('/ejercicios/{idEjercicio}', [EjerciciosController::class, 'getInform
 Route::get('/search', [SearchController::class, 'getSearch'])->middleware(['dbcheck']);
 
 Route::get('/planes', [PlanesController::class, 'getPlanes'])->middleware(['dbcheck']);
-Route::get('/contactanos', [ContactanosController::class, 'getContactanos'])->middleware(['dbcheck']);
+
 Route::get('/sobreNosotros', [SobreNosotrosController::class, 'getSobreNosotros'])->middleware(['dbcheck']);
+
 
 Auth::routes();
