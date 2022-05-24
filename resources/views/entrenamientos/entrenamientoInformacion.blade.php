@@ -66,6 +66,7 @@
     </div>
 
 
+    @if(!auth::guest() && auth::user()->id == $entrenamiento->creator_id)
     <div class="row">
         <h2 class="mt-4">Ejercicios del entrenamiento</h2>
         <div class="table-responsive">
@@ -95,8 +96,7 @@
             </table>
         </div>
     </div>
-
-    @if(auth::user()->id != $entrenamiento->creator_id)
+    @else
     <div class="row">
         <h2 class="mt-4">Ejercicios del entrenamiento</h2>
         <div class="table-responsive">
@@ -104,12 +104,14 @@
                 <thead>
                     <tr>
                         <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($entrenamiento->ejercicios as $ejercicio)
                     <tr>
                         <td>{{$ejercicio->name }}</td>
+                        <td>{{$ejercicio->descripcion }}</td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -117,6 +119,7 @@
         </div>
     </div>
     @endif
+
 
 
     @if(auth::user()->id != $entrenamiento->creator_id)
