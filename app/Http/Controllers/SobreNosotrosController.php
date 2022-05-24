@@ -9,6 +9,6 @@ class SobreNosotrosController extends Controller
 {
 function getSobreNosotros() 
     {
-        return view('contactanos');
+        return view('sobreNosotros');
     }
 }

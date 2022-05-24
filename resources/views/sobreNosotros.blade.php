@@ -1,113 +1,118 @@
-@extends('home')
+<div class="about-section">
+  <h1>About Us Page</h1>
+  <p>Some text about who we are and what we do.</p>
+  <p>Resize the browser window to see that this page is responsive by the way.</p>
+</div>
 
-@section('content')
+<h2 style="text-align:center">Our Team</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
+      <div class="container">
+        <h2>Jane Doe</h2>
+        <p class="title">CEO & Founder</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>jane@example.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
 
-<html>
-    <head>
-    <title>Formulario de Contacto</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <style>
+  <div class="column">
+    <div class="card">
+      <img src="/w3images/team2.jpg" alt="Mike" style="width:100%">
+      <div class="container">
+        <h2>Mike Ross</h2>
+        <p class="title">Art Director</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>mike@example.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="/w3images/team3.jpg" alt="John" style="width:100%">
+      <div class="container">
+        <h2>John Doe</h2>
+        <p class="title">Designer</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>john@example.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
 body {
-    background-color: withe;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
 }
-.red {
-    color: red;
+
+html {
+  box-sizing: border-box;
 }
- 
-#footer {
-    position: fixed;
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
     width: 100%;
-    height: 40px;
-    line-height: 40px;
-    vertical-align: middle;
-    background-color: black;
-    color: white;
-    text-align: center;
-    bottom: 0;
-    left: 0;
+    display: block;
+  }
 }
 </style>
-    </head>
-<body>
-<form method="POST" action="/index.php" class="needs-validation" novalidate>
-
-<div class="form-row mt-5">
-    <div class="col-md-4 mb-3">
-        <label for="validarNombre">Nombre:<span class="red">*</span></label>
-        <input type="text" class="form-control" id="validarNombre" name="validarNombre" required>
-    </div>
-</div>
-
-<div class="form-row">
-    <div class="col-md-4 mb-3">
-        <label for="validarApellidos">Apellidos:<span class="red">*</span></label>
-        <input type="text" class="form-control" id="validarApellidos" name="validarApellidos" required>
-    </div>
-</div>
-
-<div class="form-row">
-    <div class="col-md-4 mb-3">
-        <label for="validarEmail">Email:<span class="red">*</span></label>
-        <input type="email" class="form-control" id="validarEmail" name="validarEmail" required>
-    </div>
-</div>
-
-<div class="form-row">
-    <div class="col-md-4 mb-3">
-        <label for="validarTelefono">Teléfono:</label>
-        <input type="number" class="form-control" id="validarTelefono" name="validarTelefono" max="999999999">
-    </div>
-</div>
-
-<div class="form-row">
-    <div class="col-md-4 mb-3">
-        <label for="validarTema">Tema:<span class="red">*</span></label>
-        <select class="custom-select" id="validarTema" name="validarTema" required>
-            <option selected disabled value="">Selecciona...</option>
-            <option value="Problema con acceso a Web">Problema con acceso a Web</option>
-            <option value="Propuesta de colaboración">Propuesta de colaboración</option>
-            <option value="Eliminar mi usuario de la Web">Eliminar mi usuario de la Web</option>
-            <option value="Otras cuestiones">Otras cuestiones</option>
-        </select>
-    </div>
-</div>
-
-<div class="form-row">
-    <div class="col-md-4 mb-3">
-        <label for="validarAsunto">Asunto:</label>
-        <input type="text" class="form-control" id="validarAsunto" name="validarAsunto" required>
-    </div>
-</div>
-
-<div class="form-group">
-    <label for="validationMensaje">Mensaje:<span class="red">*</span></label>
-    <textarea class="form-control" id="validationMensaje" name="validationMensaje" rows="3" min="25" required></textarea>
-</div>
-
-<div class="form-group mb-10">
-    <button class="btn btn-primary" type="submit" name="submit">Enviar</button>
-    <button class="btn btn-success" type="reset" name="reset">Limpiar</button>
-</div>
-
-</form>
-</body>
-<script>
-    (function() {
-        'use strict';
-        window.addEventListener('load', function() {
-            var forms = document.getElementsByClassName('needs-validation');
-            var validation = Array.prototype.filter.call(forms, function(form) {
-                form.addEventListener('submit', function(event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    })();
-</script>
-</html>
-
-@endsection('content')
