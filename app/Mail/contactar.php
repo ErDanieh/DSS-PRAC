@@ -12,9 +12,11 @@ class contactar extends Mailable
 {
     use Queueable, SerializesModels;
     public $usuario;
-    public function __construct(User $usuario)
+    public $mensaje;
+    public function __construct(User $usuario, String $mensaje)
     {
         $this->usuario = $usuario;
+        $this->mensaje = $mensaje;
     }
 
     /**
@@ -24,6 +26,6 @@ class contactar extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.contact');
+        return $this->view('mails.contact')->with('mensaje',$this->mensaje);
     }
 }

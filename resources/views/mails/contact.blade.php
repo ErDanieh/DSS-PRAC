@@ -14,10 +14,7 @@
         <div style="display: flex; flex-direction: column; margin-right: min(100px); justify-content: center;">
             <label>Email:</label>
             <h3>{{Auth::user()->email}}</h3>
-            <label>Nombre:</label>
-            <h3>{{Auth::user()->name}}</h3>
-            <label>Te uniste el:</label>
-            <h3>{{Auth::user()->created_at}}</h3>
+            <h2>{{$mensaje}}</h2>
         </div>
     </div>
 
