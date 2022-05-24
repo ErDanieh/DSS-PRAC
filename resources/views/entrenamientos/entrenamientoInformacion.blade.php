@@ -64,6 +64,10 @@
                 </div>
             </form>
         </div>
+        @else
+        <div class="container col-md-4">
+            <p class="h2">{{$entrenamiento->descripcion}}</p>
+        </div>
         @endif
 
     </div>
