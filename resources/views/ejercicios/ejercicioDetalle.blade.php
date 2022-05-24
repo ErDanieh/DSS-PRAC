@@ -17,17 +17,16 @@
         {{ method_field('PUT') }}
         <div class="form-group">
             <label for="name">Nombre del ejercicio</label>
-            <input class="form-control" type="text" name="name" id="name">
+            <input class="form-control" type="text" name="name" id="name" value="{{$ejercicio->name}}">
         </div>
         <div class="form-group">
-
             <label for="descripcion">Descripción del ejercicio</label>
-            <textarea class="form-control" type="text" name="descripcion" id="descripcion"></textarea>
+            <textarea class="form-control" type="text" name="descripcion" id="descripcion">{{$ejercicio->descripcion}}</textarea>
         </div>
         <div class="form-group">
 
             <label for="urlImagen">Imagen del ejercicio</label>
-            <input class="form-control" type="text" name="urlImagen" id="urlImagen"></textarea>
+            <input class="form-control" type="text" name="urlImagen" id="urlImagen" value="{{$ejercicio->url_img}}"></textarea>
         </div>
         <button class="btn btn-primary" type="submit" style="margin-top: 20px;">Editar ejercicio</button>
     </form>
