@@ -32,11 +32,15 @@ class EjerciciosController extends Controller
                     $resultado = $ejerciciosFIltradosNombre->simplePaginate(10);  
                 }
             } catch (\Throwable $th) {
-                echo "error";
-                return view('ejercicios.ejercicios', ['ejercicios' => Ejercicio::simplePaginate(10)]);
+                return view('ejercicios.ejercicios')
+                    ->with('ejercicios', Ejercicio::simplePaginate(10))
+                    ->with('gruposMusculares', GrupoMuscular::all());
             }
 
-            return view('ejercicios.ejercicios', ['ejercicios' => $resultado]);
+            return view('ejercicios.ejercicios', ['ejercicios' => $resultado])
+                    ->with('ejercicios', $resultado)
+                    ->with('gruposMusculares', GrupoMuscular::all());
+
         } catch (\Throwable $th) {
             return abort(503, 'Internal Error');
         }
@@ -152,13 +156,4 @@ class EjerciciosController extends Controller
         }
     }
 
-    static function seleccionableGrupoMuscular()
-    {
-        $gruposMusculares = GrupoMuscular::all();
-
-        foreach ($gruposMusculares as $grupoMuscular) {
-
-            echo "<option value='" . $grupoMuscular->name . "'>" . $grupoMuscular->name . "</option>";
-        }
-    }
 }

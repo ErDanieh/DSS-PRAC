@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Entrenamiento;
 use App\Models\Ejercicio;
+use App\Models\GrupoMuscular;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,16 +20,24 @@ class EntrenamientosController extends Controller
         $busquedaOrder = request()->ordered;
         //echo $busquedaOrder;
         if ($busquedaOrder == "Ascendente") {
-            return view('entrenamientos.entrenamientos')->with('entrenamientos', Entrenamiento::where('name', 'LIKE', "%{$busquedaRequest}%")
+            return view('entrenamientos.entrenamientos')
+                ->with('entrenamientos', Entrenamiento::where('name', 'LIKE', "%{$busquedaRequest}%")
                 ->orderBy('name', 'ASC')
-                ->simplePaginate(10));
+                ->simplePaginate(10))
+                ->with('gruposMusculares', GrupoMuscular::all())
+                ->with('ejercicios', Ejercicio::all());
         } elseif ($busquedaOrder == "Descendente") {
-            return view('entrenamientos.entrenamientos')->with('entrenamientos', Entrenamiento::where('name', 'LIKE', "%{$busquedaRequest}%")
+            return view('entrenamientos.entrenamientos')
+                ->with('entrenamientos', Entrenamiento::where('name', 'LIKE', "%{$busquedaRequest}%")
                 ->orderBy('name', 'DESC')
-                ->simplePaginate(10));
+                ->simplePaginate(10))
+                ->with('gruposMusculares', GrupoMuscular::all())
+                ->with('ejercicios', Ejercicio::all());
         }
-        return view('entrenamientos.entrenamientos')->with('entrenamientos', Entrenamiento::where('name', 'LIKE', "%{$busquedaRequest}%")
-            ->simplePaginate(10));
+        return view('entrenamientos.entrenamientos')
+            ->with('entrenamientos', Entrenamiento::where('name', 'LIKE', "%{$busquedaRequest}%")
+            ->simplePaginate(10))
+            ->with('ejercicios', Ejercicio::all());
     }
 
     /**
@@ -38,7 +47,9 @@ class EntrenamientosController extends Controller
     function getEntrenamientoDetalle($id)
     {
         try {
-            return view('entrenamientos.entrenamientoDetalle')->with('entrenamiento', Entrenamiento::findOrFail($id));
+            return view('entrenamientos.entrenamientoDetalle')
+            ->with('entrenamiento', Entrenamiento::findOrFail($id))
+            ->with('ejercicios', Ejercicio::all());
         } catch (\Throwable $th) {
             return abort(503, 'Internal server error');
         }
@@ -172,15 +183,6 @@ class EntrenamientosController extends Controller
         }
     }
 
-    static function seleccionableEjercicios()
-    {
-        $ejercicios = Ejercicio::all();
-
-        foreach ($ejercicios as $ejercicio) {
-
-            echo "<option value='" . $ejercicio->id . "'>" . $ejercicio->name . "</option>";
-        }
-    }
 
     function searchEntreamiento(Request $req)
     {
@@ -197,6 +199,8 @@ class EntrenamientosController extends Controller
         } catch (\Throwable $th) {
             return abort('404');
         }
-        return view('entrenamientos.entrenamientoInformacion')->with('entrenamiento', $entrenamiento);
+        return view('entrenamientos.entrenamientoInformacion')
+            ->with('entrenamiento', $entrenamiento)
+            ->with('ejercicios', Ejercicio::all());
     }
 }

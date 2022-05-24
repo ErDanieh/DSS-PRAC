@@ -19,24 +19,36 @@
             {{ method_field('PUT') }}
             <div class="form-group">
                 <label for="name">Nombre entrenamiento</label>
-                <input class="form-control" name="name" id="name">
+                <input class="form-control" name="name" id="name" value="{{$entrenamiento->name}}">
             </div>
 
             <div class="form-group">
                 <label for="descripcion">Descripción del entrenamiento</label>
-                <textarea class="form-control" name="descripcion" id="descripcion"></textarea>
+                <textarea class="form-control" name="descripcion" id="descripcion">{{$entrenamiento->descripcion}}</textarea>
             </div>
 
             <div class="form-group">
                 <label for="urlImagen">Imagen del entrenamiento</label>
-                <input class="form-control" name="urlImagen" id="urlImagen"></textarea>
+                <input class="form-control" name="urlImagen" id="urlImagen" value="{{$entrenamiento->url_img}}"></textarea>
             </div>
 
             <button class="btn btn-primary" type="submit" style="margin-top: 20px;">Editar entrenamiento</button>
         </form>
     </div>
 
-    <h2>Ejercicios del entrenamiento</h2>
+    <h2 class="mt-2">Añadir un ejercicio</h2>
+    <form action="{{route('entrenamiento.addEjercicio', $entrenamiento->id)}}" method="POST">
+        @csrf
+        <select name="grupo" class="form-select">
+            <option disabled selected> Ejercicios </option>
+            @foreach($ejercicios as $ejercicio)
+            <option value="{{$ejercicio->id}}">{{$ejercicio->name}}</option>
+            @endforeach
+        </select>
+        <button class="btn btn-primary" type="submit" style="margin-top: 20px;">Añadir Ejercicio</button>
+    </form>
+
+    <h2 class="mt-2">Ejercicios del entrenamiento</h2>
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -65,14 +77,6 @@
     </div>
 
 
-    <h2>Añadir un ejercicio</h2>
-    <form action="{{route('entrenamiento.addEjercicio', $entrenamiento->id)}}" method="POST">
-        @csrf
-        <select name="grupo" class="form-select">
-            {{ App\Http\Controllers\EntrenamientosController::seleccionableEjercicios();}}
-        </select>
-        <button class="btn btn-primary" type="submit" style="margin-top: 20px;">Añadir Ejercicio</button>
-    </form>
 
 </div>
 @endsection

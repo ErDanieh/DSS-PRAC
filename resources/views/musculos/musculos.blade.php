@@ -21,7 +21,9 @@
             <div class="form-group" style="margin-top: 10px;">
                 <label for="nombreGrupo">Nombre Grupo Muscular</label>
                 <select name="grupo" class="form-select">
-                    {{ App\Http\Controllers\MusculosController::seleccionableGruposMusculares();}}
+                    @foreach($gruposMusculares as $grupoMuscular)
+                    <option value="{{$grupoMuscular->name}}">{{$grupoMuscular->name}}</option>
+                    @endforeach
                 </select>
             </div>
             <button class="btn btn-primary" type="submit" style="margin-top: 20px; font-size: 1.2rem;">Añadir Músculo</button>

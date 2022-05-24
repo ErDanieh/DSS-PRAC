@@ -52,10 +52,13 @@
         <div class="row">
             <h2 class="mt-4">Añadir un ejercicio</h2>
             <form action="{{route('entrenamiento.addEjercicio', $entrenamiento->id)}}" method="POST" class="container">
+                @csrf
                 <div class="row">
-                    @csrf
-                    <select name="grupo" class="form-select form-select-lg mb-3">
-                        {{ App\Http\Controllers\TrainerController::seleccionableEjercicios();}}
+                    <select name="grupo" class="form-select">
+                        <option disabled selected> Grupo muscular </option>
+                        @foreach($ejercicios as $ejercicio)
+                        <option value="{{$ejercicio->id}}">{{$ejercicio->name}}</option>
+                        @endforeach
                     </select>
                     <button type="submit" class="btn btn-success col-md-3 mt-2">Añadir Ejercicio</button>
                 </div>

@@ -9,7 +9,7 @@
 </div>
 <h3>Nombre: {{$ejercicio->name}}</h3>
 <h3>Descripción: {{$ejercicio->descripcion}}</h3>
-<img src={{$ejercicio->url_img}} style="height: 300px; width: 250px; object-fit:cover; border-radius: 10px;" />
+<img src="{{$ejercicio->url_img}}" style="height: 300px; width: 250px; object-fit:cover; border-radius: 10px;" />
 @include('common.alert')
 <div class="">
     <form action="{{ url('/admin/ejercicios',$ejercicio->id)}}" method="POST">
