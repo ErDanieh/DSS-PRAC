@@ -66,6 +66,7 @@
         </div>
         @else
         <div class="container col-md-4">
+            <p class="h4">Seguidores: {{$entrenamiento->seguidores}}</p>
             <p class="h2">{{$entrenamiento->descripcion}}</p>
         </div>
         @endif

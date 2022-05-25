@@ -19,6 +19,7 @@ class CreateEntrenamientosTable extends Migration
             $table->string('name');
             $table->text('descripcion');
             $table->string('url_img');
+            $table->integer('seguidores')->default(0);
 
             $table->unsignedBigInteger('creator_id')->nullable();
             $table->foreign('creator_id')->references('id')->on('users')->default(null);
