@@ -44,7 +44,7 @@
         <option> Ascendente</option>
         <option> Descendente</option>
     </select>
-    <h2>Listado de Entrenamientos</h2>
+    <h2 class="mt-4">Listado de Entrenamientos</h2>
 
     <div class="table-responsive">
         <table class="table">

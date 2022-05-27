@@ -19,12 +19,14 @@
             {{ method_field('PUT') }}
             <div class="form-group">
                 <label for="name">Nombre del Musculo</label>
-                <input class="form-control" placeholder="Nombre del músculo..." required type="text" name="name" id="name">
+                <input class="form-control" placeholder="Nombre del músculo..." required type="text" name="name" id="name" value="{{$musculo->name}}">
             </div>
             <div class="form-group">
                 <label for="grupo">Grupo Muscular al que pertenece</label>
                 <select name="grupo" class="form-select">
-                    {{ App\Http\Controllers\MusculosController::seleccionableGruposMusculares();}}
+                    @foreach($gruposMusculares as $grupoMuscular)
+                    <option value="{{$grupoMuscular->name}}">{{$grupoMuscular->name}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="text-right">

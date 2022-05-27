@@ -8,6 +8,11 @@
         </div>
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu" style="color: white;">
 
+            <li class="nav-item" style="color: white">
+                <a href="/" class="nav-link align-middle px-0" style="color: white;">
+                    <i class="fas fa-house" style="color: white;"></i> <span style="color: white;" class="ms-1 d-none d-sm-inline" style="color: white;">Home</span>
+                </a>
+            </li>
 
             <li class="nav-item" style="color: white">
                 <a href="/admin/entrenamientos" class="nav-link align-middle px-0" style="color: white;">

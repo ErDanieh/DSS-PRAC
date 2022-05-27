@@ -7,6 +7,7 @@ use App\Models\Entrenamiento;
 use App\Models\Ejercicio;
 use App\Models\User;
 use App\Mail\contactar;
+use App\Models\GrupoMuscular;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 
@@ -117,16 +118,6 @@ class TrainerController extends Controller
         }
     }
 
-    static function seleccionableEjercicios()
-    {
-        $ejercicios = Ejercicio::all();
-
-        foreach ($ejercicios as $ejercicio) {
-
-            echo "<option value='" . $ejercicio->id . "'>" . $ejercicio->name . "</option>";
-        }
-    }
-
     function getEntrenamientoDetalle($id)
     {
         try {
@@ -134,7 +125,9 @@ class TrainerController extends Controller
         } catch (\Throwable $th) {
             return abort('404');
         }
-        return view('entrenamientos.entrenamientoInformacion')->with('entrenamiento', $entrenamiento);
+        return view('entrenamientos.entrenamientoInformacion')
+            ->with('entrenamiento', $entrenamiento)
+            ->with('gruposMusculares', GrupoMuscular::all());
     }
 
     function getEjercicioCreator()

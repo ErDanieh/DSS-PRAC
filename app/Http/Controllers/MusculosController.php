@@ -18,16 +18,22 @@ class MusculosController extends Controller
         $busquedaOrder = request()->ordered;
         //echo $busquedaOrder;
         if ($busquedaOrder == "Ascendente") {
-            return view('musculos.musculos')->with('musculos', Musculo::where('name', 'LIKE', "%{$busquedaRequest}%")
-                ->orderBy('name', 'ASC')
-                ->simplePaginate(10));
+            return view('musculos.musculos')
+                ->with('musculos', Musculo::where('name', 'LIKE', "%{$busquedaRequest}%")
+                    ->orderBy('name', 'ASC')
+                    ->simplePaginate(10))
+                ->with('gruposMusculares', GrupoMuscular::all());
         } elseif ($busquedaOrder == "Descendente") {
-            return view('musculos.musculos')->with('musculos', Musculo::where('name', 'LIKE', "%{$busquedaRequest}%")
-                ->orderBy('name', 'DESC')
-                ->simplePaginate(10));
+            return view('musculos.musculos')
+                ->with('musculos', Musculo::where('name', 'LIKE', "%{$busquedaRequest}%")
+                    ->orderBy('name', 'DESC')
+                    ->simplePaginate(10))
+                ->with('gruposMusculares', GrupoMuscular::all());;
         }
-        return view('musculos.musculos')->with('musculos', Musculo::where('name', 'LIKE', "%{$busquedaRequest}%")
-            ->simplePaginate(10));
+        return view('musculos.musculos')
+            ->with('musculos', Musculo::where('name', 'LIKE', "%{$busquedaRequest}%")
+                ->simplePaginate(10))
+            ->with('gruposMusculares', GrupoMuscular::all());
     }
 
     /**
@@ -64,7 +70,9 @@ class MusculosController extends Controller
 
     function getMusculoDetalle($id)
     {
-        return view('musculos.musculoDetalle')->with('musculo', Musculo::findOrFail($id));
+        return view('musculos.musculoDetalle')
+            ->with('musculo', Musculo::findOrFail($id))
+            ->with('gruposMusculares', GrupoMuscular::all());
     }
 
     function editMusculo(Request $req, $id)
@@ -90,18 +98,6 @@ class MusculosController extends Controller
             return redirect()->back()->with('exito', 'Musculo editado');
         } else {
             return redirect()->back()->with('error', 'Error no existe el Musculo');
-        }
-    }
-
-    /**
-     * Popula el seleccionable de grupos musculares
-     */
-    static function seleccionableGruposMusculares()
-    {
-        $gruposMusculares = GrupoMuscular::all();
-
-        foreach ($gruposMusculares as $grupoMuscular) {
-            echo "<option>" . $grupoMuscular->name . "</option>";
         }
     }
 

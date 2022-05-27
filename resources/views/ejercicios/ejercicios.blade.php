@@ -37,7 +37,9 @@
     <h2>Listado de ejercicios</h2>
     <select id="gm" class="form-select" onchange="redirectUrlParams('gm')" style="width: min-content;">
         <option disabled selected> Grupo muscular </option>
-        {{ App\Http\Controllers\EjerciciosController::seleccionableGrupoMuscular();}}
+        @foreach($gruposMusculares as $grupoMuscular)
+            <option value="{{$grupoMuscular->name}}">{{$grupoMuscular->name}}</option>
+        @endforeach
     </select>
     <div class="table-responsive">
         <table class="table">

@@ -6,7 +6,7 @@
     <div class="row">
 
         <h1 class="display-1">{{$entrenamiento->name}}</h1>
-        <img src="{{$entrenamiento->url_img}}" class="col-md-8" style="object-fit: cover;" />
+        <img src="{{$entrenamiento->url_img}}" class="col-md-8 " style="object-fit: cover;" />
 
         @if(!auth::guest() && auth::user()->id == $entrenamiento->creator_id)
         <div class="container col-md-4">
@@ -52,20 +52,29 @@
         <div class="row">
             <h2 class="mt-4">Añadir un ejercicio</h2>
             <form action="{{route('entrenamiento.addEjercicio', $entrenamiento->id)}}" method="POST" class="container">
+                @csrf
                 <div class="row">
-                    @csrf
-                    <select name="grupo" class="form-select form-select-lg mb-3">
-                        {{ App\Http\Controllers\TrainerController::seleccionableEjercicios();}}
+                    <select name="grupo" class="form-select">
+                        <option disabled selected> Grupo muscular </option>
+                        @foreach($ejercicios as $ejercicio)
+                        <option value="{{$ejercicio->id}}">{{$ejercicio->name}}</option>
+                        @endforeach
                     </select>
                     <button type="submit" class="btn btn-success col-md-3 mt-2">Añadir Ejercicio</button>
                 </div>
             </form>
+        </div>
+        @else
+        <div class="container col-md-4">
+            <p class="h4">Seguidores: {{$entrenamiento->seguidores}}</p>
+            <p class="h2">{{$entrenamiento->descripcion}}</p>
         </div>
         @endif
 
     </div>
 
 
+    @if(!auth::guest() && auth::user()->id == $entrenamiento->creator_id)
     <div class="row">
         <h2 class="mt-4">Ejercicios del entrenamiento</h2>
         <div class="table-responsive">
@@ -95,8 +104,7 @@
             </table>
         </div>
     </div>
-
-    @if(auth::user()->id != $entrenamiento->creator_id)
+    @else
     <div class="row">
         <h2 class="mt-4">Ejercicios del entrenamiento</h2>
         <div class="table-responsive">
@@ -104,12 +112,14 @@
                 <thead>
                     <tr>
                         <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($entrenamiento->ejercicios as $ejercicio)
                     <tr>
                         <td>{{$ejercicio->name }}</td>
+                        <td>{{$ejercicio->descripcion }}</td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -117,6 +127,7 @@
         </div>
     </div>
     @endif
+
 
 
     @if(auth::user()->id != $entrenamiento->creator_id)

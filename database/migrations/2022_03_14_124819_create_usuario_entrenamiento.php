@@ -20,6 +20,7 @@ class CreateUsuarioEntrenamiento extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('entrenamiento_id')->references('id')->on('entrenamientos')->onDelete('cascade');
             $table->timestamps();
+            $table->integer('suscripcion', false, true)->default(0);
         });
     }
 
