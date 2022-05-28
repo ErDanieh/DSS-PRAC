@@ -13,13 +13,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{$trainer->name}}</h5>
                 <p class="card-text">{{Str::limit($trainer->email, 50)}}</p>
-                @if(!Auth::guest())
-                <a onclick="redirectToId({{$trainer->id}})" class="btn btn-primary">Más información</a>
-                @else
-                <a href='/login'>
-                    <button class="btn btn-primary">Más información</button>
-                </a>
-                @endif
+                <a href="/entrenadores/{{$trainer->id}}" class="btn btn-primary">Más información</a>
             </div>
 
         </div>
