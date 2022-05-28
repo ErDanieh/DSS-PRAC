@@ -20,7 +20,7 @@
         @if (Auth::user()->is_admin == '1')
         <li><a href="/admin" class="nav-link px-2 link-dark">Administrar</a></li>
         @endif
-        @if(Auth::user()->is_trainer == '1' || Auth::user()->is_admin == '1')
+        @if(Auth::user()->is_trainer == '1')
         <li><a href="/trainer" class="nav-link px-2 link-secondary">Zona Trainer</a></li>
         @endif
         @endif
