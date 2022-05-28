@@ -21,7 +21,8 @@ class UserTableSeeder extends Seeder
             'email' => 'ander@uafit.com',
             'password' => $hashedPassword,
             'is_trainer' =>'0',
-            'is_admin' =>'1'
+            'is_admin' =>'1',
+            'picture' => 'https://cloudfront-eu-central-1.images.arcpublishing.com/prisaradio/522TRNLPEFJ7PLO5MQHI2HRPOQ.jpg'
         ]);
 
         try {
@@ -52,7 +53,8 @@ class UserTableSeeder extends Seeder
             'email' => 'daniel@uafit.com',
             'password' => $hashedPassword,
             'is_trainer' =>'1',
-            'is_admin' =>'0'
+            'is_admin' =>'0',
+            'picture' => 'https://koacenter.es/wp-content/uploads/2018/04/Entrenador-personal-barcelona.jpg'
         ]);
 
         try {
@@ -67,7 +69,8 @@ class UserTableSeeder extends Seeder
             'email' => 'laura@uafit.com',
             'password' => $hashedPassword,
             'is_trainer' =>'1',
-            'is_admin' =>'1'
+            'is_admin' =>'1',
+            'picture' => 'https://yt3.ggpht.com/bdX99OzAfDsOIM1BtwqnXAjqyW2E1lHpoToSkowq_0yGl-Cxd7C8djZdK4w5wm15Ab8AijVknYU=s900-c-k-c0x00ffffff-no-rj'
         ]);
 
         try {
@@ -180,6 +183,23 @@ class UserTableSeeder extends Seeder
             'is_trainer' =>'1',
             'is_admin' =>'1',
             'picture' => 'https://images-ext-1.discordapp.net/external/a90DP3JTgPttS1te62vHJYlNUZgRmfwFSU8geHxExMI/https/i.ytimg.com/vi/kXZQAqwJ-PU/maxresdefault.jpg?width=1207&height=679'
+        ]);
+
+        try {
+            $user->save();
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
+
+
+        $hashedPassword = Hash::make('0123456789');
+        $user = new User([
+            'name' => 'Daniel Asensi',
+            'email' => 'danielasensi444@outlook.com',
+            'password' => $hashedPassword,
+            'is_trainer' =>'1',
+            'is_admin' =>'0',
+            'picture' => 'https://i0.wp.com/powerbuildingoficial.com/wp-content/uploads/2020/11/bio01.jpg?fit=768%2C432&ssl=1'
         ]);
 
         try {
