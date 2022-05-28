@@ -55,7 +55,7 @@
                 @csrf
                 <div class="row">
                     <select name="grupo" class="form-select">
-                        <option disabled selected> Grupo muscular </option>
+                        <option disabled selected> Ejercicios </option>
                         @foreach($ejercicios as $ejercicio)
                         <option value="{{$ejercicio->id}}">{{$ejercicio->name}}</option>
                         @endforeach
