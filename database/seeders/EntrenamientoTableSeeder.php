@@ -41,5 +41,61 @@ class EntrenamientoTableSeeder extends Seeder
         catch(\Exception $e){
             echo $e->getMessage();
         }
+
+        $entrenamiento = new Entrenamiento([
+            'name' => 'Entrenamiento 3',
+            'descripcion' => 'Esta es la descripcion del entrenamiento 3.',
+            'url_img' => 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/man-exercising-with-kettlebell-in-the-gym-royalty-free-image-1581347057.jpg?crop=1.00xw:0.446xh;0,0.237xh&resize=768:*'
+        ]);
+
+        try
+        {
+            $entrenamiento->save();
+        }
+        catch(\Exception $e){
+            echo $e->getMessage();
+        }
+
+        $entrenamiento = new Entrenamiento([
+            'name' => 'Entrenamiento 4',
+            'descripcion' => 'Esta es la descripcion del entrenamiento 4.',
+            'url_img' => 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/body-builder-training-in-industrial-urban-gym-royalty-free-image-1581345623.jpg'
+        ]);
+
+        try
+        {
+            $entrenamiento->save();
+        }
+        catch(\Exception $e){
+            echo $e->getMessage();
+        }
+
+        $entrenamiento = new Entrenamiento([
+            'name' => 'Entrenamiento 5',
+            'descripcion' => 'Esta es la descripcion del entrenamiento 5.',
+            'url_img' => 'http://palomasala.com/wp-content/uploads/2019/01/tipos-de-rutinas-que-podemos-hacer-en-el-gimnasio-1.jpg'
+        ]);
+
+        try
+        {
+            $entrenamiento->save();
+        }
+        catch(\Exception $e){
+            echo $e->getMessage();
+        }
+
+        $entrenamiento = new Entrenamiento([
+            'name' => 'Entrenamiento 6',
+            'descripcion' => 'Esta es la descripcion del entrenamiento 6.',
+            'url_img' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjOv7fRZYU02_LJbwsnsIqHqFgzA7r98HJeQ&usqp=CAU'
+        ]);
+
+        try
+        {
+            $entrenamiento->save();
+        }
+        catch(\Exception $e){
+            echo $e->getMessage();
+        }
     }
 }
