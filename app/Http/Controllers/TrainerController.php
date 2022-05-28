@@ -37,7 +37,7 @@ class TrainerController extends Controller
                 $EntrenamientoNuevo->creator_id = auth::user()->id;
                 $EntrenamientoNuevo->save();
 
-                return redirect("/trainer/entrenamientos/" . strval($EntrenamientoNuevo->id))->with('exito', 'al añadir el entrenamiento');
+                return redirect("/entrenamientos/" . strval($EntrenamientoNuevo->id))->with('exito', 'al añadir el entrenamiento');
             } else {
                 return redirect()->back()->with('error', 'Error ya existe el Entrenamiento');
             }

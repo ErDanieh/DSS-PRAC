@@ -116,7 +116,6 @@ Route::put('/trainer/entrenamientos/{id}', [TrainerController::class, 'editEntre
 Route::delete('/trainer/entrenamientos/{id}', [TrainerController::class, 'deleteEntrenamiento'])->middleware(['auth']);
 Route::post('/trainer/entrenamientos/{id}/ejercicio/{idEjercicio}/disociate', [TrainerController::class, 'eliminarEjercicioDeEntrenamiento'])->middleware(['auth'])->name('entrenamiento.disociateEjercicio');
 Route::post('/trainer/entrenamientos/{id}/ejercicio/add', [TrainerController::class, 'addEjercicioEntrenamiento'])->middleware(['auth'])->name('entrenamiento.addEjercicio');
-Route::get('/trainer/ejercicioCreation', [TrainerController::class, 'getEjercicioCreator'])->middleware('auth');
 Route::post('/trainer/ejercicioCreation', [EjerciciosController::class, 'newEjercicios'])->middleware('auth');
 
 
