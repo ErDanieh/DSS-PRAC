@@ -26,4 +26,3 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.0/css/all.css" crossorigin="anonymous">
 
 <link rel="icon" href="{{ url('favicon.png') }}">
-<link rel="stylesheet" type="text/css" href="{{ url('css/style.css') }}">
