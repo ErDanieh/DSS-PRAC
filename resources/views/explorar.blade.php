@@ -4,9 +4,12 @@
 <script src="../js/utils.js"> </script>
 
 <style type="text/css">
+.card-img-top{
+    transition: transform .6s ease; /* Animation */
+}
 .card-img-top:hover {
     transform: scale(1.5);
-    transition: transform .7s ease;
+    transition: transform .6s ease;
 }
 .img-container{
     overflow: hidden; /* [1.2] Hide the overflowing of child elements */
@@ -25,11 +28,14 @@
             <div class="card-body">
                 <h5 class="card-title">{{$entrenamiento->name}}</h5>
                 <p class="card-text">{{Str::limit($entrenamiento->descripcion, 50)}}</p>
-                <a onclick="redirectToId({{$entrenamiento->id}})" class="btn btn-primary">Más información</a>
+                <a href="/entrenamientos/{{$entrenamiento->id}}" class="btn btn-primary">Más información</a>
             </div>
 
         </div>
         @endforeach
+    </div>
+    <div class="text-center d-flex justify-content-center m-5">
+        {{ $entrenamientos->links() }}
     </div>
 </div>
 @endsection
