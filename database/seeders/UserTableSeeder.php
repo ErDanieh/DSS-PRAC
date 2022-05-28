@@ -172,5 +172,23 @@ class UserTableSeeder extends Seeder
 
 
 
+        $hashedPassword = Hash::make('asdjklfjkasdfhjklas');
+        $user = new User([
+            'name' => 'Zyzz',
+            'email' => 'zyzzGodofLife@uafit.com',
+            'password' => $hashedPassword,
+            'is_trainer' =>'1',
+            'is_admin' =>'1',
+            'picture' => 'https://images-ext-1.discordapp.net/external/a90DP3JTgPttS1te62vHJYlNUZgRmfwFSU8geHxExMI/https/i.ytimg.com/vi/kXZQAqwJ-PU/maxresdefault.jpg?width=1207&height=679'
+        ]);
+
+        try {
+            $user->save();
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
+
+
+
     }
 }
