@@ -48,7 +48,7 @@ class EjerciciosController extends Controller
 
     function getExplorarEjercicios() 
     {
-        return view('ejercicios.ejerciciosExplorar')->with('ejercicios', Ejercicio::all());
+        return view('ejercicios.ejerciciosExplorar')->with('ejercicios', Ejercicio::simplePaginate(6));
     }
 
     function getInformacionEjercicio($idEjercicio)

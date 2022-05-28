@@ -14,11 +14,14 @@
             <div class="card-body">
                 <h5 class="card-title">{{$ejercicio->name}}</h5>
                 <p class="card-text">{{Str::limit($ejercicio->descripcion, 50)}}</p>
-                <a onclick="redirectToId({{$ejercicio->id}})" class="btn btn-primary">Más información</a>
+                <a href="/ejercicios/{{$ejercicio->id}}" class="btn btn-primary">Más información</a>
             </div>
 
         </div>
         @endforeach
+    </div>
+    <div class="text-center d-flex justify-content-center m-5">
+        {{ $ejercicios->links() }}
     </div>
 </div>
 @endsection

@@ -9,6 +9,6 @@ class ExplorarController extends Controller
 {
     function getExplorar()
     {
-        return view("explorar")->with('entrenamientos', Entrenamiento::all());
+        return view("explorar")->with('entrenamientos', Entrenamiento::simplePaginate(6));
     }
 }
