@@ -15,40 +15,92 @@ class EntrenamientosEjerciciosTableSeeder extends Seeder
      */
     public function run()
     {
-        $entrenamiento = Entrenamiento::where('name', '=', 'Entrenamiento 1')->first();  
+        $entrenamiento = Entrenamiento::where('name', '=', 'Pecho')->first();
         $ejercicio = Ejercicio::where('name', '=', 'Apertura de mancuernas')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Press de pecho plano con mancuerna.')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Press de pecho con mancuerna inclinado')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+
+        $entrenamiento = Entrenamiento::where('name', '=', 'Pierna')->first();
+        $ejercicio = Ejercicio::where('name', '=', 'Extensión de cuadriceps')->first();
         $entrenamiento->ejercicios()->attach($ejercicio->id);
         $ejercicio = Ejercicio::where('name', '=', 'Curl Femoral')->first();
         $entrenamiento->ejercicios()->attach($ejercicio->id);
-
-        $entrenamiento = Entrenamiento::where('name', '=', 'Entrenamiento 2')->first();  
-        $ejercicio = Ejercicio::where('name', '=', 'Sentadillas')->first();
+        $ejercicio = Ejercicio::where('name', '=', 'Elevación de gemelos en máquina')->first();
         $entrenamiento->ejercicios()->attach($ejercicio->id);
-        $ejercicio = Ejercicio::where('name', '=', 'Gluteo')->first();
+        $ejercicio = Ejercicio::where('name', '=', 'Abductor en máquina')->first();
         $entrenamiento->ejercicios()->attach($ejercicio->id);
 
-        $entrenamiento = Entrenamiento::where('name', '=', 'Entrenamiento 3')->first();  
-        $ejercicio = Ejercicio::where('name', '=', 'Levantamiento de pesas')->first();
+        $entrenamiento = Entrenamiento::where('name', '=', 'Deltoides')->first();
+        $ejercicio = Ejercicio::where('name', '=', 'Press Militar con mancuernas sentado')->first();
         $entrenamiento->ejercicios()->attach($ejercicio->id);
-        $ejercicio = Ejercicio::where('name', '=', 'Deltoides')->first();
+        $ejercicio = Ejercicio::where('name', '=', 'Elevaciones laterales')->first();
         $entrenamiento->ejercicios()->attach($ejercicio->id);
-
-        $entrenamiento = Entrenamiento::where('name', '=', 'Entrenamiento 4')->first();  
-        $ejercicio = Ejercicio::where('name', '=', 'Abdominales')->first();
-        $entrenamiento->ejercicios()->attach($ejercicio->id);
-        $ejercicio = Ejercicio::where('name', '=', 'Abdomen')->first();
+        $ejercicio = Ejercicio::where('name', '=', 'Apertura de mancuernas inclinado hacia delante')->first();
         $entrenamiento->ejercicios()->attach($ejercicio->id);
 
-        $entrenamiento = Entrenamiento::where('name', '=', 'Entrenamiento 5')->first();  
-        $ejercicio = Ejercicio::where('name', '=', 'Sentadillas con mancuernas')->first();
+        $entrenamiento = Entrenamiento::where('name', '=', 'Full Body')->first();
+        $ejercicio = Ejercicio::where('name', '=', 'Press de pecho con mancuerna inclinado')->first();
         $entrenamiento->ejercicios()->attach($ejercicio->id);
-        $ejercicio = Ejercicio::where('name', '=', 'Piernas')->first();
+        $ejercicio = Ejercicio::where('name', '=', 'Extensión de cuadriceps')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Press Militar con mancuernas sentado')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Elevaciones laterales')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Apertura de mancuernas inclinado hacia delante')->first();
         $entrenamiento->ejercicios()->attach($ejercicio->id);
 
-        $entrenamiento = Entrenamiento::where('name', '=', 'Entrenamiento 6')->first();  
-        $ejercicio = Ejercicio::where('name', '=', 'Flexiones')->first();
+        $entrenamiento = Entrenamiento::where('name', '=', 'FullBody Shred Summer')->first();
+        $ejercicio = Ejercicio::where('name', '=', 'Abductor en máquina')->first();
         $entrenamiento->ejercicios()->attach($ejercicio->id);
-        $ejercicio = Ejercicio::where('name', '=', 'Deltoides')->first();
+        $ejercicio = Ejercicio::where('name', '=', 'Elevaciones laterales')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Apertura de mancuernas')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Press de pecho plano con mancuerna.')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Press de pecho con mancuerna inclinado')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Press Militar con mancuernas sentado')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Abductor en máquina')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+
+        $entrenamiento = Entrenamiento::where('name', '=', 'Hard as God Full body ')->first();
+        $ejercicio = Ejercicio::where('name', '=', 'Press Militar con mancuernas sentado')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Abductor en máquina')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Extensión de cuadriceps')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Curl Femoral')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Elevación de gemelos en máquina')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Abductor en máquina')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Elevaciones laterales')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Apertura de mancuernas inclinado hacia delante')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+
+        $entrenamiento = Entrenamiento::where('name', '=', 'CBUM Workout')->first();
+        $ejercicio = Ejercicio::where('name', '=', 'Abductor en máquina')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Elevaciones laterales')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Apertura de mancuernas')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Press de pecho plano con mancuerna.')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Press de pecho con mancuerna inclinado')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Press Militar con mancuernas sentado')->first();
+        $entrenamiento->ejercicios()->attach($ejercicio->id);
+        $ejercicio = Ejercicio::where('name', '=', 'Abductor en máquina')->first();
         $entrenamiento->ejercicios()->attach($ejercicio->id);
     }
 }
