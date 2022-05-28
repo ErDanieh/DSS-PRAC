@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GrupoMuscular;
 use App\Models\Musculo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use SebastianBergmann\Environment\Console;
 
 class MusculosController extends Controller
@@ -41,6 +42,16 @@ class MusculosController extends Controller
      */
     function newMusculo(Request $req)
     {
+
+        $validator = Validator::make($req->all(), [
+            'grupo' => 'required|max:255',
+            'name' => 'required|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->with('error', 'Rellene todos los campos. (Maximo 255)');
+        }
+
         $grupoMuscular = GrupoMuscular::where('name', '=', $req->input('grupo'))->first();
 
         if ($grupoMuscular != null) {

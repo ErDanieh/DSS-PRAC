@@ -9,6 +9,7 @@ use App\Models\User;
 use App\ServiceLayer\ServicioUsuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class EntrenamientosController extends Controller
 {
@@ -17,6 +18,7 @@ class EntrenamientosController extends Controller
      *  */
     function getEntrenamientos()
     {
+
         $busquedaRequest = request()->search;
         $busquedaOrder = request()->ordered;
         //echo $busquedaOrder;
@@ -58,6 +60,17 @@ class EntrenamientosController extends Controller
 
     function newEntrenamiento(Request $req)
     {
+
+        $validator = Validator::make($req->all(), [
+            'name' => 'required|max:255',
+            'descripcion' => 'required|max:255',
+            'urlImagen' => 'required|max:255'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->with('error', 'Rellene todos los campos. (Maximo 255)');
+        }
+
         try {
             $nombreEntrenamiento = $req->input('name');
             $descripcionEntrenamiento = $req->input('descripcion');
@@ -99,6 +112,17 @@ class EntrenamientosController extends Controller
 
     function editEntrenamiento(Request $req, $id)
     {
+
+
+        $validator = Validator::make($req->all(), [
+            'name' => 'max:255',
+            'descripcion' => 'max:255',
+            'urlImagen' => 'max:255'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->with('error', 'Rellene todos los campos. (Maximo 255)');
+        }
 
         try {
             $EntrenamientoEditar = Entrenamiento::findOrFail($id);
