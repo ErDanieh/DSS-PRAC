@@ -12,7 +12,6 @@
         <li><a href="/" class="nav-link px-2 link-secondary">Inicio</a></li>
         <li><a href="/entrenamientos" class="nav-link px-2 link-dark">Explorar</a></li>
         <li><a href="/ejercicios" class="nav-link px-2 link-dark">Ejercicios</a></li>
-        <li><a href="/planes" class="nav-link px-2 link-dark">Planes</a></li>
         <li><a href="/entrenadores" class="nav-link px-2 link-dark">Entrenadores</a></li>
         <li><a href="/sobreNosotros" class="nav-link px-2 link-dark">About Us</a></li>
       
