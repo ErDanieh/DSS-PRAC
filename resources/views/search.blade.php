@@ -24,6 +24,7 @@
                 <p class="card-text">
                     {{$entrenamiento->descripcion}}
                 </p>
+                <a href="/entrenamientos/{{$entrenamiento->id}}" class="btn btn-primary">Más información</a>
             </div>
         </div>
         @endforeach
@@ -41,6 +42,7 @@
                 <p class="card-text">
                     {{$ejercicio->descripcion}}
                 </p>
+                <a href="/ejercicios/{{$ejercicio->id}}" class="btn btn-primary">Más información</a>
             </div>
         </div>
         @endforeach
@@ -55,6 +57,7 @@
             <img class="card-img-top" style="height: 20vw; object-fit: cover; width: auto;" src="{{$entrenador->picture}}">
             <div class="card-body">
                 <h5 class="card-title">{{$entrenador->name}}</h5>
+                <a href="/entrenadores/{{$entrenador->id}}" class="btn btn-primary">Más información</a>
             </div>
         </div>
         @endforeach
