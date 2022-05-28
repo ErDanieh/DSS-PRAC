@@ -46,7 +46,6 @@
         </a>
         <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="cursor: pointer;">
           <li><a class="dropdown-item" href="/perfil">Perfil</a></li>
-          <li><a class="dropdown-item disabled" href="#">Ajustes</a></li>
           <li>
             <hr class="dropdown-divider">
           </li>
