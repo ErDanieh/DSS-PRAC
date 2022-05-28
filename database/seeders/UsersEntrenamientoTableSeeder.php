@@ -15,7 +15,7 @@ class UsersEntrenamientoTableSeeder extends Seeder
      */
     public function run()
     {
-        $entrenamiento = Entrenamiento::where('name', '=', 'Entrenamiento 1')->first();  
+        $entrenamiento = Entrenamiento::where('name', '=', 'Pecho')->first();  
         $usuario = User::where('email', '=', 'ander@uafit.com')->first();
         $entrenamiento->usuarios()->attach($usuario->id);
     }
