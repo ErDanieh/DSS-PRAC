@@ -7,6 +7,7 @@ use App\Models\GrupoMuscular;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
 use DB;
+use Illuminate\Support\Facades\Validator;
 
 class EjerciciosController extends Controller
 {
@@ -69,6 +70,17 @@ class EjerciciosController extends Controller
      */
     function newEjercicios(Request $req)
     {
+
+        $validator = Validator::make($req->all(), [
+            'name' => 'required|max:255',
+            'descripcion' => 'required|max:255',
+            'urlImagen' => 'required|max:255'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->with('error', 'Rellene todos los campos. (Maximo 255)');
+        }
+
         try {
             $nombreEjercicio = $req->input('name');
             $descripcionEjercicio = $req->input('descripcion');

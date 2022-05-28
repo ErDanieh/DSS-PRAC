@@ -6,6 +6,7 @@ use App\Models\GrupoMuscular;
 use App\Models\Musculo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\MusculosController;
+use Illuminate\Support\Facades\Validator;
 
 class GrupoMuscularController extends Controller
 {
@@ -36,6 +37,16 @@ class GrupoMuscularController extends Controller
      */
     function newGruposMusculares(Request $req)
     {
+
+        $validator = Validator::make($req->all(), [
+            'name' => 'required|max:255',
+            'descripcion' => 'required|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->with('error', 'Rellene todos los campos. (Maximo 255)');
+        }
+
         $nombre = $req->input('name');
         $grupoMuscularNoEsperado = GrupoMuscular::where('name', '=', $nombre)->first();
 
