@@ -118,7 +118,7 @@
                 <tbody>
                     @foreach($entrenamiento->ejercicios as $ejercicio)
                     <tr>
-                        <td>{{$ejercicio->name }}</td>
+                        <td><a href="/ejercicios/{{$ejercicio->id}}" style="color: inherit; text-decoration: inherit;"> {{$ejercicio->name }}</a></td>
                         <td>{{$ejercicio->descripcion }}</td>
                     </tr>
                     @endforeach
