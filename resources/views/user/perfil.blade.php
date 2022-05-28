@@ -18,21 +18,34 @@
 
     </div>
 
-    <h2 style="margin-top: 50px;">Mis entrenamientos:</h2>
-    @foreach($misEntrenamientos as $entrenamineto)
-    <div>{{$entrenamineto->name}}</div>
-    @endforeach
+    <div class="container">
+        <h2 style="margin-top: 50px;">Entrenamientos seguidos:</h2>
+        <div class="row">
+            @foreach($misEntrenamientos as $entrenamiento)
+            <div class="col-md-3">
+                <a href="/entrenamientos/{{$entrenamiento->id}}" style="color: inherit; text-decoration: inherit;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">{{$entrenamiento->name}}</h4>
+                            <p class="card-text">{{Str::limit($entrenamiento->descripcion, 50)}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            @endforeach
+        </div>
+    </div>
 
     @include('common.alert')
     <form action="{{url('/perfil')}}" method="POST">
         @csrf
         {{ method_field('PUT') }}
-        <div class="form-group">
+        <div class="form-group mt-4">
             <label for="name">Url de la imagen</label>
             <input class="form-control" name="picture" id="picture">
         </div>
-        <button class="btn btn-primary" type="submit" style="margin-top: 20px; font-size: 1.2rem;">
-            Cambiar
+        <button class="btn btn-primary mt-4" type="submit">
+            Modificar imagen del perfil
         </button>
     </form>
 
@@ -40,7 +53,7 @@
         <form action="{{url('/perfil')}}" class="mr-4" method="POST">
             @csrf
             {{ method_field('DELETE') }}
-            <button class="btn btn-danger m-3" type="submit">Eliminar mi cuenta</button>
+            <button class="btn btn-danger mt-4" type="submit">Eliminar mi cuenta</button>
         </form>
     </div>
 
